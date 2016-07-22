@@ -1,19 +1,18 @@
 //
-//  VFLoginViewController.swift
+//  VFRegisterViewController.swift
 //  Vet-Fetch
 //
-//  Created by Brian Correa on 7/20/16.
+//  Created by Brian Correa on 7/21/16.
 //  Copyright © 2016 Milkshake Tech. All rights reserved.
 //
 
 import UIKit
 
-class VFLoginViewController: VFViewController, UITextFieldDelegate {
-    
+class VFRegisterViewController: VFViewController, UITextFieldDelegate {
+
     var textFields = Array<UITextField>()
     
     override func loadView(){
-        print("loadView Register")
         
         self.navigationController?.navigationBarHidden = false
         
@@ -21,7 +20,7 @@ class VFLoginViewController: VFViewController, UITextFieldDelegate {
         let view = UIView(frame: frame)
         edgesForExtendedLayout = .None
         
-        view.backgroundColor = UIColor(red: 255/255, green: 220/255, blue: 204/255, alpha: 1)
+        view.backgroundColor = UIColor(red: 166/255, green: 207/255, blue: 190/255, alpha: 1)
         
         let cancelBtn = UIButton(type: .Custom)
         cancelBtn.frame = CGRect(x: 0, y: 10, width: 32, height: 32)
@@ -31,7 +30,6 @@ class VFLoginViewController: VFViewController, UITextFieldDelegate {
             action: #selector(VFViewController.exit),
             forControlEvents: .TouchUpInside
         )
-        
         view.addSubview(cancelBtn)
         
         let padding = CGFloat(Constants.padding)
@@ -39,7 +37,7 @@ class VFLoginViewController: VFViewController, UITextFieldDelegate {
         let height = CGFloat(32)
         var y = CGFloat(Constants.origin_y)
         
-        let fieldNames = ["Email", "Password"]
+        let fieldNames = ["First Name", "Last Name", "Email", "Password"]
         
         for i in 0..<fieldNames.count {
             
@@ -60,10 +58,10 @@ class VFLoginViewController: VFViewController, UITextFieldDelegate {
         
         self.view = view
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     override func exit(){
@@ -82,18 +80,19 @@ class VFLoginViewController: VFViewController, UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         
         let index = self.textFields.indexOf(textField)!
-        
         if(index == self.textFields.count-1){
+            let postKeys = ["firstName","lastName", "email", "password"]
             var missingValue = ""
             var profileInfo = Dictionary<String, AnyObject>()
             
-            for textField in self.textFields{
+            for i in 0..<self.textFields.count{
+                let textField = self.textFields[i]
                 if(textField.text?.characters.count == 0){
                     missingValue = textField.placeholder!
                     break
                 }
-                
-                profileInfo[textField.placeholder!.lowercaseString] = textField.text!
+            
+                profileInfo[postKeys[i]] = textField.text
             }
             
             if(missingValue.characters.count > 0){
@@ -109,53 +108,30 @@ class VFLoginViewController: VFViewController, UITextFieldDelegate {
             }
             
             print("Profile Info: \(profileInfo)")
-        
-            APIManager.postRequest("/account/login",
+            
+            APIManager.postRequest("/api/profile",
                                    params: profileInfo,
                                    completion: { error, response in
-
-                                    if (error != nil){
-                                        let errorObj = error?.userInfo
-                                        
-                                        let errorMsg = errorObj!["message"] as! String
-                                        print("Error: \(errorMsg)")
-                                        
-                                        dispatch_async(dispatch_get_main_queue(), {
-                                            let alert = UIAlertController(
-                                                title: "Message",
-                                                message: errorMsg,
-                                                preferredStyle: .Alert)
-                                            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-                                            self.presentViewController(alert, animated: true, completion: nil)
-                                            
-                                        })
-                                        
-                                        return
-                                    }
                                     
                                     print("\(response)")
                                     
-                                    if let result = response!["currentUser"] as? Dictionary<String, AnyObject>{
-                                        
-                                        VFViewController.currentUser.populate(result)
+                                    if let result = response!["result"] as? Dictionary<String, AnyObject>{
                                         
                                         dispatch_async(dispatch_get_main_queue(), {
                                             
                                             self.postLoggedInNotification(result)
                                             print("Print the CurrentUser: \(VFViewController.currentUser.lastName), \(VFViewController.currentUser.firstName)")
                                             
-                                            let loginVc = VFLoginViewController()
-                                            
-                                            let nav = UINavigationController(rootViewController: loginVc)
+                                            let registerVc = VFRegisterViewController()
+                                            let nav = UINavigationController(rootViewController: registerVc)
                                             let accountVc = VFAccountViewController()
-                                            
+                                    
                                             nav.pushViewController(accountVc, animated: false)
                                             self.presentViewController(nav, animated: true, completion: nil)
                                         })
                                     }
-                                    
             })
-        
+            
             return true
         }
         
@@ -164,9 +140,9 @@ class VFLoginViewController: VFViewController, UITextFieldDelegate {
         
         return true
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-
+        
     }
 }

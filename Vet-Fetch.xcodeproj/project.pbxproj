@@ -11,6 +11,10 @@
 		D3107E711D403EBE004A27B7 /* VFAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3107E701D403EBE004A27B7 /* VFAccountViewController.swift */; };
 		D338CA931D401CBE0086C6E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D338CA921D401CBE0086C6E5 /* AppDelegate.swift */; };
 		D338CA9A1D401CBE0086C6E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D338CA991D401CBE0086C6E5 /* Assets.xcassets */; };
+		D3879AAF1D4142BD002AE3FA /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3879AAE1D4142BD002AE3FA /* APIManager.swift */; };
+		D3879AB11D414A66002AE3FA /* VFRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3879AB01D414A66002AE3FA /* VFRegisterViewController.swift */; };
+		D3879AB31D415370002AE3FA /* VFProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3879AB21D415370002AE3FA /* VFProfile.swift */; };
+		D3879AB51D41A658002AE3FA /* VFWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3879AB41D41A658002AE3FA /* VFWelcomeViewController.swift */; };
 		D3AD90041D40592D004703D4 /* account_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AD90031D40592D004703D4 /* account_background@2x.png */; };
 		D3AD90061D405C1B004703D4 /* account_background2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AD90051D405C1B004703D4 /* account_background2@2x.png */; };
 		D3AD900A1D405C5B004703D4 /* account_background3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AD90091D405C5B004703D4 /* account_background3@2x.png */; };
@@ -21,15 +25,23 @@
 		D3AD90191D412519004703D4 /* profile-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AD90181D412519004703D4 /* profile-icon@2x.png */; };
 		D3AD901B1D413B34004703D4 /* key_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AD901A1D413B34004703D4 /* key_icon@2x.png */; };
 		D3AD901D1D413B72004703D4 /* cancel_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AD901C1D413B72004703D4 /* cancel_icon@2x.png */; };
+		E60AB3A95FC09477AC7686B0 /* Pods_Vet_Fetch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45A2B292C0660E649E65F126 /* Pods_Vet_Fetch.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		45A2B292C0660E649E65F126 /* Pods_Vet_Fetch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vet_Fetch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA73D8B71EB05B52515E1000 /* Pods-Vet-Fetch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vet-Fetch.release.xcconfig"; path = "Pods/Target Support Files/Pods-Vet-Fetch/Pods-Vet-Fetch.release.xcconfig"; sourceTree = "<group>"; };
+		C53BAD2615991B93DA6F6CAC /* Pods-Vet-Fetch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vet-Fetch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Vet-Fetch/Pods-Vet-Fetch.debug.xcconfig"; sourceTree = "<group>"; };
 		D3107E6E1D403DD7004A27B7 /* VFViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFViewController.swift; sourceTree = "<group>"; };
 		D3107E701D403EBE004A27B7 /* VFAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFAccountViewController.swift; sourceTree = "<group>"; };
 		D338CA8F1D401CBD0086C6E5 /* Vet-Fetch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vet-Fetch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D338CA921D401CBE0086C6E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D338CA991D401CBE0086C6E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D338CA9E1D401CBE0086C6E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3879AAE1D4142BD002AE3FA /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		D3879AB01D414A66002AE3FA /* VFRegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFRegisterViewController.swift; sourceTree = "<group>"; };
+		D3879AB21D415370002AE3FA /* VFProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFProfile.swift; sourceTree = "<group>"; };
+		D3879AB41D41A658002AE3FA /* VFWelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFWelcomeViewController.swift; sourceTree = "<group>"; };
 		D3AD90031D40592D004703D4 /* account_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account_background@2x.png"; sourceTree = "<group>"; };
 		D3AD90051D405C1B004703D4 /* account_background2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account_background2@2x.png"; sourceTree = "<group>"; };
 		D3AD90091D405C5B004703D4 /* account_background3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account_background3@2x.png"; sourceTree = "<group>"; };
@@ -47,15 +59,34 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E60AB3A95FC09477AC7686B0 /* Pods_Vet_Fetch.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		98950163F4C388ACB50828B2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C53BAD2615991B93DA6F6CAC /* Pods-Vet-Fetch.debug.xcconfig */,
+				AA73D8B71EB05B52515E1000 /* Pods-Vet-Fetch.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		99D2ED6485D90685750E95CB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				45A2B292C0660E649E65F126 /* Pods_Vet_Fetch.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D3107E691D403D57004A27B7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D3879AAE1D4142BD002AE3FA /* APIManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -71,6 +102,7 @@
 		D3107E6B1D403D67004A27B7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D3879AB21D415370002AE3FA /* VFProfile.swift */,
 			);
 			name = Models;
 			path = BaseClasses/Models;
@@ -80,7 +112,9 @@
 			isa = PBXGroup;
 			children = (
 				D3107E701D403EBE004A27B7 /* VFAccountViewController.swift */,
+				D3879AB01D414A66002AE3FA /* VFRegisterViewController.swift */,
 				D3AD900B1D406D73004703D4 /* VFLoginViewController.swift */,
+				D3879AB41D41A658002AE3FA /* VFWelcomeViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -98,6 +132,8 @@
 			children = (
 				D338CA911D401CBE0086C6E5 /* Vet-Fetch */,
 				D338CA901D401CBD0086C6E5 /* Products */,
+				98950163F4C388ACB50828B2 /* Pods */,
+				99D2ED6485D90685750E95CB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -147,9 +183,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D338CAA11D401CBE0086C6E5 /* Build configuration list for PBXNativeTarget "Vet-Fetch" */;
 			buildPhases = (
+				833B879A5C858ECDF3F3863F /* 📦 Check Pods Manifest.lock */,
 				D338CA8B1D401CBD0086C6E5 /* Sources */,
 				D338CA8C1D401CBD0086C6E5 /* Frameworks */,
 				D338CA8D1D401CBD0086C6E5 /* Resources */,
+				7421B8FE02120854381DCF20 /* 📦 Embed Pods Frameworks */,
+				3B395A5B9D1FEE41370F1D21 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -212,17 +251,69 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3B395A5B9D1FEE41370F1D21 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Vet-Fetch/Pods-Vet-Fetch-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7421B8FE02120854381DCF20 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Vet-Fetch/Pods-Vet-Fetch-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		833B879A5C858ECDF3F3863F /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D338CA8B1D401CBD0086C6E5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3879AB31D415370002AE3FA /* VFProfile.swift in Sources */,
 				D3107E6F1D403DD7004A27B7 /* VFViewController.swift in Sources */,
+				D3879AB11D414A66002AE3FA /* VFRegisterViewController.swift in Sources */,
+				D3879AB51D41A658002AE3FA /* VFWelcomeViewController.swift in Sources */,
 				D338CA931D401CBE0086C6E5 /* AppDelegate.swift in Sources */,
 				D3AD90121D4123D1004703D4 /* VFTextField.swift in Sources */,
 				D3AD900C1D406D73004703D4 /* VFLoginViewController.swift in Sources */,
 				D3107E711D403EBE004A27B7 /* VFAccountViewController.swift in Sources */,
 				D3AD90101D41209B004703D4 /* Config.swift in Sources */,
+				D3879AAF1D4142BD002AE3FA /* APIManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +405,7 @@
 		};
 		D338CAA21D401CBE0086C6E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C53BAD2615991B93DA6F6CAC /* Pods-Vet-Fetch.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Vet-Fetch/Info.plist";
@@ -325,6 +417,7 @@
 		};
 		D338CAA31D401CBE0086C6E5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA73D8B71EB05B52515E1000 /* Pods-Vet-Fetch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Vet-Fetch/Info.plist";
