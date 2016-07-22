@@ -10,6 +10,10 @@ import Foundation
 
 struct Constants {
     
+    static let baseUrl = "http:localhost:3000"
+    
+    static let kUserLoggedInNotification = "UserLoggedInNotification"
+    
     static let padding = 25
     static let origin_y = 90
     
