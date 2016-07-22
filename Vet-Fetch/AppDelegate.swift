@@ -7,24 +7,45 @@
 //
 
 import UIKit
+import Alamofire
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
-        let accountVc = VFAccountViewController()
-        let accountNavCtr = UINavigationController(rootViewController: accountVc)
+        let welcomeVc = VFWelcomeViewController()
+        let welcomeNavCtr = UINavigationController(rootViewController: welcomeVc)
+        self.window?.rootViewController = welcomeNavCtr
         
-        self.window?.rootViewController = accountNavCtr
         self.window?.makeKeyAndVisible()
-        
+        self.checkCurrentUser()
         return true
+    }
+    
+    func checkCurrentUser(){
+        
+        APIManager.checkCurrentUser { response in
+            if let currentUserInfo = response["currentUser"] as? Dictionary<String, AnyObject>{
+                
+                let currentUser = VFProfile()
+                currentUser.populate(currentUserInfo)
+                
+                let notification = NSNotification(
+                    name: Constants.kUserLoggedInNotification,
+                    object: nil,
+                    userInfo: ["user":currentUserInfo]
+                )
+                
+                let notificationCenter = NSNotificationCenter.defaultCenter()
+                notificationCenter.postNotification(notification)
+            }
+        }
+        
     }
 
     func applicationWillResignActive(application: UIApplication) {
