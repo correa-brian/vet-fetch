@@ -20,7 +20,6 @@ class VFWelcomeViewController: VFViewController, UIScrollViewDelegate {
     var imagesArray = ["account_background.png", "account_background2.png", "account_background3.png"]
     
     //MARK: - Lifecycle Methods
-    
     required init?(coder aDecoder: NSCoder){
         super.init(coder: aDecoder)
     }
@@ -33,10 +32,9 @@ class VFWelcomeViewController: VFViewController, UIScrollViewDelegate {
     
     override func loadView(){
         
-        self.navigationController?.navigationBarHidden = true
-        
         let frame = UIScreen.mainScreen().bounds
         let view = UIView(frame: frame)
+        view.backgroundColor = .blueColor()
         
         let w = self.imagesArray.count*Int(frame.size.width)
         let screenWidth = Int(frame.size.width)
@@ -114,19 +112,17 @@ class VFWelcomeViewController: VFViewController, UIScrollViewDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
-        print("viewDidAppear")
-        
         self.navigationController?.navigationBarHidden = true
     }
     
     override func userLoggedIn(notification: NSNotification){
         super.userLoggedIn(notification)
         
-        if(VFAccountViewController.currentUser.id == nil) {
+        if(VFViewController.currentUser.id == nil) {
             return
         }
         
-        print("VFAccountViewController: userLoggedIn")
+        self.showAccountVc()
     }
     
     func animateButtons(){
@@ -147,6 +143,11 @@ class VFWelcomeViewController: VFViewController, UIScrollViewDelegate {
         }
     }
     
+    func showAccountVc(){
+        let accountVc = VFAccountViewController()
+        self.navigationController?.pushViewController(accountVc, animated: true)
+    }
+    
     func showNextController(sender: UIButton){
         
         let buttonTitle = sender.titleLabel?.text?.lowercaseString
@@ -164,7 +165,6 @@ class VFWelcomeViewController: VFViewController, UIScrollViewDelegate {
     }
     
     //MARK: ScrollView Delegate
-    
     func scrollViewDidEndDecelerating(scrollView: UIScrollView){
         print("scrollViewDidEndDecelerating: \(scrollView.contentOffset.x)")
         let offset = scrollView.contentOffset.x

@@ -28,13 +28,7 @@ class VFViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
         
-        print("CurrentUser: \(VFViewController.currentUser.id)")
     }
     
     func userLoggedIn(notification: NSNotification){

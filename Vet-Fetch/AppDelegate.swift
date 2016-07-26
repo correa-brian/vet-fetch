@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 let currentUser = VFProfile()
                 currentUser.populate(currentUserInfo)
-                
+            
                 let notification = NSNotification(
                     name: Constants.kUserLoggedInNotification,
                     object: nil,

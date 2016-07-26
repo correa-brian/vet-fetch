@@ -120,9 +120,9 @@ class VFRegisterViewController: VFViewController, UITextFieldDelegate {
                                         dispatch_async(dispatch_get_main_queue(), {
                                             
                                             self.postLoggedInNotification(result)
-                                            print("Print the CurrentUser: \(VFViewController.currentUser.lastName), \(VFViewController.currentUser.firstName)")
                                             
                                             let registerVc = VFRegisterViewController()
+                                            
                                             let nav = UINavigationController(rootViewController: registerVc)
                                             let accountVc = VFAccountViewController()
                                     

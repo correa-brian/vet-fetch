@@ -13,7 +13,6 @@ class VFLoginViewController: VFViewController, UITextFieldDelegate {
     var textFields = Array<UITextField>()
     
     override func loadView(){
-        print("loadView Register")
         
         self.navigationController?.navigationBarHidden = false
         
@@ -142,7 +141,7 @@ class VFLoginViewController: VFViewController, UITextFieldDelegate {
                                         dispatch_async(dispatch_get_main_queue(), {
                                             
                                             self.postLoggedInNotification(result)
-                                            print("Print the CurrentUser: \(VFViewController.currentUser.lastName), \(VFViewController.currentUser.firstName)")
+                                            
                                             
                                             let loginVc = VFLoginViewController()
                                             
