@@ -61,7 +61,6 @@ class VFRegisterViewController: VFViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func exit(){

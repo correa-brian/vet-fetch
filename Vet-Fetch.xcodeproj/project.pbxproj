@@ -15,8 +15,12 @@
 		D3879AB11D414A66002AE3FA /* VFRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3879AB01D414A66002AE3FA /* VFRegisterViewController.swift */; };
 		D3879AB31D415370002AE3FA /* VFProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3879AB21D415370002AE3FA /* VFProfile.swift */; };
 		D3879AB51D41A658002AE3FA /* VFWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3879AB41D41A658002AE3FA /* VFWelcomeViewController.swift */; };
-		D3879ABA1D46EB98002AE3FA /* VFCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3879AB91D46EB98002AE3FA /* VFCollectionViewFlowLayout.swift */; };
-		D3879ABC1D46EC29002AE3FA /* VFCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3879ABB1D46EC29002AE3FA /* VFCollectionViewCell.swift */; };
+		D3879ABE1D46FB5C002AE3FA /* VFCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3879ABD1D46FB5C002AE3FA /* VFCollectionViewCell.swift */; };
+		D3879AC01D46FB98002AE3FA /* VFCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3879ABF1D46FB98002AE3FA /* VFCollectionViewFlowLayout.swift */; };
+		D3879AC31D46FF51002AE3FA /* VFAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3879AC21D46FF51002AE3FA /* VFAppointmentViewController.swift */; };
+		D3879AC71D46FF6C002AE3FA /* VFMedicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3879AC61D46FF6C002AE3FA /* VFMedicationViewController.swift */; };
+		D3879AC91D46FF78002AE3FA /* VFBillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3879AC81D46FF78002AE3FA /* VFBillViewController.swift */; };
+		D3879ACB1D47006E002AE3FA /* VFPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3879ACA1D47006E002AE3FA /* VFPetViewController.swift */; };
 		D3AD90041D40592D004703D4 /* account_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AD90031D40592D004703D4 /* account_background@2x.png */; };
 		D3AD90061D405C1B004703D4 /* account_background2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AD90051D405C1B004703D4 /* account_background2@2x.png */; };
 		D3AD900A1D405C5B004703D4 /* account_background3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AD90091D405C5B004703D4 /* account_background3@2x.png */; };
@@ -35,7 +39,7 @@
 		AA73D8B71EB05B52515E1000 /* Pods-Vet-Fetch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vet-Fetch.release.xcconfig"; path = "Pods/Target Support Files/Pods-Vet-Fetch/Pods-Vet-Fetch.release.xcconfig"; sourceTree = "<group>"; };
 		C53BAD2615991B93DA6F6CAC /* Pods-Vet-Fetch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vet-Fetch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Vet-Fetch/Pods-Vet-Fetch.debug.xcconfig"; sourceTree = "<group>"; };
 		D3107E6E1D403DD7004A27B7 /* VFViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFViewController.swift; sourceTree = "<group>"; };
-		D3107E701D403EBE004A27B7 /* VFAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFAccountViewController.swift; sourceTree = "<group>"; };
+		D3107E701D403EBE004A27B7 /* VFAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VFAccountViewController.swift; path = ../VFAccountViewController.swift; sourceTree = "<group>"; };
 		D338CA8F1D401CBD0086C6E5 /* Vet-Fetch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vet-Fetch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D338CA921D401CBE0086C6E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D338CA991D401CBE0086C6E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -44,8 +48,12 @@
 		D3879AB01D414A66002AE3FA /* VFRegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VFRegisterViewController.swift; path = ../VFRegisterViewController.swift; sourceTree = "<group>"; };
 		D3879AB21D415370002AE3FA /* VFProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFProfile.swift; sourceTree = "<group>"; };
 		D3879AB41D41A658002AE3FA /* VFWelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VFWelcomeViewController.swift; path = ../VFWelcomeViewController.swift; sourceTree = "<group>"; };
-		D3879AB91D46EB98002AE3FA /* VFCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
-		D3879ABB1D46EC29002AE3FA /* VFCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFCollectionViewCell.swift; sourceTree = "<group>"; };
+		D3879ABD1D46FB5C002AE3FA /* VFCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFCollectionViewCell.swift; sourceTree = "<group>"; };
+		D3879ABF1D46FB98002AE3FA /* VFCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		D3879AC21D46FF51002AE3FA /* VFAppointmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFAppointmentViewController.swift; sourceTree = "<group>"; };
+		D3879AC61D46FF6C002AE3FA /* VFMedicationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFMedicationViewController.swift; sourceTree = "<group>"; };
+		D3879AC81D46FF78002AE3FA /* VFBillViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFBillViewController.swift; sourceTree = "<group>"; };
+		D3879ACA1D47006E002AE3FA /* VFPetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFPetViewController.swift; sourceTree = "<group>"; };
 		D3AD90031D40592D004703D4 /* account_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account_background@2x.png"; sourceTree = "<group>"; };
 		D3AD90051D405C1B004703D4 /* account_background2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account_background2@2x.png"; sourceTree = "<group>"; };
 		D3AD90091D405C5B004703D4 /* account_background3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account_background3@2x.png"; sourceTree = "<group>"; };
@@ -115,10 +123,8 @@
 		D3107E6C1D403D83004A27B7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D3879AC11D46FC35002AE3FA /* AppVCs */,
 				D3879AB81D46EB39002AE3FA /* AuthVCs */,
-				D3107E701D403EBE004A27B7 /* VFAccountViewController.swift */,
-				D3879AB91D46EB98002AE3FA /* VFCollectionViewFlowLayout.swift */,
-				D3879ABB1D46EC29002AE3FA /* VFCollectionViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -127,6 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				D3AD90111D4123D1004703D4 /* VFTextField.swift */,
+				D3879ABD1D46FB5C002AE3FA /* VFCollectionViewCell.swift */,
+				D3879ABF1D46FB98002AE3FA /* VFCollectionViewFlowLayout.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -174,6 +182,18 @@
 				D3879AB41D41A658002AE3FA /* VFWelcomeViewController.swift */,
 			);
 			path = AuthVCs;
+			sourceTree = "<group>";
+		};
+		D3879AC11D46FC35002AE3FA /* AppVCs */ = {
+			isa = PBXGroup;
+			children = (
+				D3107E701D403EBE004A27B7 /* VFAccountViewController.swift */,
+				D3879AC21D46FF51002AE3FA /* VFAppointmentViewController.swift */,
+				D3879AC61D46FF6C002AE3FA /* VFMedicationViewController.swift */,
+				D3879AC81D46FF78002AE3FA /* VFBillViewController.swift */,
+				D3879ACA1D47006E002AE3FA /* VFPetViewController.swift */,
+			);
+			path = AppVCs;
 			sourceTree = "<group>";
 		};
 		D3AD90021D4057C0004703D4 /* Images */ = {
@@ -318,17 +338,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3879ABC1D46EC29002AE3FA /* VFCollectionViewCell.swift in Sources */,
 				D3879AB31D415370002AE3FA /* VFProfile.swift in Sources */,
 				D3107E6F1D403DD7004A27B7 /* VFViewController.swift in Sources */,
+				D3879AC01D46FB98002AE3FA /* VFCollectionViewFlowLayout.swift in Sources */,
+				D3879AC91D46FF78002AE3FA /* VFBillViewController.swift in Sources */,
+				D3879AC31D46FF51002AE3FA /* VFAppointmentViewController.swift in Sources */,
 				D3879AB11D414A66002AE3FA /* VFRegisterViewController.swift in Sources */,
+				D3879AC71D46FF6C002AE3FA /* VFMedicationViewController.swift in Sources */,
 				D3879AB51D41A658002AE3FA /* VFWelcomeViewController.swift in Sources */,
+				D3879ACB1D47006E002AE3FA /* VFPetViewController.swift in Sources */,
 				D338CA931D401CBE0086C6E5 /* AppDelegate.swift in Sources */,
 				D3AD90121D4123D1004703D4 /* VFTextField.swift in Sources */,
-				D3879ABA1D46EB98002AE3FA /* VFCollectionViewFlowLayout.swift in Sources */,
 				D3AD900C1D406D73004703D4 /* VFLoginViewController.swift in Sources */,
 				D3107E711D403EBE004A27B7 /* VFAccountViewController.swift in Sources */,
 				D3AD90101D41209B004703D4 /* Config.swift in Sources */,
+				D3879ABE1D46FB5C002AE3FA /* VFCollectionViewCell.swift in Sources */,
 				D3879AAF1D4142BD002AE3FA /* APIManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

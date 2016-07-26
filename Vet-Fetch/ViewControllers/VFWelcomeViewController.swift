@@ -112,6 +112,7 @@ class VFWelcomeViewController: VFViewController, UIScrollViewDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         self.navigationController?.navigationBarHidden = true
     }
     

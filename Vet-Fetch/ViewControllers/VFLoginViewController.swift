@@ -62,7 +62,6 @@ class VFLoginViewController: VFViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     override func exit(){

@@ -43,6 +43,7 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         
         self.bottomScrollView = UIScrollView(frame: CGRect(x: 0, y: frame.size.width, width: frame.size.width, height: frame.size.width))
         self.bottomScrollView.contentSize = CGSize(width: w, height: 0)
+        self.bottomScrollView.backgroundColor = .yellowColor()
         self.bottomScrollView.pagingEnabled = true
         self.bottomScrollView.delegate = self
         self.collectionView.addSubview(self.bottomScrollView)
@@ -54,7 +55,10 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         self.navigationController?.navigationBarHidden = true
     }
     
@@ -81,6 +85,43 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         self.configureCell(cell, indexPath: indexPath)
         
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        let button = self.btnsArray[indexPath.row]
+        
+        self.setAppropriateVc(button)
+    }
+    
+    func setAppropriateVc(sender: String){
+        print("My Sender: \(sender)")
+        
+        switch sender {
+            
+        case "Appointments":
+            print("setting Appointments")
+            let appointmentVc = VFAppointmentViewController()
+            self.navigationController?.pushViewController(appointmentVc, animated: true)
+            
+        case "Pets":
+            print("setting Pets")
+            let petVc = VFPetViewController()
+            self.navigationController?.pushViewController(petVc, animated: true)
+            
+        case "Medications":
+            print("setting Medications")
+            let medicationVc = VFMedicationViewController()
+            self.navigationController?.pushViewController(medicationVc, animated: true)
+            
+        case "Bills":
+            print("setting Bills")
+            let billVc = VFBillViewController()
+            self.navigationController?.pushViewController(billVc, animated: true)
+            
+        default:
+            print("default")
+        }
     }
     
     //MARK: ScrollView Delegate

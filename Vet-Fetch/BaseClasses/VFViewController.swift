@@ -28,7 +28,6 @@ class VFViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     func userLoggedIn(notification: NSNotification){
