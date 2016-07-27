@@ -130,24 +130,16 @@ class VFAddPetViewController: VFViewController, UITextFieldDelegate {
 
                                     print("\(response)")
                                     
-//                                    if let result = response!["result"] as? Dictionary<String, AnyObject>{
+                                    if let result = response!["result"] as? Dictionary<String, AnyObject>{
                                     
-//                                        VFViewController.currentUser.populate(result)
+                                        let pet = VFPet()
+                                        pet.populate(result)
                                         
-//                                        dispatch_async(dispatch_get_main_queue(), {
-                                    
-//                                            self.postLoggedInNotification(result)
+                                        dispatch_async(dispatch_get_main_queue(), {
                                             
-//                                            let loginVc = VFLoginViewController()
-//                                            
-//                                            let nav = UINavigationController(rootViewController: loginVc)
-//                                            let accountVc = VFAccountViewController()
-                                            
-//                                            nav.pushViewController(accountVc, animated: false)
-//                                            self.presentViewController(nav, animated: true, completion: nil)
-//                                        })
-//                                    }
-                                    
+                                            self.dismissViewControllerAnimated(true, completion: nil)
+                                        })
+                                    }
             })
             
             return true
