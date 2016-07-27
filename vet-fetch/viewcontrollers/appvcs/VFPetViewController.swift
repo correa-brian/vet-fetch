@@ -8,12 +8,15 @@
 
 import UIKit
 
-class VFPetViewController: VFViewController, UIScrollViewDelegate {
+class VFPetViewController: VFViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
     var petImage: UIImageView!
     var scrollView: UIScrollView!
     var navScroll: UIScrollView!
     var pageLabel: UILabel!
+    var genInfoTableView: UITableView!
+    var medicationTableView: UITableView!
+    var vaccinationTableView: UITableView!
     
     //MARK: - Lifecycle Methods
     required init?(coder aDecoder: NSCoder){
@@ -32,6 +35,7 @@ class VFPetViewController: VFViewController, UIScrollViewDelegate {
         view.backgroundColor = UIColor(red: 166/255, green: 207/255, blue: 190/255, alpha: 1)
         
         self.petImage = UIImageView(frame: CGRectMake(0, 0, frame.size.width, frame.size.width))
+        self.petImage.image = UIImage(named: "account_background.png")
         self.petImage.backgroundColor = UIColor(red: 255/255, green: 234/255, blue: 204/255, alpha: 1)
         
         let layer = CAGradientLayer()
@@ -66,27 +70,32 @@ class VFPetViewController: VFViewController, UIScrollViewDelegate {
         let lblUsername = UILabel(frame: CGRect(x: padding, y: y, width: width, height: 18))
         lblUsername.textColor = .darkGrayColor()
         lblUsername.font = font
-        lblUsername.text = "Hi Brian"
+        lblUsername.text = "Hi \(VFViewController.currentUser.firstName)"
         barView.addSubview(lblUsername)
         y += lblUsername.frame.size.height
         
-        let btnsArray = ["1", "2", "3"]
+        let x = frame.size.width-88
         
-        var x = frame.size.width-44
+        let addPetBtn = UIButton(type: .Custom)
+        addPetBtn.frame = CGRect(x: x, y: 20, width: 44, height: 44)
+        addPetBtn.backgroundColor = UIColor.redColor()
+        addPetBtn.addTarget(self, action: #selector(VFPetViewController.btnTapped(_:)), forControlEvents: .TouchUpInside)
+        barView.addSubview(addPetBtn)
         
-        for btnTitle in btnsArray {
-            
-            let btn = UIButton(frame: CGRect(x: x, y: 5, width: 44, height: 44))
-            btn.setTitle(btnTitle, forState: .Normal)
-            btn.backgroundColor = UIColor.blueColor()
-            btn.layer.borderColor = UIColor.whiteColor().CGColor
-            btn.layer.borderWidth = 2
-            btn.titleLabel?.font = UIFont(name: "Arial", size: 16)
-            btn.addTarget(self, action: #selector(VFPetViewController.btnTapped(_:)), forControlEvents: .TouchUpInside)
-            
-            barView.addSubview(btn)
-            x -= btn.frame.size.height+10
-        }
+//        let btnsArray = ["1", "2", "3"]
+//        for btnTitle in btnsArray {
+//            
+//            let btn = UIButton(frame: CGRect(x: x, y: 5, width: 44, height: 44))
+//            btn.setTitle(btnTitle, forState: .Normal)
+//            btn.backgroundColor = UIColor.blueColor()
+//            btn.layer.borderColor = UIColor.whiteColor().CGColor
+//            btn.layer.borderWidth = 2
+//            btn.titleLabel?.font = UIFont(name: "Arial", size: 16)
+//            btn.addTarget(self, action: #selector(VFPetViewController.btnTapped(_:)), forControlEvents: .TouchUpInside)
+//            
+//            barView.addSubview(btn)
+//            x -= btn.frame.size.height+10
+//        }
         
         let line = UIView(frame: CGRect(x: 0, y: barView.frame.size.height-0.5, width: frame.size.width, height: 0.5))
         line.backgroundColor = .lightGrayColor()
@@ -101,24 +110,42 @@ class VFPetViewController: VFViewController, UIScrollViewDelegate {
         self.navScroll.contentSize = CGSize(width: scrollWidth, height: 0)
         self.navScroll.backgroundColor = .yellowColor()
         self.navScroll.pagingEnabled = true
-//        self.navScroll.alwaysBounceHorizontal = false
         self.navScroll.delegate = self
         
         let screenWidth = Int(navScroll.frame.size.width)
         let screenHeight = Int(navScroll.frame.size.height)
 
-        let colors = [UIColor.redColor(),UIColor.blueColor(), UIColor.greenColor()]
+//        let colors = [UIColor.redColor(),UIColor.blueColor(), UIColor.greenColor()]
+//        
+//        for color in colors {
+//            let index = colors.indexOf(color)
+//            let xOrigin = index!*Int(frame.size.width)
+//            let backgroundColor = UIImageView(frame: CGRect(x: xOrigin, y: 0, width: screenWidth, height: screenHeight))
+//            backgroundColor.backgroundColor = color
+//            self.navScroll.addSubview(backgroundColor)
+//        }
+//        
+        self.genInfoTableView = UITableView(frame: CGRect(x: 0, y:0, width: screenWidth, height: screenHeight), style: .Plain)
+        self.genInfoTableView.delegate = self
+        self.genInfoTableView.dataSource = self
+        self.genInfoTableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: "cellId")
+        self.navScroll.addSubview(self.genInfoTableView)
         
-        for color in colors {
-            let index = colors.indexOf(color)
-            let xOrigin = index!*Int(frame.size.width)
-            let backgroundColor = UIImageView(frame: CGRect(x: xOrigin, y: 0, width: screenWidth, height: screenHeight))
-            backgroundColor.backgroundColor = color
-            self.navScroll.addSubview(backgroundColor)
-        }
+        self.medicationTableView = UITableView(frame: CGRect(x: screenWidth, y:0, width: screenWidth, height: screenHeight), style: .Plain)
+        self.medicationTableView.delegate = self
+        self.medicationTableView.dataSource = self
+        self.medicationTableView.separatorStyle = .None
+        self.medicationTableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: "cellId")
+        self.navScroll.addSubview(self.medicationTableView)
+        
+        self.vaccinationTableView = UITableView(frame: CGRect(x: screenWidth*2, y:0, width: screenWidth, height: screenHeight), style: .Plain)
+        self.vaccinationTableView.delegate = self
+        self.vaccinationTableView.dataSource = self
+        self.vaccinationTableView.separatorStyle = .None
+        self.vaccinationTableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: "cellId")
+        self.navScroll.addSubview(self.vaccinationTableView)
         
         bgText.addSubview(self.navScroll)
-        
         self.scrollView.addSubview(bgText)
 
         var contentHeight = bgText.frame.origin.y+barView.frame.origin.y+padding+64
@@ -129,8 +156,9 @@ class VFPetViewController: VFViewController, UIScrollViewDelegate {
         }
         
         self.scrollView.contentSize = CGSizeMake(width, contentHeight)
-        
         view.addSubview(self.scrollView)
+        
+        self.getPets()
         
         self.view = view
     }
@@ -141,17 +169,49 @@ class VFPetViewController: VFViewController, UIScrollViewDelegate {
         self.navigationController?.navigationBarHidden = false
     }
     
-    func btnTapped(btn: UIButton){
-        print("btnTapped")
+    func getPets(){
         
-//        switch btn.titleLabel {
-//        case "1":
-//                self.navScroll.contentOffset.x = 0
-//        case "2":
-//            self.navScroll.contentOffset.x =
-//        case "3":
-//            self.navScroll.contentOffset.x = 0
-//        }
+        APIManager.getRequest("/api/pet", params: nil, completion: { response in
+            print("\(response)")
+    
+        })
+    }
+    
+    func btnTapped(btn: UIButton){
+        print("addPet")
+        
+        let addPetVc = VFAddPetViewController()
+        self.presentViewController(addPetVc, animated: true, completion: nil)
+        
+    }
+    
+    //MARK: UITableView Delegate
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        var count: Int?
+        
+        if tableView == self.genInfoTableView {
+            count = 20
+        }
+        
+        if tableView == self.medicationTableView{
+            count = 10
+        }
+        
+        if tableView == self.vaccinationTableView{
+            count = 5
+        }
+        
+        return count!
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        print("\(indexPath.row)")
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("cellId", forIndexPath: indexPath)
+        cell.textLabel?.text = "\(indexPath.row)"
+        return cell
     }
     
     //MARK: ScrollView Delegate
@@ -181,7 +241,6 @@ class VFPetViewController: VFViewController, UIScrollViewDelegate {
         
         self.petImage.transform = CGAffineTransformMakeScale(scale, scale)
         
-        
         print("scrollViewDidScroll: \(scrollView.contentOffset.x)")
         
         switch scrollView.contentOffset.x {
@@ -194,9 +253,7 @@ class VFPetViewController: VFViewController, UIScrollViewDelegate {
         default:
             print("default")
         }
-        
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
