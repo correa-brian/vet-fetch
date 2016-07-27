@@ -11,6 +11,10 @@ import UIKit
 class VFPetViewController: VFViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
     var petImage: UIImageView!
+    var petNameLabel: UILabel!
+    
+    var petsArray = Array<VFPet>()
+    
     var scrollView: UIScrollView!
     var navScroll: UIScrollView!
     var pageLabel: UILabel!
@@ -74,6 +78,12 @@ class VFPetViewController: VFViewController, UIScrollViewDelegate, UITableViewDe
         barView.addSubview(lblUsername)
         y += lblUsername.frame.size.height
         
+//        self.petNameLabel = UILabel(frame: CGRect(x: padding, y: y, width: width, height: 18))
+//        self.petNameLabel.textColor = .darkGrayColor()
+//        self.petNameLabel.font = font
+//        self.petNameLabel.text = pet.name
+//        barView.addSubview(self.petNameLabel)
+        
         let x = frame.size.width-88
         
         let addPetBtn = UIButton(type: .Custom)
@@ -81,21 +91,6 @@ class VFPetViewController: VFViewController, UIScrollViewDelegate, UITableViewDe
         addPetBtn.backgroundColor = UIColor.redColor()
         addPetBtn.addTarget(self, action: #selector(VFPetViewController.btnTapped(_:)), forControlEvents: .TouchUpInside)
         barView.addSubview(addPetBtn)
-        
-//        let btnsArray = ["1", "2", "3"]
-//        for btnTitle in btnsArray {
-//            
-//            let btn = UIButton(frame: CGRect(x: x, y: 5, width: 44, height: 44))
-//            btn.setTitle(btnTitle, forState: .Normal)
-//            btn.backgroundColor = UIColor.blueColor()
-//            btn.layer.borderColor = UIColor.whiteColor().CGColor
-//            btn.layer.borderWidth = 2
-//            btn.titleLabel?.font = UIFont(name: "Arial", size: 16)
-//            btn.addTarget(self, action: #selector(VFPetViewController.btnTapped(_:)), forControlEvents: .TouchUpInside)
-//            
-//            barView.addSubview(btn)
-//            x -= btn.frame.size.height+10
-//        }
         
         let line = UIView(frame: CGRect(x: 0, y: barView.frame.size.height-0.5, width: frame.size.width, height: 0.5))
         line.backgroundColor = .lightGrayColor()
@@ -124,7 +119,7 @@ class VFPetViewController: VFViewController, UIScrollViewDelegate, UITableViewDe
 //            backgroundColor.backgroundColor = color
 //            self.navScroll.addSubview(backgroundColor)
 //        }
-//        
+        
         self.genInfoTableView = UITableView(frame: CGRect(x: 0, y:0, width: screenWidth, height: screenHeight), style: .Plain)
         self.genInfoTableView.delegate = self
         self.genInfoTableView.dataSource = self
@@ -158,7 +153,7 @@ class VFPetViewController: VFViewController, UIScrollViewDelegate, UITableViewDe
         self.scrollView.contentSize = CGSizeMake(width, contentHeight)
         view.addSubview(self.scrollView)
         
-        self.getPets()
+//        self.getPets()
         
         self.view = view
     }
@@ -167,14 +162,24 @@ class VFPetViewController: VFViewController, UIScrollViewDelegate, UITableViewDe
         super.viewDidLoad()
         
         self.navigationController?.navigationBarHidden = false
-    }
-    
-    func getPets(){
         
-        APIManager.getRequest("/api/pet", params: nil, completion: { response in
-            print("\(response)")
-    
+        var petInfo = Dictionary<String, AnyObject>()
+        petInfo["ownerId"] = [VFViewController.currentUser.id!]
+        
+        APIManager.getRequest("/api/pet", params: petInfo, completion: { response in
+            
+            if let results = response["results"] as? Array<Dictionary<String, AnyObject>>{
+                
+                for result in results {
+                    let pet = VFPet()
+                    pet.populate(result)
+                    self.petsArray.append(pet)
+                }
+                
+                self.genInfoTableView.reloadData()
+            }
         })
+
     }
     
     func btnTapped(btn: UIButton){
@@ -192,7 +197,7 @@ class VFPetViewController: VFViewController, UIScrollViewDelegate, UITableViewDe
         var count: Int?
         
         if tableView == self.genInfoTableView {
-            count = 20
+            count = self.petsArray.count
         }
         
         if tableView == self.medicationTableView{
@@ -207,7 +212,15 @@ class VFPetViewController: VFViewController, UIScrollViewDelegate, UITableViewDe
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         print("\(indexPath.row)")
+        
+        if tableView == self.genInfoTableView {
+            let pet = self.petsArray[indexPath.row]
+            let cell = tableView.dequeueReusableCellWithIdentifier("cellId", forIndexPath: indexPath)
+            cell.textLabel?.text = pet.name
+            return cell
+        }
         
         let cell = tableView.dequeueReusableCellWithIdentifier("cellId", forIndexPath: indexPath)
         cell.textLabel?.text = "\(indexPath.row)"

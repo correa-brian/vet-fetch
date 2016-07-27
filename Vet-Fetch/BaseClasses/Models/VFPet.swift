@@ -10,4 +10,18 @@ import UIKit
 
 class VFPet: NSObject {
 
+    var id: String?
+    var name: String!
+    var ownerId: String!
+    var sex: String!
+    
+    func populate(petInfo: Dictionary<String,AnyObject>){
+        let keys = ["id", "name", "ownerId", "sex"]
+        
+        for key in keys {
+            let value = petInfo[key]
+            self.setValue(value, forKey: key)
+        }
+    }
+    
 }
