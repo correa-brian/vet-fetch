@@ -34,7 +34,6 @@ class VFWelcomeViewController: VFViewController, UIScrollViewDelegate {
         
         let frame = UIScreen.mainScreen().bounds
         let view = UIView(frame: frame)
-        view.backgroundColor = .blueColor()
         
         let w = self.imagesArray.count*Int(frame.size.width)
         let screenWidth = Int(frame.size.width)
@@ -170,17 +169,21 @@ class VFWelcomeViewController: VFViewController, UIScrollViewDelegate {
         print("scrollViewDidEndDecelerating: \(scrollView.contentOffset.x)")
         let offset = scrollView.contentOffset.x
         
-        if (offset == 0){
+        switch offset {
+            
+        case 0:
             self.pageControl.currentPage = 0
-        }
-        
-        if (offset == self.view.frame.size.width){
+            
+        case self.view.frame.size.width:
             self.pageControl.currentPage = 1
+            
+        case self.view.frame.size.width*2:
+            self.pageControl.currentPage = 2
+            
+        default:
+            print("default")
         }
         
-        if (offset == self.view.frame.size.width*2){
-            self.pageControl.currentPage = 2
-        }
     }
     
     override func didReceiveMemoryWarning() {

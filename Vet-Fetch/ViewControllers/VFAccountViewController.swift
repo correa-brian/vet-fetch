@@ -13,6 +13,7 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
     var collectionView: UICollectionView!
     var btnsArray = ["Appointments", "Pets", "Medications", "Bills"]
     var bottomScrollView: UIScrollView!
+    var colors = [UIColor.redColor(), UIColor.blueColor(), UIColor.yellowColor(), UIColor.grayColor()]
     
     //MARK: - Lifecycle Methods
     required init?(coder aDecoder: NSCoder){
@@ -45,7 +46,20 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         self.bottomScrollView.contentSize = CGSize(width: w, height: 0)
         self.bottomScrollView.backgroundColor = .yellowColor()
         self.bottomScrollView.pagingEnabled = true
+//        self.bottomScrollView.alwaysBounceHorizontal = false
         self.bottomScrollView.delegate = self
+        
+        let screenWidth = Int(frame.size.width)
+        let screenHeight = Int(frame.size.height)
+        
+        for color in self.colors {
+            let index = self.colors.indexOf(color)
+            let xOrigin = index!*Int(frame.size.width)
+            let backgroundColor = UIImageView(frame: CGRect(x: xOrigin, y: 0, width: screenWidth, height: screenHeight))
+            backgroundColor.backgroundColor = color
+            self.bottomScrollView.addSubview(backgroundColor)
+        }
+        
         self.collectionView.addSubview(self.bottomScrollView)
         
         view.addSubview(self.collectionView)
@@ -127,22 +141,6 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
     //MARK: ScrollView Delegate
     func scrollViewDidEndDecelerating(scrollView: UIScrollView){
         print("scrollViewDidEndDecelerating: \(scrollView.contentOffset.x)")
-        let offset = scrollView.contentOffset.x
-        
-        if (offset == 0){
-            self.bottomScrollView.backgroundColor = .yellowColor()
-        }
-        
-        if (offset == self.view.frame.size.width){
-            self.bottomScrollView.backgroundColor = .orangeColor()
-        }
-        
-        if (offset == self.view.frame.size.width*2){
-            self.bottomScrollView.backgroundColor = .redColor()
-        }
-        if (offset == self.view.frame.size.width*3){
-            self.bottomScrollView.backgroundColor = .blueColor()
-        }
     }
     
     override func didReceiveMemoryWarning() {
