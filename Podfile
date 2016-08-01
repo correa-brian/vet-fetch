@@ -5,5 +5,6 @@ use_frameworks!
 target 'Vet-Fetch' do
 
 pod 'Alamofire'
+pod 'Cloudinary'
 
 end

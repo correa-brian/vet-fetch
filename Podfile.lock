@@ -1,12 +1,15 @@
 PODS:
   - Alamofire (3.4.0)
+  - Cloudinary (1.0.15)
 
 DEPENDENCIES:
   - Alamofire
+  - Cloudinary
 
 SPEC CHECKSUMS:
   Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
+  Cloudinary: f80af4565ec08c521d5e58cb56d9fbe1e4595e40
 
-PODFILE CHECKSUM: 11959999de3bd09cc7200308d8d65744f1b72bd9
+PODFILE CHECKSUM: f9913f6a6589da7142ee970a9472ae7b167f1293
 
 COCOAPODS: 1.0.0
