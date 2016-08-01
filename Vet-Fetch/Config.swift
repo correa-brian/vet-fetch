@@ -14,6 +14,7 @@ struct Constants {
     static let baseUrl = "https://vet-fetch-test.herokuapp.com"
     
     static let kUserLoggedInNotification = "UserLoggedInNotification"
+    static let kPetCreatedNotification = "kPetCreatedNotification"
     
     static let padding = 25
     static let origin_y = 90
