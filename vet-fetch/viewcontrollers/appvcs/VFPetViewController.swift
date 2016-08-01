@@ -18,9 +18,9 @@ class VFPetViewController: VFViewController, UIScrollViewDelegate, UITableViewDe
     var scrollView: UIScrollView!
     var navScroll: UIScrollView!
     var pageLabel: UILabel!
-    var genInfoTableView: UITableView!
-    var medicationTableView: UITableView!
-    var vaccinationTableView: UITableView!
+    var petStats: UITableView!
+    var petMedication: UITableView!
+    var petVaccination: UITableView!
     
     //MARK: - Lifecycle Methods
     required init?(coder aDecoder: NSCoder){
@@ -57,10 +57,10 @@ class VFPetViewController: VFViewController, UIScrollViewDelegate, UITableViewDe
         let bgText = UIView(frame: CGRect(x: 0, y: 250, width: frame.size.width, height: frame.size.height))
         bgText.backgroundColor = .orangeColor()
         
-        let padding = CGFloat(20)
+        let padding = CGFloat(10)
         let width = frame.size.width-2*padding
         
-        let barView = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: 82.5))
+        let barView = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: 72.5))
         barView.backgroundColor = UIColor(red: 164/255, green: 185/255, blue: 202/255, alpha: 1)
         
         self.pageLabel = UILabel(frame: CGRect(x: padding, y: padding, width: width, height: 24))
@@ -78,18 +78,12 @@ class VFPetViewController: VFViewController, UIScrollViewDelegate, UITableViewDe
         barView.addSubview(lblUsername)
         y += lblUsername.frame.size.height
         
-//        self.petNameLabel = UILabel(frame: CGRect(x: padding, y: y, width: width, height: 18))
-//        self.petNameLabel.textColor = .darkGrayColor()
-//        self.petNameLabel.font = font
-//        self.petNameLabel.text = pet.name
-//        barView.addSubview(self.petNameLabel)
-        
         let x = frame.size.width-88
         
         let addPetBtn = UIButton(type: .Custom)
-        addPetBtn.frame = CGRect(x: x, y: 20, width: 44, height: 44)
+        addPetBtn.frame = CGRect(x: x, y: padding, width: 44, height: 44)
         addPetBtn.backgroundColor = UIColor.redColor()
-        addPetBtn.addTarget(self, action: #selector(VFPetViewController.btnTapped(_:)), forControlEvents: .TouchUpInside)
+        addPetBtn.addTarget(self, action: #selector(VFPetViewController.createPet(_:)), forControlEvents: .TouchUpInside)
         barView.addSubview(addPetBtn)
         
         let line = UIView(frame: CGRect(x: 0, y: barView.frame.size.height-0.5, width: frame.size.width, height: 0.5))
@@ -109,36 +103,26 @@ class VFPetViewController: VFViewController, UIScrollViewDelegate, UITableViewDe
         
         let screenWidth = Int(navScroll.frame.size.width)
         let screenHeight = Int(navScroll.frame.size.height)
-
-//        let colors = [UIColor.redColor(),UIColor.blueColor(), UIColor.greenColor()]
-//        
-//        for color in colors {
-//            let index = colors.indexOf(color)
-//            let xOrigin = index!*Int(frame.size.width)
-//            let backgroundColor = UIImageView(frame: CGRect(x: xOrigin, y: 0, width: screenWidth, height: screenHeight))
-//            backgroundColor.backgroundColor = color
-//            self.navScroll.addSubview(backgroundColor)
-//        }
         
-        self.genInfoTableView = UITableView(frame: CGRect(x: 0, y:0, width: screenWidth, height: screenHeight), style: .Plain)
-        self.genInfoTableView.delegate = self
-        self.genInfoTableView.dataSource = self
-        self.genInfoTableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: "cellId")
-        self.navScroll.addSubview(self.genInfoTableView)
+        self.petStats = UITableView(frame: CGRect(x: 0, y:0, width: screenWidth, height: screenHeight), style: .Plain)
+        self.petStats.delegate = self
+        self.petStats.dataSource = self
+        self.petStats.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: "cellId")
+        self.navScroll.addSubview(self.petStats)
         
-        self.medicationTableView = UITableView(frame: CGRect(x: screenWidth, y:0, width: screenWidth, height: screenHeight), style: .Plain)
-        self.medicationTableView.delegate = self
-        self.medicationTableView.dataSource = self
-        self.medicationTableView.separatorStyle = .None
-        self.medicationTableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: "cellId")
-        self.navScroll.addSubview(self.medicationTableView)
+        self.petMedication = UITableView(frame: CGRect(x: screenWidth, y:0, width: screenWidth, height: screenHeight), style: .Plain)
+        self.petMedication.delegate = self
+        self.petMedication.dataSource = self
+        self.petMedication.separatorStyle = .None
+        self.petMedication.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: "cellId")
+        self.navScroll.addSubview(self.petMedication)
         
-        self.vaccinationTableView = UITableView(frame: CGRect(x: screenWidth*2, y:0, width: screenWidth, height: screenHeight), style: .Plain)
-        self.vaccinationTableView.delegate = self
-        self.vaccinationTableView.dataSource = self
-        self.vaccinationTableView.separatorStyle = .None
-        self.vaccinationTableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: "cellId")
-        self.navScroll.addSubview(self.vaccinationTableView)
+        self.petVaccination = UITableView(frame: CGRect(x: screenWidth*2, y:0, width: screenWidth, height: screenHeight), style: .Plain)
+        self.petVaccination.delegate = self
+        self.petVaccination.dataSource = self
+        self.petVaccination.separatorStyle = .None
+        self.petVaccination.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: "cellId")
+        self.navScroll.addSubview(self.petVaccination)
         
         bgText.addSubview(self.navScroll)
         self.scrollView.addSubview(bgText)
@@ -176,16 +160,15 @@ class VFPetViewController: VFViewController, UIScrollViewDelegate, UITableViewDe
                     self.petsArray.append(pet)
                 }
                 
-                self.genInfoTableView.reloadData()
+                self.petStats.reloadData()
             }
         })
 
     }
     
-    func btnTapped(btn: UIButton){
-        print("addPet")
+    func createPet(btn: UIButton){
         
-        let addPetVc = VFAddPetViewController()
+        let addPetVc = VFCreatePetViewController()
         self.presentViewController(addPetVc, animated: true, completion: nil)
         
     }
@@ -196,15 +179,15 @@ class VFPetViewController: VFViewController, UIScrollViewDelegate, UITableViewDe
         
         var count: Int?
         
-        if tableView == self.genInfoTableView {
+        if tableView == self.petStats {
             count = self.petsArray.count
         }
         
-        if tableView == self.medicationTableView{
+        if tableView == self.petMedication{
             count = 10
         }
         
-        if tableView == self.vaccinationTableView{
+        if tableView == self.petVaccination{
             count = 5
         }
         
@@ -213,9 +196,7 @@ class VFPetViewController: VFViewController, UIScrollViewDelegate, UITableViewDe
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        print("\(indexPath.row)")
-        
-        if tableView == self.genInfoTableView {
+        if tableView == self.petStats {
             let pet = self.petsArray[indexPath.row]
             let cell = tableView.dequeueReusableCellWithIdentifier("cellId", forIndexPath: indexPath)
             cell.textLabel?.text = pet.name
@@ -229,11 +210,10 @@ class VFPetViewController: VFViewController, UIScrollViewDelegate, UITableViewDe
     
     //MARK: ScrollView Delegate
     func scrollViewDidEndDecelerating(scrollView: UIScrollView){
-        print("scrollViewDidEndDecelerating: \(scrollView.contentOffset.x)")
+        
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        print("scrollViewDidScroll-Y: \(scrollView.contentOffset.y)")
         
         if(scrollView.contentOffset.y>0){
             self.petImage.transform = CGAffineTransformIdentity
@@ -253,8 +233,6 @@ class VFPetViewController: VFViewController, UIScrollViewDelegate, UITableViewDe
         let scale = 1+(delta/80)
         
         self.petImage.transform = CGAffineTransformMakeScale(scale, scale)
-        
-        print("scrollViewDidScroll: \(scrollView.contentOffset.x)")
         
         switch scrollView.contentOffset.x {
         case 0:

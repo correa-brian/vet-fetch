@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D30222981D49388100C94E80 /* VFAddPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30222971D49388100C94E80 /* VFAddPetViewController.swift */; };
 		D302229A1D49442600C94E80 /* VFPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30222991D49442600C94E80 /* VFPet.swift */; };
 		D3107E6F1D403DD7004A27B7 /* VFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3107E6E1D403DD7004A27B7 /* VFViewController.swift */; };
 		D3107E711D403EBE004A27B7 /* VFAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3107E701D403EBE004A27B7 /* VFAccountViewController.swift */; };
 		D338CA931D401CBE0086C6E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D338CA921D401CBE0086C6E5 /* AppDelegate.swift */; };
 		D338CA9A1D401CBE0086C6E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D338CA991D401CBE0086C6E5 /* Assets.xcassets */; };
+		D36117D41D4BBA08007078AB /* VFCreatePetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36117D31D4BBA08007078AB /* VFCreatePetViewController.swift */; };
 		D3879AAF1D4142BD002AE3FA /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3879AAE1D4142BD002AE3FA /* APIManager.swift */; };
 		D3879AB11D414A66002AE3FA /* VFRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3879AB01D414A66002AE3FA /* VFRegisterViewController.swift */; };
 		D3879AB31D415370002AE3FA /* VFProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3879AB21D415370002AE3FA /* VFProfile.swift */; };
@@ -40,7 +40,6 @@
 		45A2B292C0660E649E65F126 /* Pods_Vet_Fetch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vet_Fetch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA73D8B71EB05B52515E1000 /* Pods-Vet-Fetch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vet-Fetch.release.xcconfig"; path = "Pods/Target Support Files/Pods-Vet-Fetch/Pods-Vet-Fetch.release.xcconfig"; sourceTree = "<group>"; };
 		C53BAD2615991B93DA6F6CAC /* Pods-Vet-Fetch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vet-Fetch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Vet-Fetch/Pods-Vet-Fetch.debug.xcconfig"; sourceTree = "<group>"; };
-		D30222971D49388100C94E80 /* VFAddPetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFAddPetViewController.swift; sourceTree = "<group>"; };
 		D30222991D49442600C94E80 /* VFPet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFPet.swift; sourceTree = "<group>"; };
 		D3107E6E1D403DD7004A27B7 /* VFViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFViewController.swift; sourceTree = "<group>"; };
 		D3107E701D403EBE004A27B7 /* VFAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VFAccountViewController.swift; path = ../VFAccountViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +47,7 @@
 		D338CA921D401CBE0086C6E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D338CA991D401CBE0086C6E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D338CA9E1D401CBE0086C6E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D36117D31D4BBA08007078AB /* VFCreatePetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFCreatePetViewController.swift; sourceTree = "<group>"; };
 		D3879AAE1D4142BD002AE3FA /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		D3879AB01D414A66002AE3FA /* VFRegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VFRegisterViewController.swift; path = ../VFRegisterViewController.swift; sourceTree = "<group>"; };
 		D3879AB21D415370002AE3FA /* VFProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFProfile.swift; sourceTree = "<group>"; };
@@ -197,7 +197,7 @@
 				D3879AC61D46FF6C002AE3FA /* VFMedicationViewController.swift */,
 				D3879AC81D46FF78002AE3FA /* VFBillViewController.swift */,
 				D3879ACA1D47006E002AE3FA /* VFPetViewController.swift */,
-				D30222971D49388100C94E80 /* VFAddPetViewController.swift */,
+				D36117D31D4BBA08007078AB /* VFCreatePetViewController.swift */,
 			);
 			path = AppVCs;
 			sourceTree = "<group>";
@@ -352,10 +352,10 @@
 				D3879AC31D46FF51002AE3FA /* VFAppointmentViewController.swift in Sources */,
 				D3879AB11D414A66002AE3FA /* VFRegisterViewController.swift in Sources */,
 				D3879AC71D46FF6C002AE3FA /* VFMedicationViewController.swift in Sources */,
-				D30222981D49388100C94E80 /* VFAddPetViewController.swift in Sources */,
 				D3879AB51D41A658002AE3FA /* VFWelcomeViewController.swift in Sources */,
 				D3879ACB1D47006E002AE3FA /* VFPetViewController.swift in Sources */,
 				D338CA931D401CBE0086C6E5 /* AppDelegate.swift in Sources */,
+				D36117D41D4BBA08007078AB /* VFCreatePetViewController.swift in Sources */,
 				D3AD90121D4123D1004703D4 /* VFTextField.swift in Sources */,
 				D3AD900C1D406D73004703D4 /* VFLoginViewController.swift in Sources */,
 				D3107E711D403EBE004A27B7 /* VFAccountViewController.swift in Sources */,

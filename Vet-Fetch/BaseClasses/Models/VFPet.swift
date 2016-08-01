@@ -15,6 +15,13 @@ class VFPet: NSObject {
     var ownerId: String!
     var sex: String!
     
+    var image: Dictionary<String, AnyObject>!
+    var imageUrl: String!
+    var imageData: String!
+    var thumbnailUrl: String!
+    var thumbnailData: String!
+    var isFetching = false
+    
     func populate(petInfo: Dictionary<String,AnyObject>){
         let keys = ["id", "name", "ownerId", "sex"]
         
@@ -23,5 +30,10 @@ class VFPet: NSObject {
             self.setValue(value, forKey: key)
         }
     }
+    
+//    func fetchImage(){
+//        
+//    }
+    
     
 }

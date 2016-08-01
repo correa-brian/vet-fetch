@@ -46,7 +46,6 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         self.bottomScrollView.contentSize = CGSize(width: w, height: 0)
         self.bottomScrollView.backgroundColor = .yellowColor()
         self.bottomScrollView.pagingEnabled = true
-//        self.bottomScrollView.alwaysBounceHorizontal = false
         self.bottomScrollView.delegate = self
         
         let screenWidth = Int(frame.size.width)
@@ -109,37 +108,32 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
     }
     
     func setAppropriateVc(sender: String){
-        print("My Sender: \(sender)")
-        
         switch sender {
             
         case "Appointments":
-            print("setting Appointments")
             let appointmentVc = VFAppointmentViewController()
             self.navigationController?.pushViewController(appointmentVc, animated: true)
             
         case "Pets":
-            print("setting Pets")
             let petVc = VFPetViewController()
             self.navigationController?.pushViewController(petVc, animated: true)
             
         case "Medications":
-            print("setting Medications")
             let medicationVc = VFMedicationViewController()
             self.navigationController?.pushViewController(medicationVc, animated: true)
             
         case "Bills":
-            print("setting Bills")
             let billVc = VFBillViewController()
             self.navigationController?.pushViewController(billVc, animated: true)
             
         default:
-            print("default")
+            print("")
         }
     }
     
     //MARK: ScrollView Delegate
     func scrollViewDidEndDecelerating(scrollView: UIScrollView){
+        
         print("scrollViewDidEndDecelerating: \(scrollView.contentOffset.x)")
     }
     
