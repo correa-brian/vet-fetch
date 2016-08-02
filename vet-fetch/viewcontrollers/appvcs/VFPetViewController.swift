@@ -137,8 +137,6 @@ class VFPetViewController: VFViewController, UIScrollViewDelegate, UITableViewDe
         self.scrollView.contentSize = CGSizeMake(width, contentHeight)
         view.addSubview(self.scrollView)
         
-//        self.getPets()
-        
         self.view = view
     }
     
