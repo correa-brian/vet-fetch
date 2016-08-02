@@ -11,9 +11,9 @@ import UIKit
 class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate {
     
     var collectionView: UICollectionView!
-    var btnsArray = ["Appointments", "Pets", "Medications", "Bills"]
+    var btnsArray = ["Appointments", "Vet", "Insurance", "Learn More"]
     var bottomScrollView: UIScrollView!
-    var colors = [UIColor.redColor(), UIColor.blueColor(), UIColor.yellowColor(), UIColor.grayColor()]
+    var petManagerBtn: UIButton!
     
     //MARK: - Lifecycle Methods
     required init?(coder aDecoder: NSCoder){
@@ -40,27 +40,70 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         
         self.collectionView.registerClass(VFCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "cellId")
         
-        let w = 4*Int(frame.size.width)
+        let width = frame.size.width
+        let height = frame.size.height-width
         
-        self.bottomScrollView = UIScrollView(frame: CGRect(x: 0, y: frame.size.width, width: frame.size.width, height: frame.size.width))
-        self.bottomScrollView.contentSize = CGSize(width: w, height: 0)
-        self.bottomScrollView.backgroundColor = .yellowColor()
+        self.bottomScrollView = UIScrollView(frame: CGRect(x: 0, y: width, width: width, height: height))
+        self.bottomScrollView.contentSize = CGSize(width: width, height: 0)
+        self.bottomScrollView.backgroundColor = .whiteColor()
         self.bottomScrollView.pagingEnabled = true
         self.bottomScrollView.delegate = self
         
-        let screenWidth = Int(frame.size.width)
-        let screenHeight = Int(frame.size.height)
+        let padding = CGFloat(15)
+        let dimen = CGFloat(height*0.3)
+        var x = width*0.25-dimen*0.5
         
-        for color in self.colors {
-            let index = self.colors.indexOf(color)
-            let xOrigin = index!*Int(frame.size.width)
-            let backgroundColor = UIImageView(frame: CGRect(x: xOrigin, y: 0, width: screenWidth, height: screenHeight))
-            backgroundColor.backgroundColor = color
-            self.bottomScrollView.addSubview(backgroundColor)
-        }
+        let petSummaryPhoto = UIImageView(frame: CGRect(x: x, y: padding, width: dimen, height: dimen))
+        petSummaryPhoto.backgroundColor = UIColor.redColor()
+        petSummaryPhoto.layer.borderWidth = 1
+        petSummaryPhoto.layer.cornerRadius = dimen*0.5
+        petSummaryPhoto.layer.borderColor = UIColor.clearColor().CGColor
+        self.bottomScrollView.addSubview(petSummaryPhoto)
+        
+        x = width*0.5
+        
+        let labelHeight = CGFloat(44)
+        var y = petSummaryPhoto.frame.size.height*0.5
+        
+        let petNameLabel = VFLabel(frame: CGRect(x: x, y: y, width: x, height: labelHeight))
+        petNameLabel.text = "Milkshake"
+        self.bottomScrollView.addSubview(petNameLabel)
+        
+        y = height*0.45
+        
+        let line = UIView(frame: CGRect(x: 2*padding, y: y, width: width-4*padding, height: 0.5))
+        line.backgroundColor = UIColor.blackColor()
+        self.bottomScrollView.addSubview(line)
+        
+        y = height*0.5
+        
+        let petWeightLabel = VFLabel(frame: CGRect(x: 0, y: y, width: x, height: labelHeight))
+        petWeightLabel.text = "Weight"
+        self.bottomScrollView.addSubview(petWeightLabel)
+        
+        let petWeightText = VFLabel(frame: CGRect(x: x, y: y, width: x, height: labelHeight))
+        petWeightText.text = "54"
+        self.bottomScrollView.addSubview(petWeightText)
+        
+        y += height*0.15
+        
+        let petAgeLabel = VFLabel(frame: CGRect(x: 0, y: y, width: x, height: labelHeight))
+        petAgeLabel.text = "Age"
+        self.bottomScrollView.addSubview(petAgeLabel)
+        
+        let petAgeText = VFLabel(frame: CGRect(x: x, y: y, width: x, height: labelHeight))
+        petAgeText.text = "5"
+        self.bottomScrollView.addSubview(petAgeText)
+        
+        let btnHeight = height*0.15
+        
+        self.petManagerBtn = UIButton(frame: CGRect(x: 0, y: height, width: width, height: btnHeight))
+        self.petManagerBtn.backgroundColor = UIColor.blueColor()
+        self.petManagerBtn.setTitle("Manage Your Pet", forState: .Normal)
+        self.petManagerBtn.addTarget(self, action: #selector(VFAccountViewController.managePet(_:)), forControlEvents: .TouchUpInside)
+        self.bottomScrollView.addSubview(self.petManagerBtn)
         
         self.collectionView.addSubview(self.bottomScrollView)
-        
         view.addSubview(self.collectionView)
         
         self.view = view
@@ -68,6 +111,8 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.animateButton()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -75,17 +120,61 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         self.navigationController?.navigationBarHidden = true
     }
     
-    //MARK: - CollectionView Delegates
+    func animateButton(){
+        
+        let height = self.bottomScrollView.frame.size.height
+        let btnHeight = height*0.15
+        
+        UIView.animateWithDuration(1.50,
+                                   delay: 1,
+                                   usingSpringWithDamping: 1.5,
+                                   initialSpringVelocity: 0,
+                                   options: .CurveEaseInOut,
+                                   animations: {
+                                    
+                                    let button = self.petManagerBtn
+                                    var frame = button.frame
+                                    frame.origin.y = height-btnHeight
+                                    button.frame = frame
+            },
+                                   completion: nil)
+    }
     
+    func managePet(sender: UIButton){
+        print("managePet")
+        let petVc = VFPetViewController()
+        self.navigationController?.pushViewController(petVc, animated: true)
+    }
+    
+    func setAppropriateVc(sender: String){
+        switch sender {
+            
+        case "Appointments":
+            let appointmentVc = VFAppointmentViewController()
+            self.navigationController?.pushViewController(appointmentVc, animated: true)
+            
+        case "Vet":
+            print("Vet")
+            
+        case "Insurance":
+            print("Insurance")
+            
+        case "Learn More":
+            print("Learn More")
+            
+        default:
+            print("Default")
+        }
+    }
+    
+    //MARK: - CollectionView Delegates
     func configureCell(cell: VFCollectionViewCell, indexPath :NSIndexPath){
         let button = self.btnsArray[indexPath.row]
         
         cell.cellLabel.text = button
-        
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         return self.btnsArray.count
     }
     
@@ -105,30 +194,6 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         let button = self.btnsArray[indexPath.row]
         
         self.setAppropriateVc(button)
-    }
-    
-    func setAppropriateVc(sender: String){
-        switch sender {
-            
-        case "Appointments":
-            let appointmentVc = VFAppointmentViewController()
-            self.navigationController?.pushViewController(appointmentVc, animated: true)
-            
-        case "Pets":
-            let petVc = VFPetViewController()
-            self.navigationController?.pushViewController(petVc, animated: true)
-            
-        case "Medications":
-            let medicationVc = VFMedicationViewController()
-            self.navigationController?.pushViewController(medicationVc, animated: true)
-            
-        case "Bills":
-            let billVc = VFBillViewController()
-            self.navigationController?.pushViewController(billVc, animated: true)
-            
-        default:
-            print("")
-        }
     }
     
     //MARK: ScrollView Delegate
