@@ -18,5 +18,6 @@ struct Constants {
     
     static let padding = 25
     static let origin_y = 90
-    
+    static let baseFont = "AppleSDGothicNeo-Regular"
+
 }
