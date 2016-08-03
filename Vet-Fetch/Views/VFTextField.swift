@@ -36,7 +36,7 @@ class VFTextField: UITextField {
     override init(frame: CGRect){
         super.init(frame: frame)
         
-        self.font = UIFont(name: "Arial", size: 18)
+        self.font = UIFont(name: Constants.baseFont, size: 18)
         self.autocorrectionType = .No
         
         let dimen = frame.size.height

@@ -17,7 +17,7 @@ class VFLabel: UILabel {
     override init(frame: CGRect){
         super.init(frame: frame)
         
-        self.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
+        self.font = UIFont(name: Constants.baseFont, size: 18)
         self.textAlignment = .Center
 
     }
