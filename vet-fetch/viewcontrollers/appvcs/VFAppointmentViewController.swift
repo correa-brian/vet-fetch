@@ -18,7 +18,6 @@ class VFAppointmentViewController: VFViewController {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?){
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
-        self.edgesForExtendedLayout = .None
     }
     
     override func loadView(){

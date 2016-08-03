@@ -98,7 +98,7 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         let btnHeight = height*0.15
         
         self.petManagerBtn = UIButton(frame: CGRect(x: 0, y: height, width: width, height: btnHeight))
-        self.petManagerBtn.backgroundColor = UIColor.blueColor()
+        self.petManagerBtn.backgroundColor = UIColor(red: 164/255, green: 185/255, blue: 202/255, alpha: 1)
         self.petManagerBtn.setTitle("Manage Your Pet", forState: .Normal)
         self.petManagerBtn.addTarget(self, action: #selector(VFAccountViewController.managePet(_:)), forControlEvents: .TouchUpInside)
         self.bottomScrollView.addSubview(self.petManagerBtn)
@@ -113,6 +113,11 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         super.viewDidLoad()
         
         self.animateButton()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -141,7 +146,6 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
     }
     
     func managePet(sender: UIButton){
-        print("managePet")
         let petVc = VFPetViewController()
         self.navigationController?.pushViewController(petVc, animated: true)
     }

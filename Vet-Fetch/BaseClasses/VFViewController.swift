@@ -29,6 +29,7 @@ class VFViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     func userLoggedIn(notification: NSNotification){
