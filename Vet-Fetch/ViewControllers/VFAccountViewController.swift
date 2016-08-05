@@ -49,6 +49,9 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         self.bottomScrollView.pagingEnabled = true
         self.bottomScrollView.delegate = self
         
+        let tableHeader = UIView(frame: CGRect(x: 0, y: 0, width: width, height: height*0.45))
+        self.bottomScrollView.addSubview(tableHeader)
+        
         let padding = CGFloat(15)
         let dimen = CGFloat(height*0.3)
         var x = width*0.25-dimen*0.5
@@ -58,7 +61,7 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         petSummaryPhoto.layer.borderWidth = 1
         petSummaryPhoto.layer.cornerRadius = dimen*0.5
         petSummaryPhoto.layer.borderColor = UIColor.clearColor().CGColor
-        self.bottomScrollView.addSubview(petSummaryPhoto)
+        tableHeader.addSubview(petSummaryPhoto)
         
         x = width*0.5
         
@@ -67,33 +70,43 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         
         let petNameLabel = VFLabel(frame: CGRect(x: x, y: y, width: x, height: labelHeight))
         petNameLabel.text = "Milkshake"
-        self.bottomScrollView.addSubview(petNameLabel)
+        tableHeader.addSubview(petNameLabel)
         
-        y = height*0.45
+        y = tableHeader.frame.size.height-0.5
         
         let line = UIView(frame: CGRect(x: 2*padding, y: y, width: width-4*padding, height: 0.5))
         line.backgroundColor = UIColor.blackColor()
-        self.bottomScrollView.addSubview(line)
+        tableHeader.addSubview(line)
         
-        y = height*0.5
+        y = tableHeader.frame.size.height
         
-        let petWeightLabel = VFLabel(frame: CGRect(x: 0, y: y, width: x, height: labelHeight))
-        petWeightLabel.text = "Weight"
-        self.bottomScrollView.addSubview(petWeightLabel)
+        let tableBody = UIView(frame: CGRect(x: 0, y: y, width: width, height: height*0.40))
+        self.bottomScrollView.addSubview(tableBody)
         
-        let petWeightText = VFLabel(frame: CGRect(x: x, y: y, width: x, height: labelHeight))
-        petWeightText.text = "54"
-        self.bottomScrollView.addSubview(petWeightText)
-        
-        y += height*0.15
-        
-        let petAgeLabel = VFLabel(frame: CGRect(x: 0, y: y, width: x, height: labelHeight))
-        petAgeLabel.text = "Age"
-        self.bottomScrollView.addSubview(petAgeLabel)
-        
-        let petAgeText = VFLabel(frame: CGRect(x: x, y: y, width: x, height: labelHeight))
-        petAgeText.text = "5"
-        self.bottomScrollView.addSubview(petAgeText)
+        let weightLabels = ["Age", "7", "54", "Weight"]
+
+        for i in 0..<weightLabels.count {
+            let labelText = weightLabels[i]
+            
+            if i < 2{
+                x = CGFloat(i)*width*0.5
+                y = 0
+            }
+            
+            if i == 2 {
+                x = width*0.5
+                y = height*0.18
+            }
+                
+            if i == 3 {
+                x = 0
+                y = height*0.18
+            }
+            
+            let label = VFLabel(frame: CGRect(x: x, y: y, width: width*0.5, height: labelHeight))
+            label.text = labelText
+            tableBody.addSubview(label)
+        }
         
         let btnHeight = height*0.15
         
@@ -131,7 +144,7 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         let btnHeight = height*0.15
         
         UIView.animateWithDuration(1.50,
-                                   delay: 1,
+                                   delay: 1.0,
                                    usingSpringWithDamping: 1.5,
                                    initialSpringVelocity: 0,
                                    options: .CurveEaseInOut,
