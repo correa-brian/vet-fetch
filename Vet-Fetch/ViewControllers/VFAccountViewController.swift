@@ -127,16 +127,16 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         
         self.animateButton()
     }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
-    
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBarHidden = true
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+
     
     func animateButton(){
         
@@ -160,7 +160,16 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
     
     func managePet(sender: UIButton){
         let petVc = VFPetViewController()
-        self.navigationController?.pushViewController(petVc, animated: true)
+        let apptVc = VFAppointmentViewController()
+        
+        let tab = UITabBarController()
+        let controllers = [petVc, apptVc]
+        tab.viewControllers = controllers
+        
+        petVc.tabBarItem = UITabBarItem(title: "Pet", image: UIImage(named:"cancel_icon.png"), tag: 0)
+        apptVc.tabBarItem = UITabBarItem(title: "Register", image: UIImage(named:"email_icon.png"), tag: 1)
+        
+        self.navigationController?.pushViewController(tab, animated: true)
     }
     
     func setAppropriateVc(sender: String){

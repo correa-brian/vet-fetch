@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VFAppointmentViewController: UITabBarController {
+class VFAppointmentViewController: VFViewController {
     
     //MARK: - Lifecycle Methods
     required init?(coder aDecoder: NSCoder){

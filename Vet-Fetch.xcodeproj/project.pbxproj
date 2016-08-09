@@ -31,6 +31,7 @@
 		D3AD90191D412519004703D4 /* profile-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AD90181D412519004703D4 /* profile-icon@2x.png */; };
 		D3AD901B1D413B34004703D4 /* key_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AD901A1D413B34004703D4 /* key_icon@2x.png */; };
 		D3AD901D1D413B72004703D4 /* cancel_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AD901C1D413B72004703D4 /* cancel_icon@2x.png */; };
+		D3CACFD11D5541E500ECD725 /* VFVetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CACFD01D5541E400ECD725 /* VFVetViewController.swift */; };
 		D3D291FB1D5103E800548BB5 /* VFLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D291FA1D5103E800548BB5 /* VFLabel.swift */; };
 		D3D292011D51411100548BB5 /* add_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3D292001D51411100548BB5 /* add_icon@2x.png */; };
 		D3D292031D519AF100548BB5 /* back_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3D292021D519AF100548BB5 /* back_icon@2x.png */; };
@@ -67,6 +68,7 @@
 		D3AD90181D412519004703D4 /* profile-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-icon@2x.png"; sourceTree = "<group>"; };
 		D3AD901A1D413B34004703D4 /* key_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "key_icon@2x.png"; sourceTree = "<group>"; };
 		D3AD901C1D413B72004703D4 /* cancel_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel_icon@2x.png"; sourceTree = "<group>"; };
+		D3CACFD01D5541E400ECD725 /* VFVetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFVetViewController.swift; sourceTree = "<group>"; };
 		D3D291FA1D5103E800548BB5 /* VFLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFLabel.swift; sourceTree = "<group>"; };
 		D3D292001D51411100548BB5 /* add_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_icon@2x.png"; sourceTree = "<group>"; };
 		D3D292021D519AF100548BB5 /* back_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_icon@2x.png"; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				D3879AC21D46FF51002AE3FA /* VFAppointmentViewController.swift */,
 				D3879ACA1D47006E002AE3FA /* VFPetViewController.swift */,
 				D36117D31D4BBA08007078AB /* VFCreatePetViewController.swift */,
+				D3CACFD01D5541E400ECD725 /* VFVetViewController.swift */,
 			);
 			path = AppVCs;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				D3879AC31D46FF51002AE3FA /* VFAppointmentViewController.swift in Sources */,
 				D3879AB11D414A66002AE3FA /* VFRegisterViewController.swift in Sources */,
 				D3879AB51D41A658002AE3FA /* VFWelcomeViewController.swift in Sources */,
+				D3CACFD11D5541E500ECD725 /* VFVetViewController.swift in Sources */,
 				D3879ACB1D47006E002AE3FA /* VFPetViewController.swift in Sources */,
 				D338CA931D401CBE0086C6E5 /* AppDelegate.swift in Sources */,
 				D36117D41D4BBA08007078AB /* VFCreatePetViewController.swift in Sources */,

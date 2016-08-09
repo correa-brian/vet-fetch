@@ -23,7 +23,7 @@ class VFPetViewController: VFViewController {
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?){
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    
+        
     }
 
     override func loadView(){
@@ -127,6 +127,7 @@ class VFPetViewController: VFViewController {
         super.viewDidLoad()
         
         self.navigationController?.navigationBarHidden = false
+        self.navigationController?.toolbarHidden = false
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -136,9 +137,9 @@ class VFPetViewController: VFViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.translucent = true
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        
     }
     
+
     func createPet(btn: UIButton){
         
         let addPetVc = VFCreatePetViewController()
