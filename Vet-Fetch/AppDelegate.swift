@@ -22,15 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let welcomeNavCtr = UINavigationController(rootViewController: welcomeVc)
         self.window?.rootViewController = welcomeNavCtr
         
-        let tabBarController = UITabBarController()
-        let petVc = VFPetViewController()
-        let registerVc = VFRegisterViewController()
-        let controllers = [petVc, registerVc]
-        tabBarController.viewControllers = controllers
-        
-        petVc.tabBarItem = UITabBarItem(title: "Pet", image: nil, tag: 1)
-        registerVc.tabBarItem = UITabBarItem(title: "Register", image: nil, tag: 2)
-        
         self.window?.makeKeyAndVisible()
         self.checkCurrentUser()
         return true
