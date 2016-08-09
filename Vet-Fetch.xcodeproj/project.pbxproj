@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D302229A1D49442600C94E80 /* VFPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30222991D49442600C94E80 /* VFPet.swift */; };
 		D3107E6F1D403DD7004A27B7 /* VFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3107E6E1D403DD7004A27B7 /* VFViewController.swift */; };
 		D3107E711D403EBE004A27B7 /* VFAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3107E701D403EBE004A27B7 /* VFAccountViewController.swift */; };
 		D338CA931D401CBE0086C6E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D338CA921D401CBE0086C6E5 /* AppDelegate.swift */; };
@@ -15,7 +14,6 @@
 		D36117D41D4BBA08007078AB /* VFCreatePetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36117D31D4BBA08007078AB /* VFCreatePetViewController.swift */; };
 		D3879AAF1D4142BD002AE3FA /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3879AAE1D4142BD002AE3FA /* APIManager.swift */; };
 		D3879AB11D414A66002AE3FA /* VFRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3879AB01D414A66002AE3FA /* VFRegisterViewController.swift */; };
-		D3879AB31D415370002AE3FA /* VFProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3879AB21D415370002AE3FA /* VFProfile.swift */; };
 		D3879AB51D41A658002AE3FA /* VFWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3879AB41D41A658002AE3FA /* VFWelcomeViewController.swift */; };
 		D3879ABE1D46FB5C002AE3FA /* VFCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3879ABD1D46FB5C002AE3FA /* VFCollectionViewCell.swift */; };
 		D3879AC01D46FB98002AE3FA /* VFCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3879ABF1D46FB98002AE3FA /* VFCollectionViewFlowLayout.swift */; };
@@ -35,6 +33,8 @@
 		D3D291FB1D5103E800548BB5 /* VFLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D291FA1D5103E800548BB5 /* VFLabel.swift */; };
 		D3D292011D51411100548BB5 /* add_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3D292001D51411100548BB5 /* add_icon@2x.png */; };
 		D3D292031D519AF100548BB5 /* back_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3D292021D519AF100548BB5 /* back_icon@2x.png */; };
+		D3EF8A091D5A300E00FCE838 /* VFProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EF8A081D5A300E00FCE838 /* VFProfile.swift */; };
+		D3EF8A0B1D5A305400FCE838 /* VFPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EF8A0A1D5A305400FCE838 /* VFPet.swift */; };
 		E60AB3A95FC09477AC7686B0 /* Pods_Vet_Fetch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45A2B292C0660E649E65F126 /* Pods_Vet_Fetch.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,7 +42,6 @@
 		45A2B292C0660E649E65F126 /* Pods_Vet_Fetch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vet_Fetch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA73D8B71EB05B52515E1000 /* Pods-Vet-Fetch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vet-Fetch.release.xcconfig"; path = "Pods/Target Support Files/Pods-Vet-Fetch/Pods-Vet-Fetch.release.xcconfig"; sourceTree = "<group>"; };
 		C53BAD2615991B93DA6F6CAC /* Pods-Vet-Fetch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vet-Fetch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Vet-Fetch/Pods-Vet-Fetch.debug.xcconfig"; sourceTree = "<group>"; };
-		D30222991D49442600C94E80 /* VFPet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFPet.swift; sourceTree = "<group>"; };
 		D3107E6E1D403DD7004A27B7 /* VFViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFViewController.swift; sourceTree = "<group>"; };
 		D3107E701D403EBE004A27B7 /* VFAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VFAccountViewController.swift; path = ../VFAccountViewController.swift; sourceTree = "<group>"; };
 		D338CA8F1D401CBD0086C6E5 /* Vet-Fetch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vet-Fetch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,7 +51,6 @@
 		D36117D31D4BBA08007078AB /* VFCreatePetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFCreatePetViewController.swift; sourceTree = "<group>"; };
 		D3879AAE1D4142BD002AE3FA /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		D3879AB01D414A66002AE3FA /* VFRegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VFRegisterViewController.swift; path = ../VFRegisterViewController.swift; sourceTree = "<group>"; };
-		D3879AB21D415370002AE3FA /* VFProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFProfile.swift; sourceTree = "<group>"; };
 		D3879AB41D41A658002AE3FA /* VFWelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VFWelcomeViewController.swift; path = ../VFWelcomeViewController.swift; sourceTree = "<group>"; };
 		D3879ABD1D46FB5C002AE3FA /* VFCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFCollectionViewCell.swift; sourceTree = "<group>"; };
 		D3879ABF1D46FB98002AE3FA /* VFCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
@@ -72,6 +70,8 @@
 		D3D291FA1D5103E800548BB5 /* VFLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFLabel.swift; sourceTree = "<group>"; };
 		D3D292001D51411100548BB5 /* add_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_icon@2x.png"; sourceTree = "<group>"; };
 		D3D292021D519AF100548BB5 /* back_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_icon@2x.png"; sourceTree = "<group>"; };
+		D3EF8A081D5A300E00FCE838 /* VFProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFProfile.swift; sourceTree = "<group>"; };
+		D3EF8A0A1D5A305400FCE838 /* VFPet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFPet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,16 +119,6 @@
 			path = BaseClasses;
 			sourceTree = "<group>";
 		};
-		D3107E6B1D403D67004A27B7 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				D3879AB21D415370002AE3FA /* VFProfile.swift */,
-				D30222991D49442600C94E80 /* VFPet.swift */,
-			);
-			name = Models;
-			path = BaseClasses/Models;
-			sourceTree = "<group>";
-		};
 		D3107E6C1D403D83004A27B7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,7 +162,7 @@
 			children = (
 				D3107E6A1D403D5E004A27B7 /* BaseClasses */,
 				D3AD90021D4057C0004703D4 /* Images */,
-				D3107E6B1D403D67004A27B7 /* Models */,
+				D3EF8A071D5A2FCF00FCE838 /* Models */,
 				D3107E691D403D57004A27B7 /* Utils */,
 				D3107E6D1D403D89004A27B7 /* Views */,
 				D3107E6C1D403D83004A27B7 /* ViewControllers */,
@@ -220,6 +210,15 @@
 				D3AD90181D412519004703D4 /* profile-icon@2x.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		D3EF8A071D5A2FCF00FCE838 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D3EF8A081D5A300E00FCE838 /* VFProfile.swift */,
+				D3EF8A0A1D5A305400FCE838 /* VFPet.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -352,15 +351,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3879AB31D415370002AE3FA /* VFProfile.swift in Sources */,
-				D302229A1D49442600C94E80 /* VFPet.swift in Sources */,
 				D3D291FB1D5103E800548BB5 /* VFLabel.swift in Sources */,
 				D3107E6F1D403DD7004A27B7 /* VFViewController.swift in Sources */,
 				D3879AC01D46FB98002AE3FA /* VFCollectionViewFlowLayout.swift in Sources */,
+				D3EF8A0B1D5A305400FCE838 /* VFPet.swift in Sources */,
 				D3879AC31D46FF51002AE3FA /* VFAppointmentViewController.swift in Sources */,
 				D3879AB11D414A66002AE3FA /* VFRegisterViewController.swift in Sources */,
 				D3879AB51D41A658002AE3FA /* VFWelcomeViewController.swift in Sources */,
 				D3CACFD11D5541E500ECD725 /* VFVetViewController.swift in Sources */,
+				D3EF8A091D5A300E00FCE838 /* VFProfile.swift in Sources */,
 				D3879ACB1D47006E002AE3FA /* VFPetViewController.swift in Sources */,
 				D338CA931D401CBE0086C6E5 /* AppDelegate.swift in Sources */,
 				D36117D41D4BBA08007078AB /* VFCreatePetViewController.swift in Sources */,

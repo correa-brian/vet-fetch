@@ -2,14 +2,14 @@
 //  VFProfile.swift
 //  Vet-Fetch
 //
-//  Created by Brian Correa on 7/21/16.
+//  Created by Brian Correa on 8/9/16.
 //  Copyright © 2016 Milkshake Tech. All rights reserved.
 //
 
 import UIKit
 
 class VFProfile: NSObject {
-    
+
     var id: String?
     var firstName: String!
     var lastName: String!
@@ -23,5 +23,4 @@ class VFProfile: NSObject {
             self.setValue(value, forKey: key)
         }
     }
-
 }

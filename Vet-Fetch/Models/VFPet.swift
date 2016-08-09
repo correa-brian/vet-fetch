@@ -2,7 +2,7 @@
 //  VFPet.swift
 //  Vet-Fetch
 //
-//  Created by Brian Correa on 7/27/16.
+//  Created by Brian Correa on 8/9/16.
 //  Copyright © 2016 Milkshake Tech. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 class VFPet: NSObject {
-
+    
     var id: String?
     var name: String!
     var ownerId: String!
