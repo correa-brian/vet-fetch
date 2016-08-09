@@ -11,7 +11,7 @@ import Cloudinary
 
 class VFViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLUploaderDelegate {
 
-    static var currentUser = VFProfile() //shared across the application
+    static var currentUser = VFProfile()
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
