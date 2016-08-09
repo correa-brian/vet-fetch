@@ -8,21 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		D3107E6F1D403DD7004A27B7 /* VFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3107E6E1D403DD7004A27B7 /* VFViewController.swift */; };
-		D3107E711D403EBE004A27B7 /* VFAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3107E701D403EBE004A27B7 /* VFAccountViewController.swift */; };
 		D338CA931D401CBE0086C6E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D338CA921D401CBE0086C6E5 /* AppDelegate.swift */; };
 		D338CA9A1D401CBE0086C6E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D338CA991D401CBE0086C6E5 /* Assets.xcassets */; };
 		D36117D41D4BBA08007078AB /* VFCreatePetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36117D31D4BBA08007078AB /* VFCreatePetViewController.swift */; };
 		D3879AAF1D4142BD002AE3FA /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3879AAE1D4142BD002AE3FA /* APIManager.swift */; };
-		D3879AB11D414A66002AE3FA /* VFRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3879AB01D414A66002AE3FA /* VFRegisterViewController.swift */; };
-		D3879AB51D41A658002AE3FA /* VFWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3879AB41D41A658002AE3FA /* VFWelcomeViewController.swift */; };
-		D3879ABE1D46FB5C002AE3FA /* VFCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3879ABD1D46FB5C002AE3FA /* VFCollectionViewCell.swift */; };
-		D3879AC01D46FB98002AE3FA /* VFCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3879ABF1D46FB98002AE3FA /* VFCollectionViewFlowLayout.swift */; };
-		D3879AC31D46FF51002AE3FA /* VFAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3879AC21D46FF51002AE3FA /* VFAppointmentViewController.swift */; };
-		D3879ACB1D47006E002AE3FA /* VFPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3879ACA1D47006E002AE3FA /* VFPetViewController.swift */; };
 		D3AD90041D40592D004703D4 /* account_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AD90031D40592D004703D4 /* account_background@2x.png */; };
 		D3AD90061D405C1B004703D4 /* account_background2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AD90051D405C1B004703D4 /* account_background2@2x.png */; };
 		D3AD900A1D405C5B004703D4 /* account_background3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AD90091D405C5B004703D4 /* account_background3@2x.png */; };
-		D3AD900C1D406D73004703D4 /* VFLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AD900B1D406D73004703D4 /* VFLoginViewController.swift */; };
 		D3AD90101D41209B004703D4 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AD900F1D41209B004703D4 /* Config.swift */; };
 		D3AD90121D4123D1004703D4 /* VFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AD90111D4123D1004703D4 /* VFTextField.swift */; };
 		D3AD90151D41250A004703D4 /* email_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AD90141D41250A004703D4 /* email_icon@2x.png */; };
@@ -35,6 +27,14 @@
 		D3D292031D519AF100548BB5 /* back_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3D292021D519AF100548BB5 /* back_icon@2x.png */; };
 		D3EF8A091D5A300E00FCE838 /* VFProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EF8A081D5A300E00FCE838 /* VFProfile.swift */; };
 		D3EF8A0B1D5A305400FCE838 /* VFPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EF8A0A1D5A305400FCE838 /* VFPet.swift */; };
+		D3EF8A111D5A324C00FCE838 /* VFCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EF8A101D5A324C00FCE838 /* VFCollectionViewFlowLayout.swift */; };
+		D3EF8A131D5A328800FCE838 /* VFCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EF8A121D5A328800FCE838 /* VFCollectionViewCell.swift */; };
+		D3EF8A151D5A32F900FCE838 /* VFAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EF8A141D5A32F900FCE838 /* VFAppointmentViewController.swift */; };
+		D3EF8A171D5A334300FCE838 /* VFPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EF8A161D5A334300FCE838 /* VFPetViewController.swift */; };
+		D3EF8A191D5A340300FCE838 /* VFWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EF8A181D5A340300FCE838 /* VFWelcomeViewController.swift */; };
+		D3EF8A1B1D5A347500FCE838 /* VFRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EF8A1A1D5A347500FCE838 /* VFRegisterViewController.swift */; };
+		D3EF8A1D1D5A34D700FCE838 /* VFLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EF8A1C1D5A34D700FCE838 /* VFLoginViewController.swift */; };
+		D3EF8A1F1D5A351E00FCE838 /* VFAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EF8A1E1D5A351E00FCE838 /* VFAccountViewController.swift */; };
 		E60AB3A95FC09477AC7686B0 /* Pods_Vet_Fetch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45A2B292C0660E649E65F126 /* Pods_Vet_Fetch.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,23 +43,15 @@
 		AA73D8B71EB05B52515E1000 /* Pods-Vet-Fetch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vet-Fetch.release.xcconfig"; path = "Pods/Target Support Files/Pods-Vet-Fetch/Pods-Vet-Fetch.release.xcconfig"; sourceTree = "<group>"; };
 		C53BAD2615991B93DA6F6CAC /* Pods-Vet-Fetch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vet-Fetch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Vet-Fetch/Pods-Vet-Fetch.debug.xcconfig"; sourceTree = "<group>"; };
 		D3107E6E1D403DD7004A27B7 /* VFViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFViewController.swift; sourceTree = "<group>"; };
-		D3107E701D403EBE004A27B7 /* VFAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VFAccountViewController.swift; path = ../VFAccountViewController.swift; sourceTree = "<group>"; };
 		D338CA8F1D401CBD0086C6E5 /* Vet-Fetch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vet-Fetch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D338CA921D401CBE0086C6E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D338CA991D401CBE0086C6E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D338CA9E1D401CBE0086C6E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D36117D31D4BBA08007078AB /* VFCreatePetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFCreatePetViewController.swift; sourceTree = "<group>"; };
 		D3879AAE1D4142BD002AE3FA /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
-		D3879AB01D414A66002AE3FA /* VFRegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VFRegisterViewController.swift; path = ../VFRegisterViewController.swift; sourceTree = "<group>"; };
-		D3879AB41D41A658002AE3FA /* VFWelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VFWelcomeViewController.swift; path = ../VFWelcomeViewController.swift; sourceTree = "<group>"; };
-		D3879ABD1D46FB5C002AE3FA /* VFCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFCollectionViewCell.swift; sourceTree = "<group>"; };
-		D3879ABF1D46FB98002AE3FA /* VFCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
-		D3879AC21D46FF51002AE3FA /* VFAppointmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFAppointmentViewController.swift; sourceTree = "<group>"; };
-		D3879ACA1D47006E002AE3FA /* VFPetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFPetViewController.swift; sourceTree = "<group>"; };
 		D3AD90031D40592D004703D4 /* account_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account_background@2x.png"; sourceTree = "<group>"; };
 		D3AD90051D405C1B004703D4 /* account_background2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account_background2@2x.png"; sourceTree = "<group>"; };
 		D3AD90091D405C5B004703D4 /* account_background3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account_background3@2x.png"; sourceTree = "<group>"; };
-		D3AD900B1D406D73004703D4 /* VFLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VFLoginViewController.swift; path = ../VFLoginViewController.swift; sourceTree = "<group>"; };
 		D3AD900F1D41209B004703D4 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		D3AD90111D4123D1004703D4 /* VFTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFTextField.swift; sourceTree = "<group>"; };
 		D3AD90141D41250A004703D4 /* email_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "email_icon@2x.png"; sourceTree = "<group>"; };
@@ -72,6 +64,14 @@
 		D3D292021D519AF100548BB5 /* back_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_icon@2x.png"; sourceTree = "<group>"; };
 		D3EF8A081D5A300E00FCE838 /* VFProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFProfile.swift; sourceTree = "<group>"; };
 		D3EF8A0A1D5A305400FCE838 /* VFPet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFPet.swift; sourceTree = "<group>"; };
+		D3EF8A101D5A324C00FCE838 /* VFCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		D3EF8A121D5A328800FCE838 /* VFCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFCollectionViewCell.swift; sourceTree = "<group>"; };
+		D3EF8A141D5A32F900FCE838 /* VFAppointmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFAppointmentViewController.swift; sourceTree = "<group>"; };
+		D3EF8A161D5A334300FCE838 /* VFPetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFPetViewController.swift; sourceTree = "<group>"; };
+		D3EF8A181D5A340300FCE838 /* VFWelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFWelcomeViewController.swift; sourceTree = "<group>"; };
+		D3EF8A1A1D5A347500FCE838 /* VFRegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFRegisterViewController.swift; sourceTree = "<group>"; };
+		D3EF8A1C1D5A34D700FCE838 /* VFLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFLoginViewController.swift; sourceTree = "<group>"; };
+		D3EF8A1E1D5A351E00FCE838 /* VFAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFAccountViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,9 +132,9 @@
 			isa = PBXGroup;
 			children = (
 				D3AD90111D4123D1004703D4 /* VFTextField.swift */,
-				D3879ABD1D46FB5C002AE3FA /* VFCollectionViewCell.swift */,
-				D3879ABF1D46FB98002AE3FA /* VFCollectionViewFlowLayout.swift */,
 				D3D291FA1D5103E800548BB5 /* VFLabel.swift */,
+				D3EF8A101D5A324C00FCE838 /* VFCollectionViewFlowLayout.swift */,
+				D3EF8A121D5A328800FCE838 /* VFCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -177,9 +177,9 @@
 		D3879AB81D46EB39002AE3FA /* AuthVCs */ = {
 			isa = PBXGroup;
 			children = (
-				D3879AB01D414A66002AE3FA /* VFRegisterViewController.swift */,
-				D3AD900B1D406D73004703D4 /* VFLoginViewController.swift */,
-				D3879AB41D41A658002AE3FA /* VFWelcomeViewController.swift */,
+				D3EF8A181D5A340300FCE838 /* VFWelcomeViewController.swift */,
+				D3EF8A1A1D5A347500FCE838 /* VFRegisterViewController.swift */,
+				D3EF8A1C1D5A34D700FCE838 /* VFLoginViewController.swift */,
 			);
 			path = AuthVCs;
 			sourceTree = "<group>";
@@ -187,11 +187,11 @@
 		D3879AC11D46FC35002AE3FA /* AppVCs */ = {
 			isa = PBXGroup;
 			children = (
-				D3107E701D403EBE004A27B7 /* VFAccountViewController.swift */,
-				D3879AC21D46FF51002AE3FA /* VFAppointmentViewController.swift */,
-				D3879ACA1D47006E002AE3FA /* VFPetViewController.swift */,
 				D36117D31D4BBA08007078AB /* VFCreatePetViewController.swift */,
 				D3CACFD01D5541E400ECD725 /* VFVetViewController.swift */,
+				D3EF8A141D5A32F900FCE838 /* VFAppointmentViewController.swift */,
+				D3EF8A161D5A334300FCE838 /* VFPetViewController.swift */,
+				D3EF8A1E1D5A351E00FCE838 /* VFAccountViewController.swift */,
 			);
 			path = AppVCs;
 			sourceTree = "<group>";
@@ -351,23 +351,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3EF8A1D1D5A34D700FCE838 /* VFLoginViewController.swift in Sources */,
 				D3D291FB1D5103E800548BB5 /* VFLabel.swift in Sources */,
 				D3107E6F1D403DD7004A27B7 /* VFViewController.swift in Sources */,
-				D3879AC01D46FB98002AE3FA /* VFCollectionViewFlowLayout.swift in Sources */,
+				D3EF8A171D5A334300FCE838 /* VFPetViewController.swift in Sources */,
 				D3EF8A0B1D5A305400FCE838 /* VFPet.swift in Sources */,
-				D3879AC31D46FF51002AE3FA /* VFAppointmentViewController.swift in Sources */,
-				D3879AB11D414A66002AE3FA /* VFRegisterViewController.swift in Sources */,
-				D3879AB51D41A658002AE3FA /* VFWelcomeViewController.swift in Sources */,
 				D3CACFD11D5541E500ECD725 /* VFVetViewController.swift in Sources */,
 				D3EF8A091D5A300E00FCE838 /* VFProfile.swift in Sources */,
-				D3879ACB1D47006E002AE3FA /* VFPetViewController.swift in Sources */,
 				D338CA931D401CBE0086C6E5 /* AppDelegate.swift in Sources */,
 				D36117D41D4BBA08007078AB /* VFCreatePetViewController.swift in Sources */,
+				D3EF8A191D5A340300FCE838 /* VFWelcomeViewController.swift in Sources */,
+				D3EF8A111D5A324C00FCE838 /* VFCollectionViewFlowLayout.swift in Sources */,
+				D3EF8A131D5A328800FCE838 /* VFCollectionViewCell.swift in Sources */,
+				D3EF8A1B1D5A347500FCE838 /* VFRegisterViewController.swift in Sources */,
 				D3AD90121D4123D1004703D4 /* VFTextField.swift in Sources */,
-				D3AD900C1D406D73004703D4 /* VFLoginViewController.swift in Sources */,
-				D3107E711D403EBE004A27B7 /* VFAccountViewController.swift in Sources */,
+				D3EF8A1F1D5A351E00FCE838 /* VFAccountViewController.swift in Sources */,
+				D3EF8A151D5A32F900FCE838 /* VFAppointmentViewController.swift in Sources */,
 				D3AD90101D41209B004703D4 /* Config.swift in Sources */,
-				D3879ABE1D46FB5C002AE3FA /* VFCollectionViewCell.swift in Sources */,
 				D3879AAF1D4142BD002AE3FA /* APIManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
