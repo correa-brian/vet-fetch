@@ -23,7 +23,6 @@ class VFPetViewController: VFViewController {
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?){
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        
     }
     
     override func loadView(){
@@ -103,7 +102,7 @@ class VFPetViewController: VFViewController {
         
         for _ in 0..<2 {
             let button = UIButton(frame: CGRect(x: x, y: y, width: 32, height: 32))
-            button.backgroundColor = .blueColor()
+            button.backgroundColor = .redColor()
             self.container.addSubview(button)
             x += width*0.60-32
         }
@@ -125,27 +124,31 @@ class VFPetViewController: VFViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationController?.navigationBarHidden = false
-        self.navigationController?.toolbarHidden = false
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.navigationController?.navigationBarHidden = false
+        self.navigationController?.navigationBar.tintColor = .whiteColor()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.translucent = true
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
+        self.tabBarController?.tabBar.barTintColor = UIColor.whiteColor()
+        self.tabBarController?.tabBar.tintColor = UIColor(red: 166/255, green: 207/255, blue: 190/255, alpha: 1)
+        
+        let add = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(createPet(_:)))
+        self.tabBarController?.navigationItem.rightBarButtonItem = add
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+    }
     
     func createPet(btn: UIButton){
-        
         let addPetVc = VFCreatePetViewController()
         self.presentViewController(addPetVc, animated: true, completion: nil)
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
