@@ -130,7 +130,9 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
         self.navigationController?.navigationBarHidden = true
+        self.navigationController?.toolbarHidden = true
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -159,16 +161,17 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
     }
     
     func managePet(sender: UIButton){
+        
         let petVc = VFPetViewController()
+        petVc.tabBarItem = UITabBarItem(title: "Pet", image: UIImage(named:"paw_icon.png"), tag: 0)
+        
         let apptVc = VFAppointmentViewController()
+        apptVc.tabBarItem = UITabBarItem(title: "Medical", image: UIImage(named:"email_icon.png"), tag: 1)
         
-        let tab = UITabBarController()
         let controllers = [petVc, apptVc]
+        let tab = UITabBarController()
         tab.viewControllers = controllers
-        
-        petVc.tabBarItem = UITabBarItem(title: "Pet", image: UIImage(named:"cancel_icon.png"), tag: 0)
-        apptVc.tabBarItem = UITabBarItem(title: "Register", image: UIImage(named:"email_icon.png"), tag: 1)
-        
+    
         self.navigationController?.pushViewController(tab, animated: true)
     }
     
@@ -220,12 +223,6 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         let button = self.btnsArray[indexPath.row]
         
         self.setAppropriateVc(button)
-    }
-    
-    //MARK: ScrollView Delegate
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView){
-        
-        print("scrollViewDidEndDecelerating: \(scrollView.contentOffset.x)")
     }
     
     override func didReceiveMemoryWarning() {
