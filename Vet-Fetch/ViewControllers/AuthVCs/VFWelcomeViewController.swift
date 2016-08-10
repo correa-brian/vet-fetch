@@ -166,7 +166,6 @@ class VFWelcomeViewController: VFViewController, UIScrollViewDelegate {
     
     //MARK: ScrollView Delegate
     func scrollViewDidEndDecelerating(scrollView: UIScrollView){
-        print("scrollViewDidEndDecelerating: \(scrollView.contentOffset.x)")
         let offset = scrollView.contentOffset.x
         
         switch offset {

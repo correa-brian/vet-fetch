@@ -141,17 +141,12 @@ class VFLoginViewController: VFViewController, UITextFieldDelegate {
                                             
                                             self.postLoggedInNotification(result)
                                             
+                                            self.exit()
                                             
-                                            let loginVc = VFLoginViewController()
-                                            
-                                            let nav = UINavigationController(rootViewController: loginVc)
                                             let accountVc = VFAccountViewController()
-                                            
-                                            nav.pushViewController(accountVc, animated: false)
-                                            self.presentViewController(nav, animated: true, completion: nil)
+                                            self.navigationController?.pushViewController(accountVc, animated: true)
                                         })
-                                    }
-                                    
+                                    }    
             })
             
             return true

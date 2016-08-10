@@ -120,13 +120,10 @@ class VFRegisterViewController: VFViewController, UITextFieldDelegate {
                                             
                                             self.postLoggedInNotification(result)
                                             
-                                            let registerVc = VFRegisterViewController()
-                                            
-                                            let nav = UINavigationController(rootViewController: registerVc)
+                                            self.exit()
+
                                             let accountVc = VFAccountViewController()
-                                            
-                                            nav.pushViewController(accountVc, animated: false)
-                                            self.presentViewController(nav, animated: true, completion: nil)
+                                            self.navigationController?.pushViewController(accountVc, animated: true)
                                         })
                                     }
             })
