@@ -35,6 +35,7 @@
 		D3EF8A1B1D5A347500FCE838 /* VFRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EF8A1A1D5A347500FCE838 /* VFRegisterViewController.swift */; };
 		D3EF8A1D1D5A34D700FCE838 /* VFLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EF8A1C1D5A34D700FCE838 /* VFLoginViewController.swift */; };
 		D3EF8A1F1D5A351E00FCE838 /* VFAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EF8A1E1D5A351E00FCE838 /* VFAccountViewController.swift */; };
+		D3EF8A251D5BCCF400FCE838 /* paw_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3EF8A241D5BCCF400FCE838 /* paw_icon@2x.png */; };
 		E60AB3A95FC09477AC7686B0 /* Pods_Vet_Fetch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45A2B292C0660E649E65F126 /* Pods_Vet_Fetch.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,7 @@
 		D3EF8A1A1D5A347500FCE838 /* VFRegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFRegisterViewController.swift; sourceTree = "<group>"; };
 		D3EF8A1C1D5A34D700FCE838 /* VFLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFLoginViewController.swift; sourceTree = "<group>"; };
 		D3EF8A1E1D5A351E00FCE838 /* VFAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFAccountViewController.swift; sourceTree = "<group>"; };
+		D3EF8A241D5BCCF400FCE838 /* paw_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "paw_icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +208,7 @@
 				D3AD901C1D413B72004703D4 /* cancel_icon@2x.png */,
 				D3AD90141D41250A004703D4 /* email_icon@2x.png */,
 				D3AD901A1D413B34004703D4 /* key_icon@2x.png */,
+				D3EF8A241D5BCCF400FCE838 /* paw_icon@2x.png */,
 				D3D292001D51411100548BB5 /* add_icon@2x.png */,
 				D3AD90181D412519004703D4 /* profile-icon@2x.png */,
 			);
@@ -288,6 +291,7 @@
 				D3D292011D51411100548BB5 /* add_icon@2x.png in Resources */,
 				D3AD90151D41250A004703D4 /* email_icon@2x.png in Resources */,
 				D3AD90191D412519004703D4 /* profile-icon@2x.png in Resources */,
+				D3EF8A251D5BCCF400FCE838 /* paw_icon@2x.png in Resources */,
 				D3AD90041D40592D004703D4 /* account_background@2x.png in Resources */,
 				D3AD900A1D405C5B004703D4 /* account_background3@2x.png in Resources */,
 				D3AD901D1D413B72004703D4 /* cancel_icon@2x.png in Resources */,

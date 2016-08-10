@@ -49,6 +49,10 @@ class VFViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         notificationCenter.postNotification(notificiation)
     }
     
+    func exit(){
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     //MARK: - Camera Methods
     
     func showCameraOptions() -> UIAlertController {
@@ -118,11 +122,6 @@ class VFViewController: UIViewController, UIImagePickerControllerDelegate, UINav
             }
         
         )
-    }
-    
-    
-    func exit(){
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
