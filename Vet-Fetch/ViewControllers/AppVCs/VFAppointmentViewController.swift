@@ -31,7 +31,17 @@ class VFAppointmentViewController: VFViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBarHidden = false
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.tabBarController?.navigationItem.rightBarButtonItem = nil
+        
+    }
+    
+    func addPet(btn: UIBarButtonItem){
+        print("AddPet")
     }
     
     override func didReceiveMemoryWarning() {
