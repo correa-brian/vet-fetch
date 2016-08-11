@@ -97,26 +97,55 @@ class VFPetViewController: VFViewController {
         blurredEffectView.contentView.addSubview(vibrancyEffectView)
         self.container.addSubview(blurredEffectView)
         
-        x = width*0.2
-        var y = height*0.15
+        let dimenW = CGFloat(100)
+        let dimenH = CGFloat(36)
+        x = width*0.10
+//        var y = height*0.18
+        var y = petNameLabel.frame.size.height+height*0.05
         
-        for _ in 0..<2 {
-            let button = UIButton(frame: CGRect(x: x, y: y, width: 32, height: 32))
-            button.backgroundColor = .redColor()
-            self.container.addSubview(button)
-            x += width*0.60-32
+        var text = ["Species", "Weight"]
+        var icons = ["paw_icon.png", "email_icon.png"]
+        
+        for i in 0..<text.count {
+            let label = UILabel(frame: CGRect(x: x, y: y, width: dimenW, height: dimenH))
+            label.backgroundColor = .clearColor()
+            label.text = text[i]
+            label.textColor = .whiteColor()
+            label.textAlignment = .Right
+            
+            let icon = UIImageView(frame: CGRect(x: 0, y: 0, width: dimenH, height: dimenH))
+            icon.image = UIImage(named: icons[i])
+            icon.tintColor = .whiteColor()
+            
+            label.addSubview(icon)
+            
+            self.container.addSubview(label)
+            x += width*0.50
         }
         
-        x = width*0.2
-        y = height*0.25
+        text = ["Vet", "Sex"]
+        icons = ["key_icon.png", "profile-icon.png"]
         
-        for _ in 0..<2 {
-            let button = UIButton(frame: CGRect(x: x, y: y, width: 32, height: 32))
-            button.backgroundColor = .blueColor()
-            self.container.addSubview(button)
-            x += width*0.60-32
+        x = width*0.10
+        let offset = height*0.50 - (49+height*0.05+dimenH)
+        y = offset
+        
+        for i in 0..<text.count {
+            let label = UILabel(frame: CGRect(x: x, y: y, width: dimenW, height: dimenH))
+            label.backgroundColor = .clearColor()
+            label.text = text[i]
+            label.textColor = .whiteColor()
+            label.textAlignment = .Center
+            
+            let icon = UIImageView(frame: CGRect(x: 0, y: 0, width: dimenH, height: dimenH))
+            icon.image = UIImage(named: icons[i])
+            icon.tintColor = .whiteColor()
+            
+            label.addSubview(icon)
+            self.container.addSubview(label)
+            x += width*0.50
         }
-        
+
         view.addSubview(self.container)
         
         self.view = view
@@ -134,7 +163,7 @@ class VFPetViewController: VFViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
-        self.tabBarController?.tabBar.barTintColor = UIColor.whiteColor()
+        self.tabBarController?.tabBar.barTintColor = UIColor.blackColor()
         self.tabBarController?.tabBar.tintColor = UIColor(red: 166/255, green: 207/255, blue: 190/255, alpha: 1)
         
         let add = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(createPet(_:)))

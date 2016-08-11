@@ -36,6 +36,7 @@
 		D3EF8A1D1D5A34D700FCE838 /* VFLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EF8A1C1D5A34D700FCE838 /* VFLoginViewController.swift */; };
 		D3EF8A1F1D5A351E00FCE838 /* VFAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EF8A1E1D5A351E00FCE838 /* VFAccountViewController.swift */; };
 		D3EF8A251D5BCCF400FCE838 /* paw_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3EF8A241D5BCCF400FCE838 /* paw_icon@2x.png */; };
+		D3EF8A271D5BF02300FCE838 /* VFPetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EF8A261D5BF02300FCE838 /* VFPetLabel.swift */; };
 		E60AB3A95FC09477AC7686B0 /* Pods_Vet_Fetch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45A2B292C0660E649E65F126 /* Pods_Vet_Fetch.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,7 @@
 		D3EF8A1C1D5A34D700FCE838 /* VFLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFLoginViewController.swift; sourceTree = "<group>"; };
 		D3EF8A1E1D5A351E00FCE838 /* VFAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFAccountViewController.swift; sourceTree = "<group>"; };
 		D3EF8A241D5BCCF400FCE838 /* paw_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "paw_icon@2x.png"; sourceTree = "<group>"; };
+		D3EF8A261D5BF02300FCE838 /* VFPetLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFPetLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				D3D291FA1D5103E800548BB5 /* VFLabel.swift */,
 				D3EF8A101D5A324C00FCE838 /* VFCollectionViewFlowLayout.swift */,
 				D3EF8A121D5A328800FCE838 /* VFCollectionViewCell.swift */,
+				D3EF8A261D5BF02300FCE838 /* VFPetLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				D3CACFD11D5541E500ECD725 /* VFVetViewController.swift in Sources */,
 				D3EF8A091D5A300E00FCE838 /* VFProfile.swift in Sources */,
 				D338CA931D401CBE0086C6E5 /* AppDelegate.swift in Sources */,
+				D3EF8A271D5BF02300FCE838 /* VFPetLabel.swift in Sources */,
 				D36117D41D4BBA08007078AB /* VFCreatePetViewController.swift in Sources */,
 				D3EF8A191D5A340300FCE838 /* VFWelcomeViewController.swift in Sources */,
 				D3EF8A111D5A324C00FCE838 /* VFCollectionViewFlowLayout.swift in Sources */,
