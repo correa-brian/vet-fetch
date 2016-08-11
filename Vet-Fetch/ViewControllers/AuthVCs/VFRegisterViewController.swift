@@ -22,8 +22,10 @@ class VFRegisterViewController: VFViewController, UITextFieldDelegate {
         
         view.backgroundColor = UIColor(red: 166/255, green: 207/255, blue: 190/255, alpha: 1)
         
+        let dimen = CGFloat(32)
+        
         let cancelBtn = UIButton(type: .Custom)
-        cancelBtn.frame = CGRect(x: 0, y: 10, width: 32, height: 32)
+        cancelBtn.frame = CGRect(x: frame.size.width-1.05*dimen, y: 15, width: dimen, height: dimen)
         cancelBtn.setImage(UIImage(named: "cancel_icon.png"), forState: .Normal)
         cancelBtn.addTarget(
             self,
