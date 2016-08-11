@@ -18,6 +18,14 @@ class VFTextField: UITextField {
                 return
             }
             
+            if(placeholder?.lowercaseString == "first name"){
+                self.icon.image = UIImage(named: "profile_icon.png")
+            }
+            
+            if(placeholder?.lowercaseString == "last name"){
+                self.icon.image = UIImage(named: "profile_icon.png")
+            }
+            
             if(placeholder?.lowercaseString == "email"){
                 self.icon.image = UIImage(named: "email_icon.png")
             }
