@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		D3107E6F1D403DD7004A27B7 /* VFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3107E6E1D403DD7004A27B7 /* VFViewController.swift */; };
+		D315B20A1D5CD35300736945 /* weight_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D315B2091D5CD35300736945 /* weight_icon@2x.png */; };
+		D315B20C1D5CD35B00736945 /* DOB_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D315B20B1D5CD35B00736945 /* DOB_icon@2x.png */; };
+		D315B2101D5CD98C00736945 /* sex_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D315B20F1D5CD98C00736945 /* sex_icon@2x.png */; };
+		D315B2121D5CDC0600736945 /* profile_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D315B2111D5CDC0600736945 /* profile_icon@2x.png */; };
 		D338CA931D401CBE0086C6E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D338CA921D401CBE0086C6E5 /* AppDelegate.swift */; };
 		D338CA9A1D401CBE0086C6E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D338CA991D401CBE0086C6E5 /* Assets.xcassets */; };
 		D36117D41D4BBA08007078AB /* VFCreatePetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36117D31D4BBA08007078AB /* VFCreatePetViewController.swift */; };
@@ -18,7 +22,6 @@
 		D3AD90101D41209B004703D4 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AD900F1D41209B004703D4 /* Config.swift */; };
 		D3AD90121D4123D1004703D4 /* VFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AD90111D4123D1004703D4 /* VFTextField.swift */; };
 		D3AD90151D41250A004703D4 /* email_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AD90141D41250A004703D4 /* email_icon@2x.png */; };
-		D3AD90191D412519004703D4 /* profile-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AD90181D412519004703D4 /* profile-icon@2x.png */; };
 		D3AD901B1D413B34004703D4 /* key_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AD901A1D413B34004703D4 /* key_icon@2x.png */; };
 		D3AD901D1D413B72004703D4 /* cancel_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AD901C1D413B72004703D4 /* cancel_icon@2x.png */; };
 		D3CACFD11D5541E500ECD725 /* VFVetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CACFD01D5541E400ECD725 /* VFVetViewController.swift */; };
@@ -36,7 +39,6 @@
 		D3EF8A1D1D5A34D700FCE838 /* VFLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EF8A1C1D5A34D700FCE838 /* VFLoginViewController.swift */; };
 		D3EF8A1F1D5A351E00FCE838 /* VFAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EF8A1E1D5A351E00FCE838 /* VFAccountViewController.swift */; };
 		D3EF8A251D5BCCF400FCE838 /* paw_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3EF8A241D5BCCF400FCE838 /* paw_icon@2x.png */; };
-		D3EF8A271D5BF02300FCE838 /* VFPetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EF8A261D5BF02300FCE838 /* VFPetLabel.swift */; };
 		E60AB3A95FC09477AC7686B0 /* Pods_Vet_Fetch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45A2B292C0660E649E65F126 /* Pods_Vet_Fetch.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +47,10 @@
 		AA73D8B71EB05B52515E1000 /* Pods-Vet-Fetch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vet-Fetch.release.xcconfig"; path = "Pods/Target Support Files/Pods-Vet-Fetch/Pods-Vet-Fetch.release.xcconfig"; sourceTree = "<group>"; };
 		C53BAD2615991B93DA6F6CAC /* Pods-Vet-Fetch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vet-Fetch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Vet-Fetch/Pods-Vet-Fetch.debug.xcconfig"; sourceTree = "<group>"; };
 		D3107E6E1D403DD7004A27B7 /* VFViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFViewController.swift; sourceTree = "<group>"; };
+		D315B2091D5CD35300736945 /* weight_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weight_icon@2x.png"; sourceTree = "<group>"; };
+		D315B20B1D5CD35B00736945 /* DOB_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DOB_icon@2x.png"; sourceTree = "<group>"; };
+		D315B20F1D5CD98C00736945 /* sex_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sex_icon@2x.png"; sourceTree = "<group>"; };
+		D315B2111D5CDC0600736945 /* profile_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile_icon@2x.png"; sourceTree = "<group>"; };
 		D338CA8F1D401CBD0086C6E5 /* Vet-Fetch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vet-Fetch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D338CA921D401CBE0086C6E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D338CA991D401CBE0086C6E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,7 +63,6 @@
 		D3AD900F1D41209B004703D4 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		D3AD90111D4123D1004703D4 /* VFTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFTextField.swift; sourceTree = "<group>"; };
 		D3AD90141D41250A004703D4 /* email_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "email_icon@2x.png"; sourceTree = "<group>"; };
-		D3AD90181D412519004703D4 /* profile-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-icon@2x.png"; sourceTree = "<group>"; };
 		D3AD901A1D413B34004703D4 /* key_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "key_icon@2x.png"; sourceTree = "<group>"; };
 		D3AD901C1D413B72004703D4 /* cancel_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel_icon@2x.png"; sourceTree = "<group>"; };
 		D3CACFD01D5541E400ECD725 /* VFVetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFVetViewController.swift; sourceTree = "<group>"; };
@@ -75,7 +80,6 @@
 		D3EF8A1C1D5A34D700FCE838 /* VFLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFLoginViewController.swift; sourceTree = "<group>"; };
 		D3EF8A1E1D5A351E00FCE838 /* VFAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFAccountViewController.swift; sourceTree = "<group>"; };
 		D3EF8A241D5BCCF400FCE838 /* paw_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "paw_icon@2x.png"; sourceTree = "<group>"; };
-		D3EF8A261D5BF02300FCE838 /* VFPetLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFPetLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +143,6 @@
 				D3D291FA1D5103E800548BB5 /* VFLabel.swift */,
 				D3EF8A101D5A324C00FCE838 /* VFCollectionViewFlowLayout.swift */,
 				D3EF8A121D5A328800FCE838 /* VFCollectionViewCell.swift */,
-				D3EF8A261D5BF02300FCE838 /* VFPetLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -213,7 +216,10 @@
 				D3AD901A1D413B34004703D4 /* key_icon@2x.png */,
 				D3EF8A241D5BCCF400FCE838 /* paw_icon@2x.png */,
 				D3D292001D51411100548BB5 /* add_icon@2x.png */,
-				D3AD90181D412519004703D4 /* profile-icon@2x.png */,
+				D315B2111D5CDC0600736945 /* profile_icon@2x.png */,
+				D315B20B1D5CD35B00736945 /* DOB_icon@2x.png */,
+				D315B20F1D5CD98C00736945 /* sex_icon@2x.png */,
+				D315B2091D5CD35300736945 /* weight_icon@2x.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -292,14 +298,17 @@
 				D3D292031D519AF100548BB5 /* back_icon@2x.png in Resources */,
 				D3AD90061D405C1B004703D4 /* account_background2@2x.png in Resources */,
 				D3D292011D51411100548BB5 /* add_icon@2x.png in Resources */,
+				D315B20C1D5CD35B00736945 /* DOB_icon@2x.png in Resources */,
+				D315B20A1D5CD35300736945 /* weight_icon@2x.png in Resources */,
 				D3AD90151D41250A004703D4 /* email_icon@2x.png in Resources */,
-				D3AD90191D412519004703D4 /* profile-icon@2x.png in Resources */,
+				D315B2101D5CD98C00736945 /* sex_icon@2x.png in Resources */,
 				D3EF8A251D5BCCF400FCE838 /* paw_icon@2x.png in Resources */,
 				D3AD90041D40592D004703D4 /* account_background@2x.png in Resources */,
 				D3AD900A1D405C5B004703D4 /* account_background3@2x.png in Resources */,
 				D3AD901D1D413B72004703D4 /* cancel_icon@2x.png in Resources */,
 				D3AD901B1D413B34004703D4 /* key_icon@2x.png in Resources */,
 				D338CA9A1D401CBE0086C6E5 /* Assets.xcassets in Resources */,
+				D315B2121D5CDC0600736945 /* profile_icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,7 +375,6 @@
 				D3CACFD11D5541E500ECD725 /* VFVetViewController.swift in Sources */,
 				D3EF8A091D5A300E00FCE838 /* VFProfile.swift in Sources */,
 				D338CA931D401CBE0086C6E5 /* AppDelegate.swift in Sources */,
-				D3EF8A271D5BF02300FCE838 /* VFPetLabel.swift in Sources */,
 				D36117D41D4BBA08007078AB /* VFCreatePetViewController.swift in Sources */,
 				D3EF8A191D5A340300FCE838 /* VFWelcomeViewController.swift in Sources */,
 				D3EF8A111D5A324C00FCE838 /* VFCollectionViewFlowLayout.swift in Sources */,

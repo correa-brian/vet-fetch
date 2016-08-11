@@ -10,9 +10,11 @@ import UIKit
 
 class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate {
     
+    //MARK: - Properties
+    
     var collectionView: UICollectionView!
     var btnsArray = ["Appointments", "Vet", "Insurance", "Learn More"]
-    var bottomScrollView: UIScrollView!
+    var bottomContainer: UIScrollView!
     var petManagerBtn: UIButton!
     
     //MARK: - Lifecycle Methods
@@ -43,14 +45,14 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         let width = frame.size.width
         let height = frame.size.height-width
         
-        self.bottomScrollView = UIScrollView(frame: CGRect(x: 0, y: width, width: width, height: height))
-        self.bottomScrollView.contentSize = CGSize(width: width, height: 0)
-        self.bottomScrollView.backgroundColor = .whiteColor()
-        self.bottomScrollView.pagingEnabled = true
-        self.bottomScrollView.delegate = self
+        self.bottomContainer = UIScrollView(frame: CGRect(x: 0, y: width, width: width, height: height))
+        self.bottomContainer.contentSize = CGSize(width: width, height: 0)
+        self.bottomContainer.backgroundColor = .whiteColor()
+        self.bottomContainer.pagingEnabled = true
+        self.bottomContainer.delegate = self
         
         let tableHeader = UIView(frame: CGRect(x: 0, y: 0, width: width, height: height*0.45))
-        self.bottomScrollView.addSubview(tableHeader)
+        self.bottomContainer.addSubview(tableHeader)
         
         let padding = CGFloat(15)
         let dimen = CGFloat(height*0.3)
@@ -81,7 +83,7 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         y = tableHeader.frame.size.height
         
         let tableBody = UIView(frame: CGRect(x: 0, y: y, width: width, height: height*0.40))
-        self.bottomScrollView.addSubview(tableBody)
+        self.bottomContainer.addSubview(tableBody)
         
         let weightLabels = ["Age", "7", "54", "Weight"]
         
@@ -114,9 +116,9 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         self.petManagerBtn.backgroundColor = UIColor(red: 164/255, green: 185/255, blue: 202/255, alpha: 1)
         self.petManagerBtn.setTitle("Manage Your Pet", forState: .Normal)
         self.petManagerBtn.addTarget(self, action: #selector(VFAccountViewController.managePet(_:)), forControlEvents: .TouchUpInside)
-        self.bottomScrollView.addSubview(self.petManagerBtn)
+        self.bottomContainer.addSubview(self.petManagerBtn)
         
-        self.collectionView.addSubview(self.bottomScrollView)
+        self.collectionView.addSubview(self.bottomContainer)
         view.addSubview(self.collectionView)
         
         self.view = view
@@ -126,10 +128,17 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         super.viewDidLoad()
         
         self.animateButton()
+        
+        print("AccountVc User - \(VFViewController.currentUser.email)")
+        print("AccountVc Pets - \(VFViewController.pets)")
+        print("AccountVc Pets - \(VFViewController.pets.count)")
+
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        print(" Account Vc - viewWillAppear")
         
         self.navigationController?.navigationBarHidden = true
         self.navigationController?.toolbarHidden = true
@@ -142,7 +151,7 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
     
     func animateButton(){
         
-        let height = self.bottomScrollView.frame.size.height
+        let height = self.bottomContainer.frame.size.height
         let btnHeight = height*0.15
         
         UIView.animateWithDuration(1.50,

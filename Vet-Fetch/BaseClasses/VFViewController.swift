@@ -12,6 +12,7 @@ import Cloudinary
 class VFViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLUploaderDelegate {
 
     static var currentUser = VFProfile()
+    static var pets = Array<VFPet>()
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -21,18 +22,26 @@ class VFViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
      
         let notificationCenter = NSNotificationCenter.defaultCenter()
+        
         notificationCenter.addObserver(self,
                                        selector: #selector(VFViewController.userLoggedIn(_:)),
                                        name: Constants.kUserLoggedInNotification,
                                        object: nil)
+        
+        notificationCenter.addObserver(self,
+                              selector: #selector(VFViewController.petsFetched),
+                              name: Constants.kPetFetchNotification,
+                              object: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("BaseVc - viewDidLoad")
     }
     
     func userLoggedIn(notification: NSNotification){
+        print("userLoggedIn")
         if let user = notification.userInfo!["user"] as? Dictionary<String, AnyObject>{
             VFViewController.currentUser.populate(user)
         }
@@ -47,6 +56,17 @@ class VFViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.postNotification(notificiation)
+    }
+    
+    func petsFetched(notification: NSNotification){
+        print("petsFetched:")
+//        if let results = notification.userInfo!["pets"] as? Array<Dictionary<String, AnyObject>>{
+//            for result in results {
+//                let pet = VFPet()
+//                pet.populate(result)
+//                VFViewController.pets.append(pet)
+//            }
+//        }
     }
     
     func exit(){
