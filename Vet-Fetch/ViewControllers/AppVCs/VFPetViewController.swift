@@ -10,6 +10,7 @@ import UIKit
 
 class VFPetViewController: VFViewController {
     
+    var pet = VFPet()
     var petImage: UIImageView!
     var petNameLabel: UILabel!
     
@@ -103,12 +104,11 @@ class VFPetViewController: VFViewController {
 //        var y = height*0.18
         var y = petNameLabel.frame.size.height+height*0.05
         
-        var text = ["Species", "Weight"]
-        var icons = ["paw_icon.png", "email_icon.png"]
+        var text = ["Bulldog", "49 lbs"]
+        var icons = ["paw_icon.png", "weight_icon.png"]
         
         for i in 0..<text.count {
             let label = UILabel(frame: CGRect(x: x, y: y, width: dimenW, height: dimenH))
-            label.backgroundColor = .clearColor()
             label.text = text[i]
             label.textColor = .whiteColor()
             label.textAlignment = .Right
@@ -123,8 +123,8 @@ class VFPetViewController: VFViewController {
             x += width*0.50
         }
         
-        text = ["Vet", "Sex"]
-        icons = ["key_icon.png", "profile-icon.png"]
+        text = ["4/11/11", "Male"]
+        icons = ["DOB_icon.png", "sex_icon.png"]
         
         x = width*0.10
         let offset = height*0.50 - (49+height*0.05+dimenH)
@@ -132,10 +132,9 @@ class VFPetViewController: VFViewController {
         
         for i in 0..<text.count {
             let label = UILabel(frame: CGRect(x: x, y: y, width: dimenW, height: dimenH))
-            label.backgroundColor = .clearColor()
             label.text = text[i]
             label.textColor = .whiteColor()
-            label.textAlignment = .Center
+            label.textAlignment = .Right
             
             let icon = UIImageView(frame: CGRect(x: 0, y: 0, width: dimenH, height: dimenH))
             icon.image = UIImage(named: icons[i])
