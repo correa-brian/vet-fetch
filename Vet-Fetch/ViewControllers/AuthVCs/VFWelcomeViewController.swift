@@ -118,11 +118,11 @@ class VFWelcomeViewController: VFViewController, UIScrollViewDelegate {
     override func userLoggedIn(notification: NSNotification){
         super.userLoggedIn(notification)
         
-        if(VFViewController.currentUser.id == nil) {
-            return
+        if(VFViewController.currentUser.id != nil) {
+            self.showAccountVc()
         }
         
-        self.showAccountVc()
+        return
     }
     
     func animateButtons(){
