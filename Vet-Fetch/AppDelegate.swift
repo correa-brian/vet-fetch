@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = welcomeNavCtr
         
         self.window?.makeKeyAndVisible()
+
         self.checkCurrentUser()
         return true
     }
@@ -43,36 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 let notificationCenter = NSNotificationCenter.defaultCenter()
                 notificationCenter.postNotification(notification)
-                
-                self.fetchPets(currentUser.id!)
             }
         }
-        
-    }
-    
-    func fetchPets(userId: String){
-        
-        var petInfo = Dictionary<String, AnyObject>()
-        petInfo["ownerId"] = userId
-
-        APIManager.getRequest("/api/pet", params: petInfo, completion: { response in
-            
-            if let results = response["results"] as? Array<Dictionary<String, AnyObject>>{
-                for result in results {
-                    let pet = VFPet()
-                    pet.populate(result)
-                }
-                
-                let notification = NSNotification(
-                    name: Constants.kPetFetchNotification,
-                    object: nil,
-                    userInfo: ["pets": results]
-                )
-                
-                let notificationCenter = NSNotificationCenter.defaultCenter()
-                notificationCenter.postNotification(notification)
-            }
-        })
     }
 
     func applicationWillResignActive(application: UIApplication) {

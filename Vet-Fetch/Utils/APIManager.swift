@@ -64,11 +64,8 @@ class APIManager: NSObject {
                 if(completion != nil){
                     completion!(results: json)
                 }
-                    
             }
-            
-        }
-        
+        }        
     }
 
 }
