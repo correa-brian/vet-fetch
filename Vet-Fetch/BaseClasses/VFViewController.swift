@@ -27,21 +27,14 @@ class VFViewController: UIViewController, UIImagePickerControllerDelegate, UINav
                                        selector: #selector(VFViewController.userLoggedIn(_:)),
                                        name: Constants.kUserLoggedInNotification,
                                        object: nil)
-        
-        notificationCenter.addObserver(self,
-                              selector: #selector(VFViewController.petsFetched),
-                              name: Constants.kPetFetchNotification,
-                              object: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("BaseVc - viewDidLoad")
     }
     
     func userLoggedIn(notification: NSNotification){
-        print("userLoggedIn")
         if let user = notification.userInfo!["user"] as? Dictionary<String, AnyObject>{
             VFViewController.currentUser.populate(user)
         }
@@ -58,23 +51,29 @@ class VFViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         notificationCenter.postNotification(notificiation)
     }
     
-    func petsFetched(notification: NSNotification){
-        print("petsFetched:")
-//        if let results = notification.userInfo!["pets"] as? Array<Dictionary<String, AnyObject>>{
-//            for result in results {
-//                let pet = VFPet()
-//                pet.populate(result)
-//                VFViewController.pets.append(pet)
+//    func fetchPets(userId: String){
+//        var petInfo = Dictionary<String, AnyObject>()
+//        petInfo["ownerId"] = userId
+//        
+//        APIManager.getRequest("/api/pet", params: petInfo, completion: { response in
+//            
+//            if let results = response["results"] as? Array<Dictionary<String, AnyObject>>{
+//                for result in results {
+//                    let pet = VFPet()
+//                    pet.populate(result)
+//                    VFViewController.pets.append(pet)
+//                }
+//                
+//                print("Pets Returned: \(VFViewController.pets.count)")
 //            }
-//        }
-    }
+//        })
+//    }
     
     func exit(){
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     //MARK: - Camera Methods
-    
     func showCameraOptions() -> UIAlertController {
         let actionSheet = UIAlertController(title: "Select Photo Source", message: nil, preferredStyle: .ActionSheet)
         actionSheet.addAction(UIAlertAction(title: "Camera", style: .Default, handler: { action in
@@ -140,13 +139,11 @@ class VFViewController: UIViewController, UIImagePickerControllerDelegate, UINav
                             
                             print("Upload progress: \((totalBytesWritten * 100)/totalBytesExpectedToWrite) %");
             }
-        
         )
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-
     }
 
 }

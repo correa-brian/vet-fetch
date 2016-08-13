@@ -16,6 +16,8 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
     var btnsArray = ["Appointments", "Vet", "Insurance", "Learn More"]
     var bottomContainer: UIScrollView!
     var petManagerBtn: UIButton!
+    var petNameLabel: UILabel!
+    var petSummaryPhoto: UIImageView!
     
     //MARK: - Lifecycle Methods
     required init?(coder aDecoder: NSCoder){
@@ -58,21 +60,23 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         let dimen = CGFloat(height*0.3)
         var x = width*0.25-dimen*0.5
         
-        let petSummaryPhoto = UIImageView(frame: CGRect(x: x, y: padding, width: dimen, height: dimen))
-        petSummaryPhoto.backgroundColor = UIColor.redColor()
-        petSummaryPhoto.layer.borderWidth = 1
-        petSummaryPhoto.layer.cornerRadius = dimen*0.5
-        petSummaryPhoto.layer.borderColor = UIColor.clearColor().CGColor
-        tableHeader.addSubview(petSummaryPhoto)
+        self.petSummaryPhoto = UIImageView(frame: CGRect(x: x, y: padding, width: dimen, height: dimen))
+        self.petSummaryPhoto.backgroundColor = UIColor.redColor()
+        self.petSummaryPhoto.clipsToBounds = true
+        self.petSummaryPhoto.image = UIImage()
+        self.petSummaryPhoto.layer.cornerRadius = dimen*0.5
+        self.petSummaryPhoto.layer.borderColor = UIColor.clearColor().CGColor
+        self.petSummaryPhoto.layer.borderWidth = 1
+        tableHeader.addSubview(self.petSummaryPhoto)
         
         x = width*0.5
         
         let labelHeight = CGFloat(44)
         var y = petSummaryPhoto.frame.size.height*0.5
         
-        let petNameLabel = VFLabel(frame: CGRect(x: x, y: y, width: x, height: labelHeight))
-        petNameLabel.text = "Milkshake"
-        tableHeader.addSubview(petNameLabel)
+        self.petNameLabel = VFLabel(frame: CGRect(x: x, y: y, width: x, height: labelHeight))
+        self.petNameLabel.text = "Change Me"
+        tableHeader.addSubview(self.petNameLabel)
         
         y = tableHeader.frame.size.height-0.5
         
@@ -127,18 +131,16 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.animateButton()
+        print("viewDidLoad")
         
-        print("AccountVc User - \(VFViewController.currentUser.email)")
-        print("AccountVc Pets - \(VFViewController.pets)")
-        print("AccountVc Pets - \(VFViewController.pets.count)")
-
+        self.animateButton()
+        self.loadAccountPets()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        print(" Account Vc - viewWillAppear")
+        print("viewWillAppear")
         
         self.navigationController?.navigationBarHidden = true
         self.navigationController?.toolbarHidden = true
@@ -146,6 +148,58 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        print("viewDidAppear")
+    }
+    
+    func loadAccountPets(){
+        print("loadAccountPets")
+        
+        if(VFViewController.currentUser.id == nil){
+            return
+        }
+        
+        var petInfo = Dictionary<String, AnyObject>()
+        petInfo["ownerId"] = VFViewController.currentUser.id
+        
+        APIManager.getRequest("/api/pet", params: petInfo, completion: { response in
+            
+            if let results = response["results"] as? Array<Dictionary<String, AnyObject>>{
+                for result in results {
+                    let pet = VFPet()
+                    pet.populate(result)
+                    VFViewController.pets.append(pet)
+                }
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    if VFViewController.pets.count == 0 {
+                        return
+                    }
+                    
+                    print("Pets Returned Count: \(VFViewController.pets.count)")
+                    
+                    let pet: VFPet = VFViewController.pets[0]
+                    
+                    self.petNameLabel.text = pet.name
+                    
+                    if pet.thumbnailUrl.characters.count == 0 {
+                        return
+                    }
+
+                    if pet.thumbnailData != nil {
+                        self.petSummaryPhoto.image = pet.thumbnailData
+                        return
+                    }
+                    
+                    pet.fetchThumbnailImage({ image in
+                        dispatch_async(dispatch_get_main_queue(), {
+                            print("Fetching Thumbnail")
+                            self.petSummaryPhoto.image = image
+                        })
+                    })
+                })
+            }
+        })
     }
     
     
