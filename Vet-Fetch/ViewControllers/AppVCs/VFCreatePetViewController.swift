@@ -40,7 +40,7 @@ class VFCreatePetViewController: VFViewController, UITextFieldDelegate {
         let height = CGFloat(32)
         var y = CGFloat(Constants.origin_y)
         
-        let fieldNames = ["Name", "Breed", "Sex"]
+        let fieldNames = ["Name", "Breed", "Sex", "Weight", "Birthday"]
         
         for i in 0..<fieldNames.count {
             
@@ -50,9 +50,8 @@ class VFCreatePetViewController: VFViewController, UITextFieldDelegate {
             field.placeholder = fieldName
             field.textColor = .whiteColor()
             
-            let isPassword = (fieldName == "Password")
-            field.secureTextEntry = (isPassword)
-            field.returnKeyType = (isPassword) ? .Join : .Next
+            let isLast = (fieldName == "Birthday")
+            field.returnKeyType = (isLast) ? .Done : .Next
             
             view.addSubview(field)
             self.textFields.append(field)
@@ -188,14 +187,14 @@ class VFCreatePetViewController: VFViewController, UITextFieldDelegate {
                                             
                                             print("Printing within dispatch")
                                             
-//                                            let notificiation = NSNotification(
-//                                                name: Constants.kPetCreatedNotification,
-//                                                object: nil,
-//                                                userInfo: ["pet": pet]
-//                                            )
-//
-//                                            let notificationCenter = NSNotificationCenter.defaultCenter()
-//                                            notificationCenter.postNotification(notificiation)
+                                            let notificiation = NSNotification(
+                                                name: Constants.kPetFetchNotification,
+                                                object: nil,
+                                                userInfo: ["pet": pet]
+                                            )
+
+                                            let notificationCenter = NSNotificationCenter.defaultCenter()
+                                            notificationCenter.postNotification(notificiation)
                                             self.dismissViewControllerAnimated(true, completion: nil)
                                         })
                                     }
