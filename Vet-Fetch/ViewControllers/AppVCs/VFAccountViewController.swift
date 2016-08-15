@@ -18,6 +18,8 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
     var petManagerBtn: UIButton!
     var petNameLabel: UILabel!
     var petSummaryPhoto: UIImageView!
+    var petsArray = Array<VFPet>()
+    var petLabelArray = Array<UILabel>()
     
     //MARK: - Lifecycle Methods
     required init?(coder aDecoder: NSCoder){
@@ -28,6 +30,13 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
         self.edgesForExtendedLayout = .None
+        
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        
+        notificationCenter.addObserver(self,
+                                       selector: #selector(VFAccountViewController.loadAccountPets),
+                                       name: Constants.kPetFetchNotification,
+                                       object: nil)
     }
     
     override func loadView(){
@@ -89,10 +98,10 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         let tableBody = UIView(frame: CGRect(x: 0, y: y, width: width, height: height*0.40))
         self.bottomContainer.addSubview(tableBody)
         
-        let weightLabels = ["Age", "7", "54", "Weight"]
+        let labelText = ["Age", "7", "54", "Weight"]
         
-        for i in 0..<weightLabels.count {
-            let labelText = weightLabels[i]
+        for i in 0..<labelText.count {
+            let text = labelText[i]
             
             if i < 2{
                 x = CGFloat(i)*width*0.5
@@ -110,7 +119,8 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
             }
             
             let label = VFLabel(frame: CGRect(x: x, y: y, width: width*0.5, height: labelHeight))
-            label.text = labelText
+            label.text = text
+            self.petLabelArray.append(label)
             tableBody.addSubview(label)
         }
         
@@ -131,8 +141,6 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("viewDidLoad")
-        
         self.animateButton()
         self.loadAccountPets()
     }
@@ -140,16 +148,13 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        print("viewWillAppear")
-        
         self.navigationController?.navigationBarHidden = true
         self.navigationController?.toolbarHidden = true
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        print("viewDidAppear")
+
     }
     
     func loadAccountPets(){
@@ -165,10 +170,16 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         APIManager.getRequest("/api/pet", params: petInfo, completion: { response in
             
             if let results = response["results"] as? Array<Dictionary<String, AnyObject>>{
-                for result in results {
-                    let pet = VFPet()
-                    pet.populate(result)
-                    VFViewController.pets.append(pet)
+                if VFViewController.pets.count != results.count{
+                    self.petsArray.removeAll()
+                    
+                    for result in results {
+                        let pet = VFPet()
+                        pet.populate(result)
+                        self.petsArray.append(pet)
+                    }
+                    
+                    VFViewController.pets = self.petsArray
                 }
                 
                 dispatch_async(dispatch_get_main_queue(), {
@@ -176,11 +187,18 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
                         return
                     }
                     
-                    print("Pets Returned Count: \(VFViewController.pets.count)")
-                    
-                    let pet: VFPet = VFViewController.pets[0]
-                    
+                    let pet: VFPet = VFViewController.pets[3]
                     self.petNameLabel.text = pet.name
+                    
+                    print("Birthday: \(pet.birthday)")
+                    print("Weight: \(pet.weight)")
+                    
+                    let labelText = ["Birthday", pet.birthday, pet.weight, "Weights"]
+                    
+                    for i in 0..<self.petLabelArray.count {
+                        let text = labelText[i]
+                        self.petLabelArray[i].text = text
+                    }
                     
                     if pet.thumbnailUrl.characters.count == 0 {
                         return
@@ -192,10 +210,8 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
                     }
                     
                     pet.fetchThumbnailImage({ image in
-                        dispatch_async(dispatch_get_main_queue(), {
-                            print("Fetching Thumbnail")
-                            self.petSummaryPhoto.image = image
-                        })
+                        print("Fetching Thumbnail")
+                        self.petSummaryPhoto.image = image
                     })
                 })
             }
