@@ -31,12 +31,12 @@ class VFViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     func userLoggedIn(notification: NSNotification){
         if let user = notification.userInfo!["user"] as? Dictionary<String, AnyObject>{
             VFViewController.currentUser.populate(user)
+            self.fetchPets()
         }
     }
     
@@ -51,23 +51,30 @@ class VFViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         notificationCenter.postNotification(notificiation)
     }
     
-//    func fetchPets(userId: String){
-//        var petInfo = Dictionary<String, AnyObject>()
-//        petInfo["ownerId"] = userId
-//        
-//        APIManager.getRequest("/api/pet", params: petInfo, completion: { response in
-//            
-//            if let results = response["results"] as? Array<Dictionary<String, AnyObject>>{
-//                for result in results {
-//                    let pet = VFPet()
-//                    pet.populate(result)
-//                    VFViewController.pets.append(pet)
-//                }
-//                
-//                print("Pets Returned: \(VFViewController.pets.count)")
-//            }
-//        })
-//    }
+    func fetchPets(){
+        
+        if(VFViewController.currentUser.id == nil){
+            return
+        }
+        
+        var petInfo = Dictionary<String, AnyObject>()
+        petInfo["ownerId"] = VFViewController.currentUser.id
+        
+        APIManager.getRequest("/api/pet", params: petInfo, completion: { response in
+            
+            if let results = response["results"] as? Array<Dictionary<String, AnyObject>>{
+                if VFViewController.pets.count != results.count{
+                    VFViewController.pets.removeAll()
+                
+                    for result in results {
+                        let pet = VFPet()
+                        pet.populate(result)
+                        VFViewController.pets.append(pet)
+                    }
+                }
+            }
+        })
+    }
     
     func exit(){
         self.dismissViewControllerAnimated(true, completion: nil)
