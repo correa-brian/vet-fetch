@@ -13,13 +13,16 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
     //MARK: - Properties
     
     var collectionView: UICollectionView!
-    var btnsArray = ["Appointments", "Vet", "Insurance", "Learn More"]
+    var btnsArray = ["Account", "Vet", "Insurance", "Learn More"]
     var bottomContainer: UIScrollView!
     var petManagerBtn: UIButton!
-    var petNameLabel: UILabel!
-    var petSummaryPhoto: UIImageView!
+    
+    var pet: VFPet!
     var petsArray = Array<VFPet>()
+    
+    var petNameLabel: UILabel!
     var petLabelArray = Array<UILabel>()
+    var petSummaryPhoto: UIImageView!
     
     //MARK: - Lifecycle Methods
     required init?(coder aDecoder: NSCoder){
@@ -98,7 +101,7 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         let tableBody = UIView(frame: CGRect(x: 0, y: y, width: width, height: height*0.40))
         self.bottomContainer.addSubview(tableBody)
         
-        let labelText = ["Age", "7", "54", "Weight"]
+        let labelText = ["Birthday", "7", "54", "Weight"]
         
         for i in 0..<labelText.count {
             let text = labelText[i]
@@ -142,82 +145,55 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         super.viewDidLoad()
         
         self.animateButton()
-        self.loadAccountPets()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+    
         self.navigationController?.navigationBarHidden = true
         self.navigationController?.toolbarHidden = true
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-
+        
+        self.loadAccountPets()
     }
     
     func loadAccountPets(){
-        print("loadAccountPets")
         
-        if(VFViewController.currentUser.id == nil){
-            return
-        }
+        print("loadAccountPets: \(VFViewController.pets.count)")
         
-        var petInfo = Dictionary<String, AnyObject>()
-        petInfo["ownerId"] = VFViewController.currentUser.id
-        
-        APIManager.getRequest("/api/pet", params: petInfo, completion: { response in
+            self.petsArray = VFViewController.pets
             
-            if let results = response["results"] as? Array<Dictionary<String, AnyObject>>{
-                if VFViewController.pets.count != results.count{
-                    self.petsArray.removeAll()
-                    
-                    for result in results {
-                        let pet = VFPet()
-                        pet.populate(result)
-                        self.petsArray.append(pet)
-                    }
-                    
-                    VFViewController.pets = self.petsArray
-                }
-                
-                dispatch_async(dispatch_get_main_queue(), {
-                    if VFViewController.pets.count == 0 {
-                        return
-                    }
-                    
-                    let pet: VFPet = VFViewController.pets[3]
-                    self.petNameLabel.text = pet.name
-                    
-                    print("Birthday: \(pet.birthday)")
-                    print("Weight: \(pet.weight)")
-                    
-                    let labelText = ["Birthday", pet.birthday, pet.weight, "Weights"]
-                    
-                    for i in 0..<self.petLabelArray.count {
-                        let text = labelText[i]
-                        self.petLabelArray[i].text = text
-                    }
-                    
-                    if pet.thumbnailUrl.characters.count == 0 {
-                        return
-                    }
-
-                    if pet.thumbnailData != nil {
-                        self.petSummaryPhoto.image = pet.thumbnailData
-                        return
-                    }
-                    
-                    pet.fetchThumbnailImage({ image in
-                        print("Fetching Thumbnail")
-                        self.petSummaryPhoto.image = image
-                    })
-                })
+            if self.petsArray.count == 0 {
+                return
             }
-        })
+            
+            self.pet = self.petsArray.reverse()[0]
+            self.petNameLabel.text = self.pet.name
+            
+            let labelText = ["Birthday", self.pet.birthday, self.pet.weight, "Weight"]
+            
+            for i in 0..<self.petLabelArray.count {
+                let text = labelText[i]
+                self.petLabelArray[i].text = text
+            }
+            
+            if self.pet.thumbnailUrl.characters.count == 0 {
+                return
+            }
+            
+            if self.pet.thumbnailData != nil {
+                self.petSummaryPhoto.image = self.pet.thumbnailData
+                return
+            }
+            
+            self.pet.fetchThumbnailImage({ image in
+                print("Fetching Thumbnail")
+                self.petSummaryPhoto.image = image
+            })
     }
-    
     
     func animateButton(){
         
@@ -243,11 +219,12 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         
         let petVc = VFPetViewController()
         petVc.tabBarItem = UITabBarItem(title: "Pet", image: UIImage(named:"paw_icon.png"), tag: 0)
+        petVc.pet = self.pet
         
-        let apptVc = VFAppointmentViewController()
-        apptVc.tabBarItem = UITabBarItem(title: "Medical", image: UIImage(named:"email_icon.png"), tag: 1)
+        let medicalVc = VFMedicalRecordsViewController()
+        medicalVc.tabBarItem = UITabBarItem(title: "Medical", image: UIImage(named:"email_icon.png"), tag: 1)
         
-        let controllers = [petVc, apptVc]
+        let controllers = [petVc, medicalVc]
         let tab = UITabBarController()
         tab.viewControllers = controllers
     
@@ -257,9 +234,8 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
     func setAppropriateVc(sender: String){
         switch sender {
             
-        case "Appointments":
-            let appointmentVc = VFAppointmentViewController()
-            self.navigationController?.pushViewController(appointmentVc, animated: true)
+        case "Account":
+            print("Account")
             
         case "Vet":
             print("Vet")

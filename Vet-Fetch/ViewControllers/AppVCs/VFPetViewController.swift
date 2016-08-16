@@ -58,7 +58,7 @@ class VFPetViewController: VFViewController {
         petNameLabel.textColor = .whiteColor()
         petNameLabel.textAlignment = .Right
         petNameLabel.font = UIFont(name: "PingFangTC-Medium" , size: 30)
-        petNameLabel.text = "Milkshake"
+        petNameLabel.text = pet.name
         self.container.addSubview(petNameLabel)
         
         var x = petNameLabel.frame.size.width+20
@@ -83,7 +83,7 @@ class VFPetViewController: VFViewController {
         petBreedLabel.textColor = .orangeColor()
         petBreedLabel.textAlignment = .Left
         petBreedLabel.font = UIFont(name: "PingFangTC-Medium" , size: 15)
-        petBreedLabel.text = "Bulldog"
+        petBreedLabel.text = pet.breed
         self.container.addSubview(petBreedLabel)
         
         let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
@@ -101,10 +101,9 @@ class VFPetViewController: VFViewController {
         let dimenW = CGFloat(100)
         let dimenH = CGFloat(36)
         x = width*0.10
-//        var y = height*0.18
         var y = petNameLabel.frame.size.height+height*0.05
         
-        var text = ["Bulldog", "49 lbs"]
+        var text = [pet.breed, pet.weight]
         var icons = ["paw_icon.png", "weight_icon.png"]
         
         for i in 0..<text.count {
@@ -123,7 +122,7 @@ class VFPetViewController: VFViewController {
             x += width*0.50
         }
         
-        text = ["4/11/11", "Male"]
+        text = [pet.birthday, pet.sex]
         icons = ["DOB_icon.png", "sex_icon.png"]
         
         x = width*0.10
@@ -152,6 +151,20 @@ class VFPetViewController: VFViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if pet.imageUrl.characters.count == 0 {
+            return
+        }
+        
+        if pet.imageData != nil {
+            self.petImage.image = pet.imageData
+            return
+        }
+        
+        pet.fetchOriginalImage({ image in
+            print("Fetching Image")
+            self.petImage.image = image
+        })
     }
     
     override func viewWillAppear(animated: Bool) {

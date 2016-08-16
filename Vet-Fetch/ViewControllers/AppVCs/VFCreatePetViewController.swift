@@ -167,39 +167,25 @@ class VFCreatePetViewController: VFViewController, UITextFieldDelegate {
     }
     
     func createPet(petInfo: Dictionary<String, AnyObject>){
-        print("CreatePet")
-        
         if(self.selectedImage == nil){
             APIManager.postRequest("/api/pet",
                                    params: self.petInfo,
                                    completion: { error, response in
 
-                                    print("Printing my response: \(response)")
-
                                     if let result = response!["result"] as? Dictionary<String, AnyObject>{
                                         
+                                        self.fetchPets()
                                         print("Result: \(result)")
 
                                         let pet = VFPet()
                                         pet.populate(result)
 
                                         dispatch_async(dispatch_get_main_queue(), {
-                                            
-                                            print("Printing within dispatch")
-                                            
-                                            let notificiation = NSNotification(
-                                                name: Constants.kPetFetchNotification,
-                                                object: nil,
-                                                userInfo: ["pet": pet]
-                                            )
-
-                                            let notificationCenter = NSNotificationCenter.defaultCenter()
-                                            notificationCenter.postNotification(notificiation)
+                                        
                                             self.dismissViewControllerAnimated(true, completion: nil)
                                         })
                                     }
             })
-            
             return
         }
         

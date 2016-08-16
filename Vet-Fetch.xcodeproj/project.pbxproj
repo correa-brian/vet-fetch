@@ -24,6 +24,7 @@
 		D3AD90151D41250A004703D4 /* email_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AD90141D41250A004703D4 /* email_icon@2x.png */; };
 		D3AD901B1D413B34004703D4 /* key_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AD901A1D413B34004703D4 /* key_icon@2x.png */; };
 		D3AD901D1D413B72004703D4 /* cancel_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AD901C1D413B72004703D4 /* cancel_icon@2x.png */; };
+		D3B377871D6383920066A40E /* VFMedicalRecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B377861D6383920066A40E /* VFMedicalRecordsViewController.swift */; };
 		D3CACFD11D5541E500ECD725 /* VFVetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CACFD01D5541E400ECD725 /* VFVetViewController.swift */; };
 		D3D291FB1D5103E800548BB5 /* VFLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D291FA1D5103E800548BB5 /* VFLabel.swift */; };
 		D3D292011D51411100548BB5 /* add_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3D292001D51411100548BB5 /* add_icon@2x.png */; };
@@ -32,7 +33,6 @@
 		D3EF8A0B1D5A305400FCE838 /* VFPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EF8A0A1D5A305400FCE838 /* VFPet.swift */; };
 		D3EF8A111D5A324C00FCE838 /* VFCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EF8A101D5A324C00FCE838 /* VFCollectionViewFlowLayout.swift */; };
 		D3EF8A131D5A328800FCE838 /* VFCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EF8A121D5A328800FCE838 /* VFCollectionViewCell.swift */; };
-		D3EF8A151D5A32F900FCE838 /* VFAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EF8A141D5A32F900FCE838 /* VFAppointmentViewController.swift */; };
 		D3EF8A171D5A334300FCE838 /* VFPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EF8A161D5A334300FCE838 /* VFPetViewController.swift */; };
 		D3EF8A191D5A340300FCE838 /* VFWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EF8A181D5A340300FCE838 /* VFWelcomeViewController.swift */; };
 		D3EF8A1B1D5A347500FCE838 /* VFRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EF8A1A1D5A347500FCE838 /* VFRegisterViewController.swift */; };
@@ -65,6 +65,7 @@
 		D3AD90141D41250A004703D4 /* email_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "email_icon@2x.png"; sourceTree = "<group>"; };
 		D3AD901A1D413B34004703D4 /* key_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "key_icon@2x.png"; sourceTree = "<group>"; };
 		D3AD901C1D413B72004703D4 /* cancel_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel_icon@2x.png"; sourceTree = "<group>"; };
+		D3B377861D6383920066A40E /* VFMedicalRecordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFMedicalRecordsViewController.swift; sourceTree = "<group>"; };
 		D3CACFD01D5541E400ECD725 /* VFVetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFVetViewController.swift; sourceTree = "<group>"; };
 		D3D291FA1D5103E800548BB5 /* VFLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFLabel.swift; sourceTree = "<group>"; };
 		D3D292001D51411100548BB5 /* add_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_icon@2x.png"; sourceTree = "<group>"; };
@@ -73,7 +74,6 @@
 		D3EF8A0A1D5A305400FCE838 /* VFPet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFPet.swift; sourceTree = "<group>"; };
 		D3EF8A101D5A324C00FCE838 /* VFCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		D3EF8A121D5A328800FCE838 /* VFCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFCollectionViewCell.swift; sourceTree = "<group>"; };
-		D3EF8A141D5A32F900FCE838 /* VFAppointmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFAppointmentViewController.swift; sourceTree = "<group>"; };
 		D3EF8A161D5A334300FCE838 /* VFPetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFPetViewController.swift; sourceTree = "<group>"; };
 		D3EF8A181D5A340300FCE838 /* VFWelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFWelcomeViewController.swift; sourceTree = "<group>"; };
 		D3EF8A1A1D5A347500FCE838 /* VFRegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFRegisterViewController.swift; sourceTree = "<group>"; };
@@ -197,9 +197,9 @@
 			children = (
 				D36117D31D4BBA08007078AB /* VFCreatePetViewController.swift */,
 				D3CACFD01D5541E400ECD725 /* VFVetViewController.swift */,
-				D3EF8A141D5A32F900FCE838 /* VFAppointmentViewController.swift */,
 				D3EF8A161D5A334300FCE838 /* VFPetViewController.swift */,
 				D3EF8A1E1D5A351E00FCE838 /* VFAccountViewController.swift */,
+				D3B377861D6383920066A40E /* VFMedicalRecordsViewController.swift */,
 			);
 			path = AppVCs;
 			sourceTree = "<group>";
@@ -372,6 +372,7 @@
 				D3107E6F1D403DD7004A27B7 /* VFViewController.swift in Sources */,
 				D3EF8A171D5A334300FCE838 /* VFPetViewController.swift in Sources */,
 				D3EF8A0B1D5A305400FCE838 /* VFPet.swift in Sources */,
+				D3B377871D6383920066A40E /* VFMedicalRecordsViewController.swift in Sources */,
 				D3CACFD11D5541E500ECD725 /* VFVetViewController.swift in Sources */,
 				D3EF8A091D5A300E00FCE838 /* VFProfile.swift in Sources */,
 				D338CA931D401CBE0086C6E5 /* AppDelegate.swift in Sources */,
@@ -382,7 +383,6 @@
 				D3EF8A1B1D5A347500FCE838 /* VFRegisterViewController.swift in Sources */,
 				D3AD90121D4123D1004703D4 /* VFTextField.swift in Sources */,
 				D3EF8A1F1D5A351E00FCE838 /* VFAccountViewController.swift in Sources */,
-				D3EF8A151D5A32F900FCE838 /* VFAppointmentViewController.swift in Sources */,
 				D3AD90101D41209B004703D4 /* Config.swift in Sources */,
 				D3879AAF1D4142BD002AE3FA /* APIManager.swift in Sources */,
 			);
