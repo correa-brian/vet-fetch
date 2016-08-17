@@ -171,6 +171,7 @@ class VFPetViewController: VFViewController {
         super.viewWillAppear(animated)
         
         self.navigationController?.navigationBarHidden = false
+        self.navigationController?.navigationBar.backgroundColor = .clearColor()
         self.navigationController?.navigationBar.tintColor = .whiteColor()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()

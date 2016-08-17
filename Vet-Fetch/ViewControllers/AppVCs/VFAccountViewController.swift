@@ -217,6 +217,18 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
     
     func managePet(sender: UIButton){
         
+        print("Pets \(self.petsArray.count)")
+        
+        if self.petsArray.count == 0{
+            let msg = "You haven't add any pets"
+            let alert = UIAlertController(title: "No Pets",
+                                          message: msg,
+                                          preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            return
+        }
+        
         let petVc = VFPetViewController()
         petVc.tabBarItem = UITabBarItem(title: "Pet", image: UIImage(named:"paw_icon.png"), tag: 0)
         petVc.pet = self.pet
