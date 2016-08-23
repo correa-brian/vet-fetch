@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func checkCurrentUser(){
         
         APIManager.checkCurrentUser { response in
-            if let currentUserInfo = response["currentUser"] as? Dictionary<String, AnyObject>{
+            if let currentUserInfo = response["user"] as? Dictionary<String, AnyObject>{
                 
                 let currentUser = VFProfile()
                 currentUser.populate(currentUserInfo)
@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 )
                 
                 let notificationCenter = NSNotificationCenter.defaultCenter()
-                notificationCenter.postNotification(notification)
+                notificationCenter.postNotification(notification)                
             }
         }
     }
