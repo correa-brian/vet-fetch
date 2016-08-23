@@ -11,7 +11,7 @@ import Foundation
 struct Constants {
     
 //    static let baseUrl = "http:localhost:3000"
-    static let baseUrl = "https://vet-fetch-test.herokuapp.com"
+    static let baseUrl = "https://vet-fetch.herokuapp.com"
     
     static let kUserLoggedInNotification = "UserLoggedInNotification"
     static let kPetFetchNotification = "PetFetchNotification"
