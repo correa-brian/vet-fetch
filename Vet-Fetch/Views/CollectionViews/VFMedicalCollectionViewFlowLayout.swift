@@ -16,13 +16,8 @@ class VFMedicalCollectionViewFlowLayout: UICollectionViewFlowLayout {
     
     override init(){
         super.init()
-        
-        let frame = UIScreen.mainScreen().bounds
-    
-        let dimension = frame.size.width
-        
-        self.itemSize = CGSizeMake(dimension, frame.size.height*0.49)
-        self.minimumInteritemSpacing = 0 //horizontal gape between columns
+
+        self.minimumInteritemSpacing = 0 //horizontal gap between columns
         self.minimumLineSpacing = 0 //vertical gap between rows
         self.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
         self.scrollDirection = .Horizontal
