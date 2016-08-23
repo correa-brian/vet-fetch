@@ -15,7 +15,6 @@ class VFPet: NSObject {
     var name: String!
     var ownerId: String!
     var sex: String!
-    var age: String!
     var breed: String!
     var birthday: String!
     var weight: String!
@@ -28,7 +27,7 @@ class VFPet: NSObject {
     var isFetching = false
     
     func populate(petInfo: Dictionary<String,AnyObject>){
-        let keys = ["id", "name", "ownerId", "sex", "age", "breed", "birthday", "weight"]
+        let keys = ["id", "name", "ownerId", "sex", "breed", "birthday", "weight"]
         
         for key in keys {
             let value = petInfo[key]
