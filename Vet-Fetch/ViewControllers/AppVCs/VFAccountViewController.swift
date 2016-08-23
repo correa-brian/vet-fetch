@@ -68,6 +68,11 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         let tableHeader = UIView(frame: CGRect(x: 0, y: 0, width: width, height: height*0.45))
         self.bottomContainer.addSubview(tableHeader)
         
+        let btn = UIButton(frame: CGRect(x: width-44, y: 0, width: 44, height: 44))
+        btn.backgroundColor = .redColor()
+        btn.addTarget(self, action: #selector(VFAccountViewController.createPet(_:)), forControlEvents: .TouchUpInside)
+        tableHeader.addSubview(btn)
+        
         let padding = CGFloat(15)
         let dimen = CGFloat(height*0.3)
         var x = width*0.25-dimen*0.5
@@ -215,6 +220,11 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
                                    completion: nil)
     }
     
+    func createPet(btn: UIButton){
+        let addPetVc = VFCreatePetViewController()
+        self.presentViewController(addPetVc, animated: true, completion: nil)
+    }
+    
     func managePet(sender: UIButton){
         
         print("Pets \(self.petsArray.count)")
@@ -276,9 +286,7 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cellId = "cellId"
-        
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath) as! VFCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(VFCollectionViewCell.cellId, forIndexPath: indexPath) as! VFCollectionViewCell
         
         self.configureCell(cell, indexPath: indexPath)
         
