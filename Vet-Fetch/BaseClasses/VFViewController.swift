@@ -34,6 +34,7 @@ class VFViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     }
     
     func userLoggedIn(notification: NSNotification){
+        
         if let user = notification.userInfo!["user"] as? Dictionary<String, AnyObject>{
             VFViewController.currentUser.populate(user)
             self.fetchPets()
