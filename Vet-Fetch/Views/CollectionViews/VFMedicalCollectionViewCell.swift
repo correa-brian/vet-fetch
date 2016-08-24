@@ -12,6 +12,11 @@ class VFMedicalCollectionViewCell: UICollectionViewCell, UITableViewDelegate, UI
     
     static var cellId = "cellId"
     var recordsTable: UITableView!
+    var medicationArray = ["Tacrylimus", "Rimidayl", "Heart Worm", "Tick Chewable"]
+    var vaccineArray = ["Rabies"]
+    var allergyArray = ["Chocolate", "Dust"]
+    
+    var tableArray = Array<Array<String>>()
     
     required init?(coder aDecoder: NSCoder){
         super.init(coder: aDecoder)
@@ -36,25 +41,7 @@ class VFMedicalCollectionViewCell: UICollectionViewCell, UITableViewDelegate, UI
         self.layer.borderColor = white.CGColor
     }
     
-    func checkSection(section: Int) -> Int {
-        
-        var count: Int!
-        
-        if section == 0 {
-            count = 11
-        }
-        
-        if section == 1 {
-            count = 21
-        }
-        
-        if section == 2 {
-            count = 5
-        }
-        
-        return count
-    }
-    
+    //MARK: - TableView Delegates
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         let tag = tableView.tag
@@ -64,9 +51,41 @@ class VFMedicalCollectionViewCell: UICollectionViewCell, UITableViewDelegate, UI
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(VFMedicalRecordTableViewCell.cellId, forIndexPath: indexPath) as! VFMedicalRecordTableViewCell
-        cell.textLabel?.text = "\(indexPath.row)"
         
+        self.congifureCell(cell, indexPath: indexPath)
         return cell
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return VFMedicalRecordTableViewCell.defaultHeight
+    }
+    
+    func checkSection(section: Int) -> Int {
+        
+        var count: Int!
+        self.tableArray.append(self.medicationArray)
+        self.tableArray.append(self.vaccineArray)
+        self.tableArray.append(self.allergyArray)
+        
+        if section == 0 {
+            count = self.medicationArray.count
+        }
+        
+        if section == 1 {
+            count = self.vaccineArray.count
+        }
+        
+        if section == 2 {
+            count = self.allergyArray.count
+        }
+        
+        return count
+    }
+    
+    func congifureCell(cell: VFMedicalRecordTableViewCell, indexPath: NSIndexPath){
+        
+        cell.descriptionLabel.text = self.tableArray[self.recordsTable.tag][indexPath.row]
+        cell.dateLabel.text = "8/8/16"
     }
 
 }
