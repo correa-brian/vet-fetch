@@ -56,12 +56,10 @@ class VFMedicalRecordsViewController: VFViewController, UICollectionViewDelegate
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         self.collectionView.registerClass(VFMedicalCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "cellId")
-        self.collectionView.pagingEnabled = false
-        self.collectionView.backgroundColor = .yellowColor()
+        self.collectionView.pagingEnabled = true
         self.collectionView.showsHorizontalScrollIndicator = false
         
         view.addSubview(self.collectionView)
-        
         self.view = view
     }
 
@@ -110,32 +108,24 @@ class VFMedicalRecordsViewController: VFViewController, UICollectionViewDelegate
                                         btn.backgroundColor = .purpleColor()
             })
         }
-        
     }
     
     
     //MARK: - CollectionView Delegates
-    func configureCell(cell: VFMedicalCollectionViewCell, indexPath :NSIndexPath){
-//        
-//        let labels = ["Medication", "Vaccines", "Allergies"]
-//        
-//        let text = labels[indexPath.row]
-//        cell.cellLabel.text = text
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 3
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 1
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-//        let cellId = "cellId"
-        
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(VFMedicalCollectionViewCell.cellId, forIndexPath: indexPath) as! VFMedicalCollectionViewCell
         
-        print("Cell: \(indexPath.row)")
-//        self.configureCell(cell, indexPath: indexPath)
-//        cell.cellLabel.text = ("\(indexPath.row)")
+        self.configureCell(cell, indexPath: indexPath)
+
         return cell
     }
     
@@ -145,6 +135,12 @@ class VFMedicalRecordsViewController: VFViewController, UICollectionViewDelegate
         let height = self.collectionView.frame.size.height
     
         return CGSize(width: width, height: height)
+    }
+    
+    func configureCell(cell: VFMedicalCollectionViewCell, indexPath: NSIndexPath){
+        
+        cell.recordsTable.tag = indexPath.section
+        cell.recordsTable.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
