@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D3018DC11D6E39860000D664 /* pencil_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3018DC01D6E39860000D664 /* pencil_icon@2x.png */; };
 		D3107E6F1D403DD7004A27B7 /* VFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3107E6E1D403DD7004A27B7 /* VFViewController.swift */; };
 		D315B20A1D5CD35300736945 /* weight_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D315B2091D5CD35300736945 /* weight_icon@2x.png */; };
 		D315B20C1D5CD35B00736945 /* DOB_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D315B20B1D5CD35B00736945 /* DOB_icon@2x.png */; };
@@ -49,6 +50,7 @@
 		45A2B292C0660E649E65F126 /* Pods_Vet_Fetch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vet_Fetch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA73D8B71EB05B52515E1000 /* Pods-Vet-Fetch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vet-Fetch.release.xcconfig"; path = "Pods/Target Support Files/Pods-Vet-Fetch/Pods-Vet-Fetch.release.xcconfig"; sourceTree = "<group>"; };
 		C53BAD2615991B93DA6F6CAC /* Pods-Vet-Fetch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vet-Fetch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Vet-Fetch/Pods-Vet-Fetch.debug.xcconfig"; sourceTree = "<group>"; };
+		D3018DC01D6E39860000D664 /* pencil_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pencil_icon@2x.png"; sourceTree = "<group>"; };
 		D3107E6E1D403DD7004A27B7 /* VFViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFViewController.swift; sourceTree = "<group>"; };
 		D315B2091D5CD35300736945 /* weight_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weight_icon@2x.png"; sourceTree = "<group>"; };
 		D315B20B1D5CD35B00736945 /* DOB_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DOB_icon@2x.png"; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				D3AD90141D41250A004703D4 /* email_icon@2x.png */,
 				D3AD901A1D413B34004703D4 /* key_icon@2x.png */,
 				D3EF8A241D5BCCF400FCE838 /* paw_icon@2x.png */,
+				D3018DC01D6E39860000D664 /* pencil_icon@2x.png */,
 				D3D292001D51411100548BB5 /* add_icon@2x.png */,
 				D315B2111D5CDC0600736945 /* profile_icon@2x.png */,
 				D315B20B1D5CD35B00736945 /* DOB_icon@2x.png */,
@@ -322,6 +325,7 @@
 				D3EF8A251D5BCCF400FCE838 /* paw_icon@2x.png in Resources */,
 				D3AD90041D40592D004703D4 /* account_background@2x.png in Resources */,
 				D3AD900A1D405C5B004703D4 /* account_background3@2x.png in Resources */,
+				D3018DC11D6E39860000D664 /* pencil_icon@2x.png in Resources */,
 				D3AD901D1D413B72004703D4 /* cancel_icon@2x.png in Resources */,
 				D3AD901B1D413B34004703D4 /* key_icon@2x.png in Resources */,
 				D338CA9A1D401CBE0086C6E5 /* Assets.xcassets in Resources */,

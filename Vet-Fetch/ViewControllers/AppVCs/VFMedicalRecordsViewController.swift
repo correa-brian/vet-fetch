@@ -89,12 +89,12 @@ class VFMedicalRecordsViewController: VFViewController, UICollectionViewDelegate
         
         if btn.titleLabel?.text == "Vaccines"{
             bool = true
-            self.collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: 1, inSection: 0), atScrollPosition: .CenteredHorizontally, animated: bool)
+            self.collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: 0, inSection: 1), atScrollPosition: .CenteredHorizontally, animated: bool)
         }
         
         if btn.titleLabel?.text == "Allergies"{
             bool = true
-            self.collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: 2, inSection: 0), atScrollPosition: .CenteredHorizontally, animated: bool)
+            self.collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: 0, inSection: 2), atScrollPosition: .CenteredHorizontally, animated: bool)
         }
         
         if bool == true {
@@ -125,7 +125,6 @@ class VFMedicalRecordsViewController: VFViewController, UICollectionViewDelegate
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(VFMedicalCollectionViewCell.cellId, forIndexPath: indexPath) as! VFMedicalCollectionViewCell
         
         self.configureCell(cell, indexPath: indexPath)
-
         return cell
     }
     
@@ -139,8 +138,20 @@ class VFMedicalRecordsViewController: VFViewController, UICollectionViewDelegate
     
     func configureCell(cell: VFMedicalCollectionViewCell, indexPath: NSIndexPath){
         
-        cell.recordsTable.tag = indexPath.section
-        cell.recordsTable.reloadData()
+        let section = indexPath.section
+        cell.recordsTable.tag = section
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            cell.recordsTable.reloadData()
+            
+            let lastIndexPath = NSIndexPath(forItem: 0, inSection: 0)
+            cell.recordsTable.scrollToRowAtIndexPath(
+                lastIndexPath,
+                atScrollPosition: .Top,
+                animated: true
+            )
+        })
+        
     }
 
     override func didReceiveMemoryWarning() {
