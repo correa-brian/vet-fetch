@@ -22,7 +22,6 @@ class VFViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
      
         let notificationCenter = NSNotificationCenter.defaultCenter()
-        
         notificationCenter.addObserver(self,
                                        selector: #selector(VFViewController.userLoggedIn(_:)),
                                        name: Constants.kUserLoggedInNotification,
@@ -85,14 +84,12 @@ class VFViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     func showCameraOptions() -> UIAlertController {
         let actionSheet = UIAlertController(title: "Select Photo Source", message: nil, preferredStyle: .ActionSheet)
         actionSheet.addAction(UIAlertAction(title: "Camera", style: .Default, handler: { action in
-            print("Select Camera: \(action.title)")
             dispatch_async(dispatch_get_main_queue(), {
                 self.launchPhotoPicker(.Camera)
             })
         }))
         
         actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .Default, handler: { action in
-            print("Select Camera: \(action.title)")
             dispatch_async(dispatch_get_main_queue(), {
                 self.launchPhotoPicker(.PhotoLibrary)
             })
@@ -118,7 +115,6 @@ class VFViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         
         let clouder = CLCloudinary(url: "cloudinary://737644983836975:_cW4jL3Izw3M6YmvHES_hBpZ32E@hajatfs0y")
         let forUpload = UIImageJPEGRepresentation(image, 0.5)
-        
         let uploader = CLUploader(clouder, delegate: self)
         
         uploader.upload(forUpload, options: nil, withCompletion: { (dataDictionary: [NSObject: AnyObject]!, errorResult:String!, code:Int, context: AnyObject!) -> Void in
