@@ -118,7 +118,7 @@ class VFWelcomeViewController: VFViewController, UIScrollViewDelegate {
     override func userLoggedIn(notification: NSNotification){
         super.userLoggedIn(notification)
         
-        if(VFViewController.currentUser.id != nil) {
+        if VFViewController.currentUser.id != nil {
             self.showAccountVc()
         }
         
@@ -152,12 +152,12 @@ class VFWelcomeViewController: VFViewController, UIScrollViewDelegate {
         
         let buttonTitle = sender.titleLabel?.text?.lowercaseString
         
-        if(buttonTitle == "already have an account? sign in"){
+        if buttonTitle == "already have an account? sign in" {
             let loginVc = VFLoginViewController()
             self.presentViewController(loginVc, animated: true, completion: nil)
         }
         
-        if(buttonTitle == "join with email"){
+        if buttonTitle == "join with email" {
             let registerVc = VFRegisterViewController()
             self.presentViewController(registerVc, animated: true, completion: nil)
         }

@@ -70,7 +70,7 @@ class VFLoginViewController: VFViewController, UITextFieldDelegate {
         super.exit()
         
         for textField in self.textFields {
-            if (textField.isFirstResponder()){
+            if textField.isFirstResponder() {
                 textField.resignFirstResponder()
                 break
             }
@@ -83,12 +83,12 @@ class VFLoginViewController: VFViewController, UITextFieldDelegate {
         
         let index = self.textFields.indexOf(textField)!
         
-        if(index == self.textFields.count-1){
+        if index == self.textFields.count-1 {
             var missingValue = ""
             var profileInfo = Dictionary<String, AnyObject>()
             
             for textField in self.textFields{
-                if(textField.text?.characters.count == 0){
+                if textField.text?.characters.count == 0 {
                     missingValue = textField.placeholder!
                     break
                 }
@@ -96,7 +96,7 @@ class VFLoginViewController: VFViewController, UITextFieldDelegate {
                 profileInfo[textField.placeholder!.lowercaseString] = textField.text!
             }
             
-            if(missingValue.characters.count > 0){
+            if missingValue.characters.count > 0 {
                 print("Missing Value")
                 
                 let msg = "You forgot your "+missingValue
@@ -114,7 +114,7 @@ class VFLoginViewController: VFViewController, UITextFieldDelegate {
                                    params: profileInfo,
                                    completion: { error, response in
                                     
-                                    if (error != nil){
+                                    if error != nil {
                                         let errorObj = error?.userInfo
                                         
                                         let errorMsg = errorObj!["message"] as! String

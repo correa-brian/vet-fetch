@@ -69,7 +69,7 @@ class VFRegisterViewController: VFViewController, UITextFieldDelegate {
         super.exit()
         
         for textField in self.textFields {
-            if (textField.isFirstResponder()){
+            if textField.isFirstResponder() {
                 textField.resignFirstResponder()
                 break
             }
@@ -81,14 +81,14 @@ class VFRegisterViewController: VFViewController, UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         
         let index = self.textFields.indexOf(textField)!
-        if(index == self.textFields.count-1){
+        if index == self.textFields.count-1 {
             let postKeys = ["firstName","lastName", "email", "password"]
             var missingValue = ""
             var profileInfo = Dictionary<String, AnyObject>()
             
             for i in 0..<self.textFields.count{
                 let textField = self.textFields[i]
-                if(textField.text?.characters.count == 0){
+                if textField.text?.characters.count == 0 {
                     missingValue = textField.placeholder!
                     break
                 }
@@ -96,7 +96,7 @@ class VFRegisterViewController: VFViewController, UITextFieldDelegate {
                 profileInfo[postKeys[i]] = textField.text
             }
             
-            if(missingValue.characters.count > 0){
+            if missingValue.characters.count > 0 {
                 print("Missing Value")
                 
                 let msg = "You forgot your "+missingValue
