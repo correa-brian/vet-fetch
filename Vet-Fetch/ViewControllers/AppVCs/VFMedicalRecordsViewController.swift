@@ -10,6 +10,7 @@ import UIKit
 
 class VFMedicalRecordsViewController: VFViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    var pet = VFPet()
     var btnsArray = Array<UIButton>()
     var collectionView: UICollectionView!
     
@@ -71,10 +72,20 @@ class VFMedicalRecordsViewController: VFViewController, UICollectionViewDelegate
         super.viewWillAppear(animated)
         
         self.tabBarController?.navigationItem.rightBarButtonItem = nil
-        self.navigationController?.navigationBar.barTintColor = .clearColor()
+        self.navigationController?.navigationBar.barTintColor = .grayColor()
         
         self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: .Default)
         self.navigationController?.navigationBar.shadowImage = nil
+        
+        let add = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addRecord(_:)))
+        self.tabBarController?.navigationItem.rightBarButtonItem = add
+    }
+    
+    func addRecord(btn: UIButton){
+        
+        let addRecordVc = VFAddRecordViewController()
+        addRecordVc.pet = self.pet
+        self.navigationController?.presentViewController(addRecordVc, animated: true, completion: nil)
     }
     
     func moveScroll(btn: UIButton){

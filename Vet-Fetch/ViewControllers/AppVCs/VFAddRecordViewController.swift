@@ -1,0 +1,150 @@
+//
+//  VFAddRecordViewController.swift
+//  Vet-Fetch
+//
+//  Created by Brian Correa on 8/24/16.
+//  Copyright © 2016 Milkshake Tech. All rights reserved.
+//
+
+import UIKit
+import Alamofire
+
+class VFAddRecordViewController: VFViewController, UITextFieldDelegate {
+    
+    var pet = VFPet()
+    var textFields = Array<UITextField>()
+    var petInfo = Dictionary<String, AnyObject>()
+
+    //MARK: - Lifecycle Methods
+    required init?(coder aDecoder: NSCoder){
+        super.init(coder: aDecoder)
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?){
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        
+        self.edgesForExtendedLayout = .None
+    }
+    
+    override func loadView(){
+        
+        self.edgesForExtendedLayout = .None
+        
+        let frame = UIScreen.mainScreen().bounds
+        let view = UIView(frame: frame)
+    
+        view.backgroundColor = UIColor(red: 166/255, green: 207/255, blue: 190/255, alpha: 1)
+        
+        let cancelBtn = UIButton(type: .Custom)
+        cancelBtn.frame = CGRect(x: 0, y: 10, width: 32, height: 32)
+        cancelBtn.setImage(UIImage(named: "cancel_icon.png"), forState: .Normal)
+        cancelBtn.addTarget(
+            self,
+            action: #selector(VFViewController.exit),
+            forControlEvents: .TouchUpInside
+        )
+        view.addSubview(cancelBtn)
+        
+        let padding = CGFloat(Constants.padding)
+        let width = frame.size.width-2*padding
+        let height = CGFloat(32)
+        var y = CGFloat(Constants.origin_y)
+        
+        let fieldNames = ["Medications", "Vaccines", "Allergies"]
+        
+        for i in 0..<fieldNames.count {
+            
+            let fieldName = fieldNames[i]
+            let field = VFTextField(frame: CGRect(x: padding, y: y, width: width, height: height))
+            field.delegate = self
+            field.placeholder = fieldName
+            field.textColor = .whiteColor()
+            
+            let isLast = (fieldName == "Allergies")
+            field.returnKeyType = (isLast) ? .Done : .Next
+            
+            view.addSubview(field)
+            self.textFields.append(field)
+            y += height + padding
+        }
+        
+        self.view = view
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func exit(){
+        super.exit()
+        
+        for textField in self.textFields {
+            if textField.isFirstResponder() {
+                textField.resignFirstResponder()
+                break
+            }
+        }
+    }
+    
+    //MARK: - Textfield Delegate
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        let index = self.textFields.indexOf(textField)!
+    
+        if index == self.textFields.count-1 {
+            
+            for textField in self.textFields{
+                
+                if textField.text?.characters.count != nil {
+                    self.petInfo[textField.placeholder!.lowercaseString] = textField.text?.componentsSeparatedByString(",")
+                }
+                else{
+                    
+                    if textField.placeholder!.lowercaseString == "vaccines" {
+                        self.petInfo["vaccines"] = self.pet.vaccines!
+                    }
+                    
+                    if textField.placeholder!.lowercaseString == "medications" {
+                        self.petInfo["medications"] = self.pet.medications!
+                    }
+                    
+                    if textField.placeholder!.lowercaseString == "allergies" {
+                        self.petInfo["allergies"] = self.pet.allergies!
+                    }
+
+                }
+            }
+            
+            APIManager.putRequest("/api/pet/"+self.pet.id!,
+                                  params: self.petInfo,
+                                  completion: { error, response in
+                                    
+                                    if error != nil {
+                                        let errorObj = error?.userInfo
+                                        
+                                        let errorMsg = errorObj!["message"] as! String
+                                        print("Error: \(errorMsg)")
+                                        
+                                        dispatch_async(dispatch_get_main_queue(), {
+                                            let alert = UIAlertController(
+                                                title: "Message",
+                                                message: errorMsg,
+                                                preferredStyle: .Alert)
+                                            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                                            self.presentViewController(alert, animated: true, completion: nil)
+                                            
+                                        })
+                                        return
+                                    }
+                                    
+                                    print("Response: \(response)")
+            })
+        }
+        
+        return true
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
+}
