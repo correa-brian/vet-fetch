@@ -18,6 +18,9 @@ class VFPet: NSObject {
     var breed: String!
     var birthday: String!
     var weight: String!
+    var vaccines: Array<String>!
+    var medications: Array<String>!
+    var allergies: Array<String>!
     
     var image: Dictionary<String, AnyObject>!
     var imageUrl: String!
@@ -27,7 +30,7 @@ class VFPet: NSObject {
     var isFetching = false
     
     func populate(petInfo: Dictionary<String,AnyObject>){
-        let keys = ["id", "name", "ownerId", "sex", "breed", "birthday", "weight"]
+        let keys = ["id", "name", "ownerId", "sex", "breed", "birthday", "weight", "vaccines", "allergies", "medications"]
         
         for key in keys {
             let value = petInfo[key]
@@ -47,15 +50,15 @@ class VFPet: NSObject {
     }
     
     func fetchOriginalImage(completion:((image: UIImage) -> Void)?){
-        if(self.imageUrl.characters.count == 0){
+        if self.imageUrl.characters.count == 0 {
             return
         }
         
-        if(self.imageData != nil){
+        if self.imageData != nil {
             return
         }
         
-        if (self.isFetching == true){
+        if self.isFetching == true {
             return
         }
         
@@ -63,13 +66,13 @@ class VFPet: NSObject {
         
         Alamofire.request(.GET, self.imageUrl, parameters: nil).response { (req, res, data, error) in
             self.isFetching = false
-            if (error != nil){
+            if error != nil {
                 return
             }
             
             if let img = UIImage(data: data!){
                 self.imageData = img
-                if(completion != nil){
+                if completion != nil {
                     completion!(image: img)
                 }
             }
@@ -77,15 +80,15 @@ class VFPet: NSObject {
     }
     
     func fetchThumbnailImage(completion:((image: UIImage) -> Void)?){
-        if(self.thumbnailUrl.characters.count == 0){
+        if self.thumbnailUrl.characters.count == 0 {
             return
         }
         
-        if(self.thumbnailData != nil){
+        if self.thumbnailData != nil {
             return
         }
         
-        if (self.isFetching == true){
+        if self.isFetching == true {
             return
         }
         
@@ -93,13 +96,13 @@ class VFPet: NSObject {
         
         Alamofire.request(.GET, self.thumbnailUrl, parameters: nil).response { (req, res, data, error) in
             self.isFetching = false
-            if (error != nil){
+            if error != nil {
                 return
             }
             
             if let img = UIImage(data: data!){
                 self.thumbnailData = img
-                if(completion != nil){
+                if completion != nil {
                     completion!(image: img)
                 }
             }
