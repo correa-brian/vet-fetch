@@ -245,6 +245,7 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         
         let medicalVc = VFMedicalRecordsViewController()
         medicalVc.tabBarItem = UITabBarItem(title: "Medical", image: UIImage(named:"email_icon.png"), tag: 1)
+        medicalVc.pet = self.pet
         
         let controllers = [petVc, medicalVc]
         let tab = UITabBarController()

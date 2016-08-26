@@ -17,11 +17,11 @@ class VFCreatePetViewController: VFViewController, UITextFieldDelegate {
     
     override func loadView(){
         
-        self.navigationController?.navigationBarHidden = false
+        self.edgesForExtendedLayout = .None
         
         let frame = UIScreen.mainScreen().bounds
         let view = UIView(frame: frame)
-        edgesForExtendedLayout = .None
+        
         
         view.backgroundColor = UIColor(red: 166/255, green: 207/255, blue: 190/255, alpha: 1)
         
@@ -112,11 +112,11 @@ class VFCreatePetViewController: VFViewController, UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         let index = self.textFields.indexOf(textField)!
         
-        if(index == self.textFields.count-1){
+        if index == self.textFields.count-1 {
             var missingValue = ""
             
             for textField in self.textFields{
-                if(textField.text?.characters.count == 0){
+                if textField.text?.characters.count == 0 {
                     missingValue = textField.placeholder!
                     break
                 }
@@ -124,7 +124,7 @@ class VFCreatePetViewController: VFViewController, UITextFieldDelegate {
                 self.petInfo[textField.placeholder!.lowercaseString] = textField.text!
             }
             
-            if(missingValue.characters.count > 0){
+            if missingValue.characters.count > 0 {
                 print("Missing Value")
                 
                 let msg = "You forgot your "+missingValue

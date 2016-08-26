@@ -53,7 +53,7 @@ class VFViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     
     func fetchPets(){
         
-        if(VFViewController.currentUser.id == nil){
+        if VFViewController.currentUser.id == nil {
             return
         }
         

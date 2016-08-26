@@ -14,23 +14,23 @@ class VFTextField: UITextField {
     
     override var placeholder: String? {
         didSet {
-            if(placeholder == nil){
+            if placeholder == nil {
                 return
             }
             
-            if(placeholder?.lowercaseString == "first name"){
+            if placeholder?.lowercaseString == "first name" {
                 self.icon.image = UIImage(named: "profile_icon.png")
             }
             
-            if(placeholder?.lowercaseString == "last name"){
+            if placeholder?.lowercaseString == "last name" {
                 self.icon.image = UIImage(named: "profile_icon.png")
             }
             
-            if(placeholder?.lowercaseString == "email"){
+            if placeholder?.lowercaseString == "email" {
                 self.icon.image = UIImage(named: "email_icon.png")
             }
             
-            if(placeholder?.lowercaseString == "password"){
+            if placeholder?.lowercaseString == "password" {
                 self.icon.image = UIImage(named: "key_icon.png")
             }
         }
