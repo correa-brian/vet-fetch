@@ -12,9 +12,11 @@ class VFMedicalCollectionViewCell: UICollectionViewCell, UITableViewDelegate, UI
     
     static var cellId = "cellId"
     var recordsTable: UITableView!
-    var medicationArray = ["Tacrylimus", "Rimidayl", "Heart Worm", "Tick Chewable"]
-    var vaccineArray = ["Rabies"]
-    var allergyArray = ["Chocolate", "Dust"]
+    var pet = VFPet()
+    
+    var medicationArray = Array<String>()
+    var vaccineArray = Array<String>()
+    var allergyArray = Array<String>()
     
     var tableArray = Array<Array<String>>()
     
@@ -63,6 +65,13 @@ class VFMedicalCollectionViewCell: UICollectionViewCell, UITableViewDelegate, UI
     func checkSection(section: Int) -> Int {
         
         var count: Int!
+        
+        self.tableArray.removeAll()
+        
+        self.medicationArray = pet.medications
+        self.allergyArray = pet.allergies
+        self.vaccineArray = pet.vaccines
+        
         self.tableArray.append(self.medicationArray)
         self.tableArray.append(self.vaccineArray)
         self.tableArray.append(self.allergyArray)

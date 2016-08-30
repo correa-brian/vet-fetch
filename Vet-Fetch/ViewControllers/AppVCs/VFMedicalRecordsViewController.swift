@@ -23,6 +23,10 @@ class VFMedicalRecordsViewController: VFViewController, UICollectionViewDelegate
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     
         self.edgesForExtendedLayout = .None
+        
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        
+        notificationCenter.addObserver(self, selector: #selector(VFMedicalRecordsViewController.setNewPet(_:)), name: Constants.kPetUpdatedNotification, object: nil)
     }
     
     override func loadView(){
@@ -88,6 +92,14 @@ class VFMedicalRecordsViewController: VFViewController, UICollectionViewDelegate
         self.navigationController?.presentViewController(addRecordVc, animated: true, completion: nil)
     }
     
+    func setNewPet(notification: NSNotification){
+        
+        if let _pet = notification.userInfo!["pet"] as? Dictionary<String, AnyObject>{
+            self.pet.populate(_pet)
+            self.collectionView.reloadData()
+        }
+    }
+    
     func moveScroll(btn: UIButton){
         print("moveScroll: \(btn.titleLabel?.text)")
         
@@ -151,6 +163,7 @@ class VFMedicalRecordsViewController: VFViewController, UICollectionViewDelegate
         
         let section = indexPath.section
         cell.recordsTable.tag = section
+        cell.pet = self.pet
         
         dispatch_async(dispatch_get_main_queue(), {
             cell.recordsTable.reloadData()
@@ -162,7 +175,6 @@ class VFMedicalRecordsViewController: VFViewController, UICollectionViewDelegate
                 animated: true
             )
         })
-        
     }
 
     override func didReceiveMemoryWarning() {
