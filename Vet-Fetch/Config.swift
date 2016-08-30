@@ -15,6 +15,7 @@ struct Constants {
     
     static let kUserLoggedInNotification = "UserLoggedInNotification"
     static let kPetFetchNotification = "PetFetchNotification"
+    static let kPetUpdatedNotification = "PetUpdatedNotification"
     
     static let padding = 25
     static let origin_y = 90
