@@ -86,6 +86,52 @@ class VFAddRecordViewController: VFViewController, UITextFieldDelegate {
         }
     }
     
+    func updatePetRecords(params: Dictionary<String, AnyObject>){
+        APIManager.putRequest("/api/pet/"+self.pet.id!,
+                              params: params,
+                              completion: { error, response in
+                                
+                                if error != nil {
+                                    let errorObj = error?.userInfo
+                                    let errorMsg = errorObj!["message"] as! String
+                                    
+                                    dispatch_async(dispatch_get_main_queue(), {
+                                        let alert = UIAlertController(title: "Message", message: errorMsg, preferredStyle: .Alert)
+                                        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                                        
+                                        self.presentViewController(alert, animated: true, completion: nil)
+                                        
+                                    })
+                                    return
+                                }
+                                
+                                if let result = response!["result"] as? Dictionary<String, AnyObject>{
+                                    
+                                    self.fetchPets()
+                                    
+                                    let pet = VFPet()
+                                    pet.populate(result)
+                                    
+                                    dispatch_async(dispatch_get_main_queue(), {
+                                        
+                                        self.postPetUpdateNotification(result)
+                                        self.exit()
+                                    })
+                                }
+        })
+    }
+    
+    func postPetUpdateNotification(updatedPet: Dictionary<String, AnyObject>){
+        let notification = NSNotification(
+            name: Constants.kPetUpdatedNotification,
+            object: nil,
+            userInfo: ["pet":updatedPet]
+        )
+        
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.postNotification(notification)
+    }
+    
     //MARK: - Textfield Delegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         let index = self.textFields.indexOf(textField)!
@@ -94,52 +140,11 @@ class VFAddRecordViewController: VFViewController, UITextFieldDelegate {
             
             for textField in self.textFields{
                 
-                if textField.text?.characters.count != nil {
-                    self.petInfo[textField.placeholder!.lowercaseString] = textField.text?.componentsSeparatedByString(",")
-                }
-                else{
-                    
-                    if textField.placeholder!.lowercaseString == "vaccines" {
-                        self.petInfo["vaccines"] = self.pet.vaccines!
-                    }
-                    
-                    if textField.placeholder!.lowercaseString == "medications" {
-                        self.petInfo["medications"] = self.pet.medications!
-                    }
-                    
-                    if textField.placeholder!.lowercaseString == "allergies" {
-                        self.petInfo["allergies"] = self.pet.allergies!
-                    }
-
-                }
+                self.petInfo[textField.placeholder!.lowercaseString] = textField.text?.componentsSeparatedByString(", ")
             }
             
-            APIManager.putRequest("/api/pet/"+self.pet.id!,
-                                  params: self.petInfo,
-                                  completion: { error, response in
-                                    
-                                    if error != nil {
-                                        let errorObj = error?.userInfo
-                                        
-                                        let errorMsg = errorObj!["message"] as! String
-                                        print("Error: \(errorMsg)")
-                                        
-                                        dispatch_async(dispatch_get_main_queue(), {
-                                            let alert = UIAlertController(
-                                                title: "Message",
-                                                message: errorMsg,
-                                                preferredStyle: .Alert)
-                                            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-                                            self.presentViewController(alert, animated: true, completion: nil)
-                                            
-                                        })
-                                        return
-                                    }
-                                    
-                                    print("Response: \(response)")
-            })
+            self.updatePetRecords(self.petInfo)
         }
-        
         return true
     }
 
