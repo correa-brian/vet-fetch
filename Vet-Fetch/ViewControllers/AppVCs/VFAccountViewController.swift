@@ -263,6 +263,18 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         case "Vet":
             print("Vet")
             
+            let vetMapVc = VFVetMapViewController()
+            vetMapVc.tabBarItem = UITabBarItem(title: "Pet", image: UIImage(named:"paw_icon.png"), tag: 0)
+            
+            let vetTableVc = VFVetTableViewController()
+            vetTableVc.tabBarItem = UITabBarItem(title: "Medical", image: UIImage(named:"email_icon.png"), tag: 1)
+            
+            let controllers = [vetMapVc, vetTableVc]
+            let tab = UITabBarController()
+            tab.viewControllers = controllers
+            
+            self.navigationController?.pushViewController(tab, animated: true)
+            
         case "Insurance":
             print("Insurance")
             
