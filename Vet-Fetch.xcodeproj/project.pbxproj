@@ -21,6 +21,8 @@
 		D359C5201D651C28000D08B2 /* VFMedicalRecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D359C51F1D651C28000D08B2 /* VFMedicalRecordTableViewCell.swift */; };
 		D36117D41D4BBA08007078AB /* VFCreatePetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36117D31D4BBA08007078AB /* VFCreatePetViewController.swift */; };
 		D3879AAF1D4142BD002AE3FA /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3879AAE1D4142BD002AE3FA /* APIManager.swift */; };
+		D3AB647C1D76528100DBBB67 /* VFVetMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AB647B1D76528100DBBB67 /* VFVetMapViewController.swift */; };
+		D3AB647E1D76544900DBBB67 /* VFVetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AB647D1D76544900DBBB67 /* VFVetTableViewController.swift */; };
 		D3AD90041D40592D004703D4 /* account_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AD90031D40592D004703D4 /* account_background@2x.png */; };
 		D3AD90061D405C1B004703D4 /* account_background2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AD90051D405C1B004703D4 /* account_background2@2x.png */; };
 		D3AD900A1D405C5B004703D4 /* account_background3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AD90091D405C5B004703D4 /* account_background3@2x.png */; };
@@ -30,7 +32,6 @@
 		D3AD901B1D413B34004703D4 /* key_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AD901A1D413B34004703D4 /* key_icon@2x.png */; };
 		D3AD901D1D413B72004703D4 /* cancel_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AD901C1D413B72004703D4 /* cancel_icon@2x.png */; };
 		D3B377871D6383920066A40E /* VFMedicalRecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B377861D6383920066A40E /* VFMedicalRecordsViewController.swift */; };
-		D3CACFD11D5541E500ECD725 /* VFVetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CACFD01D5541E400ECD725 /* VFVetViewController.swift */; };
 		D3D291FB1D5103E800548BB5 /* VFLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D291FA1D5103E800548BB5 /* VFLabel.swift */; };
 		D3D292011D51411100548BB5 /* add_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3D292001D51411100548BB5 /* add_icon@2x.png */; };
 		D3D292031D519AF100548BB5 /* back_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3D292021D519AF100548BB5 /* back_icon@2x.png */; };
@@ -67,6 +68,8 @@
 		D359C51F1D651C28000D08B2 /* VFMedicalRecordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFMedicalRecordTableViewCell.swift; sourceTree = "<group>"; };
 		D36117D31D4BBA08007078AB /* VFCreatePetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFCreatePetViewController.swift; sourceTree = "<group>"; };
 		D3879AAE1D4142BD002AE3FA /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		D3AB647B1D76528100DBBB67 /* VFVetMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFVetMapViewController.swift; sourceTree = "<group>"; };
+		D3AB647D1D76544900DBBB67 /* VFVetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFVetTableViewController.swift; sourceTree = "<group>"; };
 		D3AD90031D40592D004703D4 /* account_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account_background@2x.png"; sourceTree = "<group>"; };
 		D3AD90051D405C1B004703D4 /* account_background2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account_background2@2x.png"; sourceTree = "<group>"; };
 		D3AD90091D405C5B004703D4 /* account_background3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account_background3@2x.png"; sourceTree = "<group>"; };
@@ -76,7 +79,6 @@
 		D3AD901A1D413B34004703D4 /* key_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "key_icon@2x.png"; sourceTree = "<group>"; };
 		D3AD901C1D413B72004703D4 /* cancel_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel_icon@2x.png"; sourceTree = "<group>"; };
 		D3B377861D6383920066A40E /* VFMedicalRecordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFMedicalRecordsViewController.swift; sourceTree = "<group>"; };
-		D3CACFD01D5541E400ECD725 /* VFVetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFVetViewController.swift; sourceTree = "<group>"; };
 		D3D291FA1D5103E800548BB5 /* VFLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFLabel.swift; sourceTree = "<group>"; };
 		D3D292001D51411100548BB5 /* add_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_icon@2x.png"; sourceTree = "<group>"; };
 		D3D292021D519AF100548BB5 /* back_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_icon@2x.png"; sourceTree = "<group>"; };
@@ -206,11 +208,12 @@
 			isa = PBXGroup;
 			children = (
 				D36117D31D4BBA08007078AB /* VFCreatePetViewController.swift */,
-				D3CACFD01D5541E400ECD725 /* VFVetViewController.swift */,
 				D3EF8A161D5A334300FCE838 /* VFPetViewController.swift */,
 				D3EF8A1E1D5A351E00FCE838 /* VFAccountViewController.swift */,
 				D3B377861D6383920066A40E /* VFMedicalRecordsViewController.swift */,
 				D3018DC21D6E7A360000D664 /* VFAddRecordViewController.swift */,
+				D3AB647B1D76528100DBBB67 /* VFVetMapViewController.swift */,
+				D3AB647D1D76544900DBBB67 /* VFVetTableViewController.swift */,
 			);
 			path = AppVCs;
 			sourceTree = "<group>";
@@ -394,12 +397,12 @@
 				D359C51C1D651ACF000D08B2 /* VFCollectionViewFlowLayout.swift in Sources */,
 				D3018DC31D6E7A370000D664 /* VFAddRecordViewController.swift in Sources */,
 				D3EF8A1D1D5A34D700FCE838 /* VFLoginViewController.swift in Sources */,
+				D3AB647C1D76528100DBBB67 /* VFVetMapViewController.swift in Sources */,
 				D3D291FB1D5103E800548BB5 /* VFLabel.swift in Sources */,
 				D3107E6F1D403DD7004A27B7 /* VFViewController.swift in Sources */,
 				D3EF8A171D5A334300FCE838 /* VFPetViewController.swift in Sources */,
 				D3EF8A0B1D5A305400FCE838 /* VFPet.swift in Sources */,
 				D3B377871D6383920066A40E /* VFMedicalRecordsViewController.swift in Sources */,
-				D3CACFD11D5541E500ECD725 /* VFVetViewController.swift in Sources */,
 				D3EF8A091D5A300E00FCE838 /* VFProfile.swift in Sources */,
 				D338CA931D401CBE0086C6E5 /* AppDelegate.swift in Sources */,
 				D36117D41D4BBA08007078AB /* VFCreatePetViewController.swift in Sources */,
@@ -407,6 +410,7 @@
 				D3EF8A1B1D5A347500FCE838 /* VFRegisterViewController.swift in Sources */,
 				D3D512A31D63D334009B77B6 /* VFMedicalCollectionViewCell.swift in Sources */,
 				D3AD90121D4123D1004703D4 /* VFTextField.swift in Sources */,
+				D3AB647E1D76544900DBBB67 /* VFVetTableViewController.swift in Sources */,
 				D3EF8A1F1D5A351E00FCE838 /* VFAccountViewController.swift in Sources */,
 				D3AD90101D41209B004703D4 /* Config.swift in Sources */,
 				D359C51E1D651B1D000D08B2 /* VFCollectionViewCell.swift in Sources */,
