@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class VFVetTableViewController: VFViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -16,7 +17,7 @@ class VFVetTableViewController: VFViewController, UITableViewDelegate, UITableVi
         
         let frame = UIScreen.mainScreen().bounds
         let view = UIView(frame: frame)
-        view.backgroundColor = .greenColor()
+        view.backgroundColor = .blackColor()
         
         self.vetTable = UITableView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height-49))
         self.vetTable.delegate = self
@@ -31,7 +32,19 @@ class VFVetTableViewController: VFViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+//        let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=40.759211,-73.984638&radius=500&types=food&key=AIzaSyAMiWIQf7fTP1AxUpyY_qBVDFooHgBaimQ"
+//
+//        Alamofire.request(.GET, url, parameters: nil).responseJSON { response in
+//            if let JSON = response.result.value as? Dictionary<String, AnyObject>{
+//                print("JSON: \(JSON)")
+//            }
+//        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+    
     }
     
     //MARK: Tableview Delegate
