@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Alamofire
 
 class VFVetMapViewController: VFViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
@@ -52,13 +53,15 @@ class VFVetMapViewController: VFViewController, CLLocationManagerDelegate, MKMap
         super.viewWillAppear(animated)
         
         self.navigationController?.navigationBarHidden = false
+        
+        self.tabBarController?.tabBar.barTintColor = UIColor.blackColor()
+        self.tabBarController?.tabBar.tintColor = UIColor(red: 166/255, green: 207/255, blue: 190/255, alpha: 1)
     }
     
-    // MARK: LocationManagerDelegate
+    // MARK: LocationManager Delegate
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus){
         if (status == .AuthorizedWhenInUse){
             self.locationManager.startUpdatingLocation()
-            
         }
     }
     
@@ -73,6 +76,20 @@ class VFVetMapViewController: VFViewController, CLLocationManagerDelegate, MKMap
         let region = MKCoordinateRegionMakeWithDistance(self.mapView.centerCoordinate, dist, dist)
         self.mapView.setRegion(region, animated: true)
         
+        let latLng = "\(self.currentLocation!.coordinate.latitude),\(self.currentLocation!.coordinate.longitude)"
+        
+        let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(latLng)&radius=1500&types=veterinary_care&key=AIzaSyAMiWIQf7fTP1AxUpyY_qBVDFooHgBaimQ"
+        
+        Alamofire.request(.GET, url, parameters: nil).responseJSON { response in
+            if let json = response.result.value as? Dictionary<String, AnyObject>{
+                if let results = json["results"] as? Array<Dictionary<String, AnyObject>>{
+                
+                    for result in results {
+                        print("Results: -----\(result)")
+                    }
+                }
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
