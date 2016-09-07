@@ -16,6 +16,7 @@ class VFVetMapViewController: VFViewController, CLLocationManagerDelegate, MKMap
     var mapView: MKMapView!
     var locationManager: CLLocationManager!
     var currentLocation: CLLocation?
+    var places = Array<VFPlace>()
     
     //MARK: - Lifecycle Methods
     required init?(coder aDecoder: NSCoder){
@@ -58,6 +59,74 @@ class VFVetMapViewController: VFViewController, CLLocationManagerDelegate, MKMap
         self.tabBarController?.tabBar.tintColor = UIColor(red: 166/255, green: 207/255, blue: 190/255, alpha: 1)
     }
     
+    func searchPlaces(lat: CLLocationDegrees, lng: CLLocationDegrees){
+        
+        let latLng = "\(lat),\(lng)"
+        
+        let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(latLng)&radius=1500&types=veterinary_care&key=AIzaSyAMiWIQf7fTP1AxUpyY_qBVDFooHgBaimQ"
+        
+        Alamofire.request(.GET, url, parameters: nil).responseJSON { response in
+            
+            if let json = response.result.value as? Dictionary<String, AnyObject>{
+                if let results = json["results"] as? Array<Dictionary<String, AnyObject>>{
+                    
+                    self.mapView.removeAnnotations(self.places)
+                    self.places.removeAll()
+                    
+                    for result in results {
+                        let place = VFPlace()
+                        place.populate(result)
+                        self.places.append(place)
+                    }
+                    
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.mapView.addAnnotations(self.places)
+                    })
+                }
+            }
+        }
+        
+    }
+    
+    
+    //MARK: - MapViewDelegate
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        let pinId = "pinId"
+        
+        if let pin = mapView.dequeueReusableAnnotationViewWithIdentifier(pinId) as? MKPinAnnotationView {
+            pin.annotation = annotation
+            return pin
+        }
+        
+        let pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: pinId)
+        pin.animatesDrop = true
+        pin.canShowCallout = true
+        
+        pin.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
+        
+        return pin
+    }
+    
+    func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        
+        if(self.currentLocation == nil){
+            self.searchPlaces(mapView.centerCoordinate.latitude, lng: mapView.centerCoordinate.longitude)
+            return
+        }
+        
+        let mapCenter = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
+        
+        let delta = mapCenter.distanceFromLocation(self.currentLocation!)
+        
+        if(delta < 750){
+            return
+        }
+        
+        self.currentLocation = mapCenter
+        self.searchPlaces(mapView.centerCoordinate.latitude, lng: mapView.centerCoordinate.longitude)
+    }
+    
     // MARK: LocationManager Delegate
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus){
         if (status == .AuthorizedWhenInUse){
@@ -66,7 +135,6 @@ class VFVetMapViewController: VFViewController, CLLocationManagerDelegate, MKMap
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
-        print("didUpdateLocations: \(locations)")
         self.locationManager.stopUpdatingLocation()
         self.currentLocation = locations[0]
         
@@ -76,20 +144,7 @@ class VFVetMapViewController: VFViewController, CLLocationManagerDelegate, MKMap
         let region = MKCoordinateRegionMakeWithDistance(self.mapView.centerCoordinate, dist, dist)
         self.mapView.setRegion(region, animated: true)
         
-        let latLng = "\(self.currentLocation!.coordinate.latitude),\(self.currentLocation!.coordinate.longitude)"
-        
-        let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(latLng)&radius=1500&types=veterinary_care&key=AIzaSyAMiWIQf7fTP1AxUpyY_qBVDFooHgBaimQ"
-        
-        Alamofire.request(.GET, url, parameters: nil).responseJSON { response in
-            if let json = response.result.value as? Dictionary<String, AnyObject>{
-                if let results = json["results"] as? Array<Dictionary<String, AnyObject>>{
-                
-                    for result in results {
-                        print("Results: -----\(result)")
-                    }
-                }
-            }
-        }
+        self.searchPlaces(self.currentLocation!.coordinate.latitude, lng: self.currentLocation!.coordinate.longitude)
     }
     
     override func didReceiveMemoryWarning() {
