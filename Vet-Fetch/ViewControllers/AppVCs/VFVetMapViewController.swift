@@ -44,6 +44,10 @@ class VFVetMapViewController: VFViewController, CLLocationManagerDelegate, MKMap
         super.viewDidLoad()
         
         self.navigationController?.navigationBarHidden = false
+        self.navigationController?.navigationBar.barTintColor = .yellowColor()
+        
+        let add = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addRecord(_:)))
+        self.navigationItem.setRightBarButtonItem(add, animated: true)
         
         self.locationManager = CLLocationManager()
         self.locationManager.delegate = self
@@ -52,11 +56,16 @@ class VFVetMapViewController: VFViewController, CLLocationManagerDelegate, MKMap
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    func addRecord(btn: UIButton){
         
-        self.navigationController?.navigationBarHidden = false
+        let vetTable = VFVetTableViewController()
+        vetTable.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
+        vetTable.vetLocations = self.places
         
-        self.tabBarController?.tabBar.barTintColor = UIColor.blackColor()
-        self.tabBarController?.tabBar.tintColor = UIColor(red: 166/255, green: 207/255, blue: 190/255, alpha: 1)
+        let navCtr = UINavigationController(rootViewController: vetTable)
+        self.navigationController?.presentViewController(navCtr, animated: true, completion: nil)
     }
     
     func searchPlaces(lat: CLLocationDegrees, lng: CLLocationDegrees){
