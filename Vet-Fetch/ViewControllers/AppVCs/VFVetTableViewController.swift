@@ -12,18 +12,20 @@ import Alamofire
 class VFVetTableViewController: VFViewController, UITableViewDelegate, UITableViewDataSource {
     
     var vetTable: UITableView!
+    var vetLocations = Array<VFPlace>()
 
     override func loadView() {
         
+        self.edgesForExtendedLayout = .None
+        
         let frame = UIScreen.mainScreen().bounds
         let view = UIView(frame: frame)
-        view.backgroundColor = .blackColor()
+        view.backgroundColor = .redColor()
         
-        self.vetTable = UITableView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height-49))
+        self.vetTable = UITableView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
         self.vetTable.delegate = self
         self.vetTable.dataSource = self
-        self.vetTable.autoresizingMask = .FlexibleTopMargin
-        self.vetTable.autoresizingMask = .FlexibleBottomMargin
+        self.vetTable.autoresizingMask = .FlexibleHeight
         self.vetTable.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: "cellId")
         view.addSubview(self.vetTable)
         
@@ -32,32 +34,31 @@ class VFVetTableViewController: VFViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        self.navigationController?.navigationBarHidden = false
+        self.navigationController?.navigationBar.barTintColor = .yellowColor()
         
-//        let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=40.759211,-73.984638&radius=500&types=food&key=AIzaSyAMiWIQf7fTP1AxUpyY_qBVDFooHgBaimQ"
-//
-//        Alamofire.request(.GET, url, parameters: nil).responseJSON { response in
-//            if let JSON = response.result.value as? Dictionary<String, AnyObject>{
-//                print("JSON: \(JSON)")
-//            }
-//        }
+        let add = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(VFViewController.exit))
+        
+        self.navigationItem.setRightBarButtonItem(add, animated: true)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-    
     }
     
     //MARK: Tableview Delegate
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return self.vetLocations.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        let place = self.vetLocations[indexPath.row]
         let cellId = "cellId"
         
         let cell = tableView.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath)
-        cell.textLabel?.text = "\(indexPath.row)"
+        cell.textLabel?.text = place.name
         return cell
     }
 
