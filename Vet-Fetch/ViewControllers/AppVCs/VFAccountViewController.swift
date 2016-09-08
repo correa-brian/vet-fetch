@@ -11,9 +11,10 @@ import UIKit
 class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate {
     
     //MARK: - Properties
-    
     var collectionView: UICollectionView!
     var btnsArray = ["Account", "Vet", "Insurance", "Learn More"]
+    var backgroundImgs = ["dog_running.png", "vet.png", "sunset.png","vet_fetch_logo.png"]
+    
     var bottomContainer: UIScrollView!
     var petManagerBtn: UIButton!
     
@@ -32,10 +33,7 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?){
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
-        self.edgesForExtendedLayout = .None
-        
         let notificationCenter = NSNotificationCenter.defaultCenter()
-        
         notificationCenter.addObserver(self,
                                        selector: #selector(VFAccountViewController.loadAccountPets),
                                        name: Constants.kPetFetchNotification,
@@ -43,6 +41,8 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
     }
     
     override func loadView(){
+        self.edgesForExtendedLayout = .None
+        
         let frame = UIScreen.mainScreen().bounds
         let view = UIView(frame: frame)
         view.backgroundColor = .clearColor()
@@ -53,7 +53,6 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         self.collectionView.backgroundColor = UIColor(red: 164/255, green: 185/255, blue: 202/255, alpha: 1)
-        
         self.collectionView.registerClass(VFCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "cellId")
         
         let width = frame.size.width
@@ -166,9 +165,6 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
     }
     
     func loadAccountPets(){
-        
-        print("loadAccountPets: \(VFViewController.pets.count)")
-        
             self.petsArray = VFViewController.pets
             
             if self.petsArray.count == 0 {
@@ -195,7 +191,6 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
             }
             
             self.pet.fetchThumbnailImage({ image in
-                print("Fetching Thumbnail")
                 self.petSummaryPhoto.image = image
             })
     }
@@ -261,19 +256,8 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
             print("Account")
             
         case "Vet":
-            print("Vet")
-            
             let vetMapVc = VFVetMapViewController()
-            vetMapVc.tabBarItem = UITabBarItem(title: "Pet", image: UIImage(named:"paw_icon.png"), tag: 0)
-            
-            let vetTableVc = VFVetTableViewController()
-            vetTableVc.tabBarItem = UITabBarItem(title: "Medical", image: UIImage(named:"email_icon.png"), tag: 1)
-            
-            let controllers = [vetMapVc, vetTableVc]
-            let tab = UITabBarController()
-            tab.viewControllers = controllers
-            
-            self.navigationController?.pushViewController(tab, animated: true)
+            self.navigationController?.pushViewController(vetMapVc, animated: true)
             
         case "Insurance":
             print("Insurance")
@@ -289,8 +273,11 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
     //MARK: - CollectionView Delegates
     func configureCell(cell: VFCollectionViewCell, indexPath :NSIndexPath){
         let button = self.btnsArray[indexPath.row]
+        let image = self.backgroundImgs[indexPath.row]
         
         cell.cellLabel.text = button
+        cell.imageView.image = UIImage(named: image)
+        cell.imageView.alpha = 0.75
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -309,7 +296,6 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
         let button = self.btnsArray[indexPath.row]
-        
         self.setAppropriateVc(button)
     }
     
@@ -317,5 +303,4 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         super.didReceiveMemoryWarning()
         
     }
-    
 }
