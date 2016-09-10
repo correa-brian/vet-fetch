@@ -56,7 +56,7 @@ class VFMedicalRecordsViewController: VFViewController, UICollectionViewDelegate
             y += btn.frame.size.height
         }
         
-        let collectionViewLayout = VFMedicalCollectionViewFlowLayout()
+        let collectionViewLayout = VFHorizontalCollectionViewFlowLayout()
         self.collectionView = UICollectionView(frame: CGRect(x: 0, y: y, width: width, height: height-(y+49)), collectionViewLayout: collectionViewLayout)
         self.collectionView.dataSource = self
         self.collectionView.delegate = self

@@ -162,7 +162,6 @@ class VFPetViewController: VFViewController {
         }
         
         pet.fetchOriginalImage({ image in
-            print("Fetching Image")
             self.petImage.image = image
         })
     }
