@@ -1,14 +1,14 @@
 //
-//  VFMedicalCollectionViewFlowLayout.swift
+//  VFHorizontalCollectionViewFlowLayout.swift
 //  Vet-Fetch
 //
-//  Created by Brian Correa on 8/16/16.
+//  Created by Brian Correa on 9/9/16.
 //  Copyright © 2016 Milkshake Tech. All rights reserved.
 //
 
 import UIKit
 
-class VFMedicalCollectionViewFlowLayout: UICollectionViewFlowLayout {
+class VFHorizontalCollectionViewFlowLayout: UICollectionViewFlowLayout {
     
     required init?(coder aDecoder: NSCoder){
         super.init(coder: aDecoder)
@@ -16,7 +16,7 @@ class VFMedicalCollectionViewFlowLayout: UICollectionViewFlowLayout {
     
     override init(){
         super.init()
-
+        
         self.minimumInteritemSpacing = 0
         self.minimumLineSpacing = 0
         self.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
