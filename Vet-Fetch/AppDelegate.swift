@@ -16,6 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        print(NSHomeDirectory())
+        
+        let directories = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+        
+        if let documents = directories.first {
+            print(documents)
+        }
+        
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
         let welcomeVc = VFWelcomeViewController()
