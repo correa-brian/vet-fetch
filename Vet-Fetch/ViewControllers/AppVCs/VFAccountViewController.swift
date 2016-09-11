@@ -222,8 +222,8 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         }
         
         if collectionView == self.bottomCollectionView{
-            count = 3
             print("Set Count")
+            count = 3
         }
         
         return count

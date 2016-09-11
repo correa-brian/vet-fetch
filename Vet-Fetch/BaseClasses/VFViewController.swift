@@ -36,7 +36,7 @@ class VFViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         
         if let user = notification.userInfo!["user"] as? Dictionary<String, AnyObject>{
             VFViewController.currentUser.populate(user)
-            self.fetchPets()
+//            self.fetchPets()
         }
     }
     
@@ -52,6 +52,7 @@ class VFViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     }
     
     func fetchPets(){
+        print("fetchPets")
         
         if VFViewController.currentUser.id == nil {
             return
@@ -62,6 +63,8 @@ class VFViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         
         APIManager.getRequest("/api/pet", params: petInfo, completion: { response in
             
+            print("Resp in request")
+            
             if let results = response["results"] as? Array<Dictionary<String, AnyObject>>{
                 if VFViewController.pets.count != results.count{
                     VFViewController.pets.removeAll()
@@ -71,6 +74,7 @@ class VFViewController: UIViewController, UIImagePickerControllerDelegate, UINav
                         pet.populate(result)
                         VFViewController.pets.append(pet)
                     }
+                    print("If statement print")
                 }
             }
         })

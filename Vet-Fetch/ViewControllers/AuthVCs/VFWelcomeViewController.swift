@@ -16,7 +16,6 @@ class VFWelcomeViewController: VFViewController, UIScrollViewDelegate {
     var pageControl: UIPageControl!
     var backgroundImage: UIImageView!
     var backgroundOverlay: UIImageView!
-    
     var imagesArray = ["account_background.png", "account_background2.png", "account_background3.png"]
     
     //MARK: - Lifecycle Methods
@@ -107,7 +106,7 @@ class VFWelcomeViewController: VFViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.animateButtons()
+        self.animateButton()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -125,7 +124,7 @@ class VFWelcomeViewController: VFViewController, UIScrollViewDelegate {
         return
     }
     
-    func animateButtons(){
+    func animateButton(){
         for i in 0..<self.loginButtons.count {
             UIView.animateWithDuration(1.50,
                                        delay: (0.5+Double(i)*0.1),
