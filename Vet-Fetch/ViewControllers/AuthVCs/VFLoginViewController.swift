@@ -10,16 +10,15 @@ import UIKit
 
 class VFLoginViewController: VFViewController, UITextFieldDelegate {
     
-    var textFields = Array<UITextField>()
+    var textFields = [UITextField]()
     
     override func loadView(){
         
         self.navigationController?.navigationBarHidden = false
+        self.edgesForExtendedLayout = .None
         
         let frame = UIScreen.mainScreen().bounds
         let view = UIView(frame: frame)
-        edgesForExtendedLayout = .None
-        
         view.backgroundColor = UIColor(red: 255/255, green: 220/255, blue: 204/255, alpha: 1)
         
         let dimen = CGFloat(32)
@@ -27,11 +26,7 @@ class VFLoginViewController: VFViewController, UITextFieldDelegate {
         let cancelBtn = UIButton(type: .Custom)
         cancelBtn.frame = CGRect(x: frame.size.width-1.05*dimen, y: 15, width: dimen, height: dimen)
         cancelBtn.setImage(UIImage(named: "cancel_icon.png"), forState: .Normal)
-        cancelBtn.addTarget(
-            self,
-            action: #selector(VFViewController.exit),
-            forControlEvents: .TouchUpInside
-        )
+        cancelBtn.addTarget(self, action: #selector(VFViewController.exit), forControlEvents: .TouchUpInside)
         
         view.addSubview(cancelBtn)
         
@@ -48,7 +43,7 @@ class VFLoginViewController: VFViewController, UITextFieldDelegate {
             let field = VFTextField(frame: CGRect(x: padding, y: y, width: width, height: height))
             field.delegate = self
             field.placeholder = fieldName
-            field.textColor = .whiteColor()
+            field.textColor = .grayColor()
             
             let isPassword = (fieldName == "Password")
             field.secureTextEntry = (isPassword)
@@ -77,10 +72,46 @@ class VFLoginViewController: VFViewController, UITextFieldDelegate {
         }
     }
     
-    //MARK: - TextField Delegate
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func userLogin(profileInfo: Dictionary<String, AnyObject>){
         
+        print("UserLogin: \(profileInfo)")
+        APIManager.postRequest("/account/login", params: profileInfo, completion: { error, response in
+            
+            print("Response: \(response)")
+            
+            if error != nil {
+                let errorObj = error?.userInfo
+                let errorMsg = errorObj!["message"] as! String
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    let alert = UIAlertController(title: "Message", message: errorMsg, preferredStyle: .Alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                    
+                    self.presentViewController(alert, animated: true, completion: nil)
+                })
+                return
+            }
+            
+            if let result = response!["currentUser"] as? Dictionary<String, AnyObject>{
+                
+                print("Result: \(result)")
+                VFViewController.currentUser.populate(result)
+                
+                KeychainWrapper.defaultKeychainWrapper().setString("\(profileInfo["email"]!)", forKey: "profileEmail")
+                KeychainWrapper.defaultKeychainWrapper().setString("\(profileInfo["password"]!)", forKey: "profilePassword")
+                KeychainWrapper.defaultKeychainWrapper().setString(VFViewController.currentUser.id!, forKey: "userId")
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    
+                    self.postLoggedInNotification(result)
+                    self.exit()
+                })
+            }
+        })
+    }
+    
+    //MARK: - TextField Delegate
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
         let index = self.textFields.indexOf(textField)!
         
         if index == self.textFields.count-1 {
@@ -94,63 +125,19 @@ class VFLoginViewController: VFViewController, UITextFieldDelegate {
                 }
                 
                 profileInfo[textField.placeholder!.lowercaseString] = textField.text!
+                print("ProfileInfo: \(profileInfo)")
             }
             
             if missingValue.characters.count > 0 {
-                print("Missing Value")
-                
                 let msg = "You forgot your "+missingValue
-                let alert = UIAlertController(title: "Missing Value",
-                                              message: msg,
-                                              preferredStyle: .Alert)
+                let alert = UIAlertController(title: "Missing Value", message: msg, preferredStyle: .Alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+
                 self.presentViewController(alert, animated: true, completion: nil)
                 return true
             }
-            
-            print("Profile Info: \(profileInfo)")
-            
-            APIManager.postRequest("/account/login",
-                                   params: profileInfo,
-                                   completion: { error, response in
-                                    
-                                    if error != nil {
-                                        let errorObj = error?.userInfo
-                                        
-                                        let errorMsg = errorObj!["message"] as! String
-                                        print("Error: \(errorMsg)")
-                                        
-                                        dispatch_async(dispatch_get_main_queue(), {
-                                            let alert = UIAlertController(
-                                                title: "Message",
-                                                message: errorMsg,
-                                                preferredStyle: .Alert)
-                                            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-                                            self.presentViewController(alert, animated: true, completion: nil)
-                                            
-                                        })
-                                        
-                                        return
-                                    }
-                                    
-                                    print("\(response)")
-                                    
-                                    if let result = response!["currentUser"] as? Dictionary<String, AnyObject>{
-                                        
-                                        VFViewController.currentUser.populate(result)
-                                        
-                                        dispatch_async(dispatch_get_main_queue(), {
-                                            
-                                            self.postLoggedInNotification(result)
-                                            
-                                            self.exit()
-                                            
-                                            let accountVc = VFAccountViewController()
-                                            self.navigationController?.pushViewController(accountVc, animated: true)
-                                        })
-                                    }    
-            })
-            
+        
+            self.userLogin(profileInfo)
             return true
         }
         
