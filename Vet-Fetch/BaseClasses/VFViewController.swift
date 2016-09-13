@@ -12,7 +12,7 @@ import Cloudinary
 class VFViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLUploaderDelegate {
 
     static var currentUser = VFProfile()
-    static var pets = Array<VFPet>()
+    static var pets = [VFPet]()
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -36,7 +36,7 @@ class VFViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         
         if let user = notification.userInfo!["user"] as? Dictionary<String, AnyObject>{
             VFViewController.currentUser.populate(user)
-//            self.fetchPets()
+            self.fetchPets()
         }
     }
     
@@ -51,9 +51,7 @@ class VFViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         notificationCenter.postNotification(notificiation)
     }
     
-    func fetchPets(){
-        print("fetchPets")
-        
+    func fetchPets(){ 
         if VFViewController.currentUser.id == nil {
             return
         }
@@ -62,9 +60,7 @@ class VFViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         petInfo["ownerId"] = VFViewController.currentUser.id
         
         APIManager.getRequest("/api/pet", params: petInfo, completion: { response in
-            
-            print("Resp in request")
-            
+    
             if let results = response["results"] as? Array<Dictionary<String, AnyObject>>{
                 if VFViewController.pets.count != results.count{
                     VFViewController.pets.removeAll()
@@ -74,7 +70,7 @@ class VFViewController: UIViewController, UIImagePickerControllerDelegate, UINav
                         pet.populate(result)
                         VFViewController.pets.append(pet)
                     }
-                    print("If statement print")
+                    print("If inside of the Pet GET request")
                 }
             }
         })
