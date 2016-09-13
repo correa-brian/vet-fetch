@@ -12,14 +12,14 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
     
     //MARK: - Properties
     var collectionView: UICollectionView!
-    var btnsArray = ["Account", "Vet", "Insurance", "Learn More"]
+    var btns = ["Account", "Vet", "Insurance", "Learn More"]
     var backgroundImgs = ["dog_running.png", "vet.png", "sunset.png","vet_fetch_logo.png"]
     
     var bottomCollectionView: UICollectionView!
     var petManagerBtn: UIButton!
     
     var pet: VFPet!
-    var petsArray = Array<VFPet>()
+    var pets = [VFPet]()
     
     //MARK: - Lifecycle Methods
     required init?(coder aDecoder: NSCoder){
@@ -80,6 +80,16 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        KeychainWrapper.defaultKeychainWrapper().removeObjectForKey("userId")
+//        KeychainWrapper.defaultKeychainWrapper().removeObjectForKey("profileEmail")
+//        KeychainWrapper.defaultKeychainWrapper().removeObjectForKey("profilePassword")
+        
+//        let retreivedId = KeychainWrapper.defaultKeychainWrapper().stringForKey("userId")
+//        let retreivedEmail = KeychainWrapper.defaultKeychainWrapper().stringForKey("profileEmail")
+//        let retreivedPassword = KeychainWrapper.defaultKeychainWrapper().stringForKey("profilePassword")
+//        
+//        print("Retreived: \(retreivedId), \(retreivedEmail), \(retreivedPassword)")
+        
         self.animateButton()
     }
     
@@ -92,21 +102,27 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
         self.loadAccountPets()
+        
+    }
+    
+    override func userLoggedIn(notification: NSNotification){
+        super.userLoggedIn(notification)
+
     }
     
     func loadAccountPets(){
         
-        self.petsArray = VFViewController.pets
+        self.pets = VFViewController.pets
         
-        print("Pets: \(self.petsArray.count)")
+        print("BV Pets: \(VFViewController.pets)")
+        print("Pets: \(self.pets.count)")
         
-        if self.petsArray.count == 0 {
+        if self.pets.count == 0 {
             return
         }
         
-        self.pet = self.petsArray.reverse()[0]
+        self.pet = self.pets.reverse()[0]
 //        self.petNameLabel.text = self.pet.name
 //        
 //        let labelText = ["Birthday", self.pet.birthday, self.pet.weight, "Weight"]
@@ -157,7 +173,7 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
     }
     
     func managePet(sender: UIButton){
-        if self.petsArray.count == 0{
+        if self.pets.count == 0{
             let msg = "You haven't add any pets"
             let alert = UIAlertController(title: "No Pets",
                                           message: msg,
@@ -205,7 +221,7 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
     
     //MARK: - CollectionView Delegates
     func configureCell(cell: VFMenuCollectionViewCell, indexPath :NSIndexPath){
-        let button = self.btnsArray[indexPath.row]
+        let button = self.btns[indexPath.row]
         let image = self.backgroundImgs[indexPath.row]
         
         cell.cellLabel.text = button
@@ -218,11 +234,11 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
         var count: Int!
         
         if collectionView == self.collectionView{
-            count = self.btnsArray.count
+            count = self.btns.count
         }
         
         if collectionView == self.bottomCollectionView{
-            print("Set Count")
+            print("Set Collection View Cell Count")
             count = 3
         }
         
@@ -264,7 +280,7 @@ class VFAccountViewController: VFViewController, UICollectionViewDelegate, UICol
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if collectionView == self.collectionView{
-            let button = self.btnsArray[indexPath.row]
+            let button = self.btns[indexPath.row]
             self.setAppropriateVc(button)
         }
     }
