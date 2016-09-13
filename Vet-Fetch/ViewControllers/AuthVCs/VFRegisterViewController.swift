@@ -10,7 +10,7 @@ import UIKit
 
 class VFRegisterViewController: VFViewController, UITextFieldDelegate {
     
-    var textFields = Array<UITextField>()
+    var textFields = [UITextField]()
     
     override func loadView(){
         

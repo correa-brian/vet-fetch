@@ -10,7 +10,7 @@ import UIKit
 
 class VFWelcomeViewController: VFViewController, UIScrollViewDelegate {
     
-    var loginButtons = Array<UIButton>()
+    var loginButtons = [UIButton]()
     var appNameLabel: UILabel!
     var backgroundScrollView: UIScrollView!
     var pageControl: UIPageControl!
@@ -112,13 +112,21 @@ class VFWelcomeViewController: VFViewController, UIScrollViewDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBarHidden = true
+        
+//        let retreivedId = KeychainWrapper.defaultKeychainWrapper().stringForKey("userId")
+//        let retreivedEmail = KeychainWrapper.defaultKeychainWrapper().stringForKey("userEmail")
+//        let retreivedPassword = KeychainWrapper.defaultKeychainWrapper().stringForKey("userPassword")
+//        
+//        print("Retreived: \(retreivedId), \(retreivedEmail), \(retreivedPassword)")
     }
     
     override func userLoggedIn(notification: NSNotification){
         super.userLoggedIn(notification)
         
         if VFViewController.currentUser.id != nil {
-            self.showAccountVc()
+            print("User ID not nil")
+            let accountVc = VFAccountViewController()
+            self.navigationController?.pushViewController(accountVc, animated: true)
         }
         
         return
@@ -140,11 +148,6 @@ class VFWelcomeViewController: VFViewController, UIScrollViewDelegate {
                 },
                                        completion: nil)
         }
-    }
-    
-    func showAccountVc(){
-        let accountVc = VFAccountViewController()
-        self.navigationController?.pushViewController(accountVc, animated: true)
     }
     
     func showNextController(sender: UIButton){
