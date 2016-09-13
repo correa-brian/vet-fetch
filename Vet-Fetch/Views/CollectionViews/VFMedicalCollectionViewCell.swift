@@ -14,11 +14,11 @@ class VFMedicalCollectionViewCell: UICollectionViewCell, UITableViewDelegate, UI
     var recordsTable: UITableView!
     var pet = VFPet()
     
-    var medicationArray = Array<String>()
-    var vaccineArray = Array<String>()
-    var allergyArray = Array<String>()
+    var medicationArray = [String]()
+    var vaccineArray = [String]()
+    var allergyArray = [String]()
     
-    var tableArray = Array<Array<String>>()
+    var tableArray = [[String]]()
     
     required init?(coder aDecoder: NSCoder){
         super.init(coder: aDecoder)

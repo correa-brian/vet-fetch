@@ -18,9 +18,9 @@ class VFPet: NSObject {
     var breed: String!
     var birthday: String!
     var weight: String!
-    var vaccines: Array<String>!
-    var medications: Array<String>!
-    var allergies: Array<String>!
+    var vaccines: [String]!
+    var medications: [String]!
+    var allergies: [String]!
     
     var image: Dictionary<String, AnyObject>!
     var imageUrl: String!

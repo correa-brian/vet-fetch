@@ -16,7 +16,7 @@ class VFVetMapViewController: VFViewController, CLLocationManagerDelegate, MKMap
     var mapView: MKMapView!
     var locationManager: CLLocationManager!
     var currentLocation: CLLocation?
-    var places = Array<VFPlace>()
+    var places = [VFPlace]()
     
     //MARK: - Lifecycle Methods
     required init?(coder aDecoder: NSCoder){

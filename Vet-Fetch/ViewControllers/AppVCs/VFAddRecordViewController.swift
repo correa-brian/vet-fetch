@@ -12,7 +12,7 @@ import Alamofire
 class VFAddRecordViewController: VFViewController, UITextFieldDelegate {
     
     var pet = VFPet()
-    var textFields = Array<UITextField>()
+    var textFields = [UITextField]()
     var petInfo = Dictionary<String, AnyObject>()
 
     //MARK: - Lifecycle Methods
@@ -38,11 +38,7 @@ class VFAddRecordViewController: VFViewController, UITextFieldDelegate {
         let cancelBtn = UIButton(type: .Custom)
         cancelBtn.frame = CGRect(x: 0, y: 10, width: 32, height: 32)
         cancelBtn.setImage(UIImage(named: "cancel_icon.png"), forState: .Normal)
-        cancelBtn.addTarget(
-            self,
-            action: #selector(VFViewController.exit),
-            forControlEvents: .TouchUpInside
-        )
+        cancelBtn.addTarget(self, action: #selector(VFViewController.exit),forControlEvents: .TouchUpInside)
         view.addSubview(cancelBtn)
         
         let padding = CGFloat(Constants.padding)

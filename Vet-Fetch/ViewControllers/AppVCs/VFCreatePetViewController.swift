@@ -10,7 +10,7 @@ import UIKit
 
 class VFCreatePetViewController: VFViewController, UITextFieldDelegate {
 
-    var textFields = Array<UITextField>()
+    var textFields = [UITextField]()
     var petImageView: UIImageView!
     var selectedImage: UIImage?
     var petInfo = Dictionary<String, AnyObject>()
@@ -28,11 +28,7 @@ class VFCreatePetViewController: VFViewController, UITextFieldDelegate {
         let cancelBtn = UIButton(type: .Custom)
         cancelBtn.frame = CGRect(x: 0, y: 10, width: 32, height: 32)
         cancelBtn.setImage(UIImage(named: "cancel_icon.png"), forState: .Normal)
-        cancelBtn.addTarget(
-            self,
-            action: #selector(VFViewController.exit),
-            forControlEvents: .TouchUpInside
-        )
+        cancelBtn.addTarget(self, action: #selector(VFViewController.exit),forControlEvents: .TouchUpInside)
         view.addSubview(cancelBtn)
         
         let padding = CGFloat(Constants.padding)

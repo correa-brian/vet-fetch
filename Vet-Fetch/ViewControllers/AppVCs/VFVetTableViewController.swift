@@ -12,7 +12,7 @@ import Alamofire
 class VFVetTableViewController: VFViewController, UITableViewDelegate, UITableViewDataSource {
     
     var vetTable: UITableView!
-    var vetLocations = Array<VFPlace>()
+    var vetLocations = [VFPlace]()
 
     override func loadView() {
         

@@ -12,11 +12,11 @@ class VFPetCollectionViewCell: UICollectionViewCell {
     
     static var cellId = "cellId"
     var pet = VFPet()
-    var petsArray = Array<VFPet>()
+    var petsArray = [VFPet]()
     
     var petImageView: UIImageView!
     var petNameLabel: UILabel!
-    var petLabelArray = Array<UILabel>()
+    var petLabelArray = [UILabel]()
     
     required init?(coder aDecoder: NSCoder){
         super.init(coder: aDecoder)

@@ -11,7 +11,7 @@ import UIKit
 class VFMedicalRecordsViewController: VFViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var pet = VFPet()
-    var btnsArray = Array<UIButton>()
+    var btnsArray = [UIButton]()
     var collectionView: UICollectionView!
     
     //MARK: - Lifecycle Methods
@@ -25,7 +25,6 @@ class VFMedicalRecordsViewController: VFViewController, UICollectionViewDelegate
         self.edgesForExtendedLayout = .None
         
         let notificationCenter = NSNotificationCenter.defaultCenter()
-        
         notificationCenter.addObserver(self, selector: #selector(VFMedicalRecordsViewController.setNewPet(_:)), name: Constants.kPetUpdatedNotification, object: nil)
     }
     
