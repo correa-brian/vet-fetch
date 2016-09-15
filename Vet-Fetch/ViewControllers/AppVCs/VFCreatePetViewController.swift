@@ -15,14 +15,12 @@ class VFCreatePetViewController: VFViewController, UITextFieldDelegate {
     var selectedImage: UIImage?
     var petInfo = Dictionary<String, AnyObject>()
     
+    //MARK: Lifecycle Methods
     override func loadView(){
-        
         self.edgesForExtendedLayout = .None
         
         let frame = UIScreen.mainScreen().bounds
         let view = UIView(frame: frame)
-        
-        
         view.backgroundColor = UIColor(red: 166/255, green: 207/255, blue: 190/255, alpha: 1)
         
         let cancelBtn = UIButton(type: .Custom)
@@ -37,9 +35,7 @@ class VFCreatePetViewController: VFViewController, UITextFieldDelegate {
         var y = CGFloat(Constants.origin_y)
         
         let fieldNames = ["Name", "Breed", "Sex", "Weight", "Birthday"]
-        
         for i in 0..<fieldNames.count {
-            
             let fieldName = fieldNames[i]
             let field = VFTextField(frame: CGRect(x: padding, y: y, width: width, height: height))
             field.delegate = self
@@ -48,7 +44,6 @@ class VFCreatePetViewController: VFViewController, UITextFieldDelegate {
             
             let isLast = (fieldName == "Birthday")
             field.returnKeyType = (isLast) ? .Done : .Next
-            
             view.addSubview(field)
             self.textFields.append(field)
             y += height + padding
@@ -58,18 +53,15 @@ class VFCreatePetViewController: VFViewController, UITextFieldDelegate {
         self.petImageView.backgroundColor = .blueColor()
         self.petImageView.alpha = 0
         view.addSubview(self.petImageView)
-        
         self.view = view
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func exit(){
         super.exit()
-        
         for textField in self.textFields {
             if (textField.isFirstResponder()){
                 textField.resignFirstResponder()
@@ -78,62 +70,44 @@ class VFCreatePetViewController: VFViewController, UITextFieldDelegate {
         }
     }
     
-    //MARK: - UIImagePicker Delegate
+    //MARK: UIImagePicker Delegate
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             self.selectedImage = image
         }
         
         picker.dismissViewControllerAnimated(true, completion: {
-            
-            UIView.transitionWithView(
-                self.petImageView,
-                duration: 0.3,
-                options: UIViewAnimationOptions.TransitionFlipFromLeft,
+            UIView.transitionWithView(self.petImageView, duration: 0.3,options: UIViewAnimationOptions.TransitionFlipFromLeft,
                 animations: {
                     self.petImageView.image = self.selectedImage
                     self.petImageView.alpha = 1.0
                 },
                 completion: { finished in
-                    
-                    print("Checking in Completion: \(self.petInfo)")
                     self.createPet(self.petInfo)
             })
         })
     }
     
     //MARK: - TextField Delegate
-    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         let index = self.textFields.indexOf(textField)!
-        
         if index == self.textFields.count-1 {
             var missingValue = ""
-            
             for textField in self.textFields{
                 if textField.text?.characters.count == 0 {
                     missingValue = textField.placeholder!
                     break
                 }
-                
                 self.petInfo[textField.placeholder!.lowercaseString] = textField.text!
             }
-            
             if missingValue.characters.count > 0 {
-                print("Missing Value")
-                
                 let msg = "You forgot your "+missingValue
-                let alert = UIAlertController(title: "Missing Value",
-                                              message: msg,
-                                              preferredStyle: .Alert)
+                let alert = UIAlertController(title: "Missing Value", message: msg, preferredStyle: .Alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
                 return true
             }
-            
             self.petInfo["ownerId"] = [VFViewController.currentUser.id!]
-            print("Pet Info: \(self.petInfo)")
             
             let alert = UIAlertController(
                 title: "Picture",
@@ -149,7 +123,6 @@ class VFCreatePetViewController: VFViewController, UITextFieldDelegate {
             alert.addAction(UIAlertAction(title: "No", style: .Default, handler: { action in
                 textField.resignFirstResponder()
                 self.createPet(self.petInfo)
-                
             }))
 
             self.presentViewController(alert, animated: true, completion: nil)
@@ -158,7 +131,6 @@ class VFCreatePetViewController: VFViewController, UITextFieldDelegate {
         
         let nextField = self.textFields[index+1]
         nextField.becomeFirstResponder()
-        
         return true
     }
     
@@ -167,28 +139,20 @@ class VFCreatePetViewController: VFViewController, UITextFieldDelegate {
             APIManager.postRequest("/api/pet",
                                    params: self.petInfo,
                                    completion: { error, response in
-
                                     if let result = response!["result"] as? Dictionary<String, AnyObject>{
-                                        
                                         self.fetchPets()
-                                        print("Result: \(result)")
-
                                         let pet = VFPet()
                                         pet.populate(result)
-
                                         dispatch_async(dispatch_get_main_queue(), {
-                                        
                                             self.dismissViewControllerAnimated(true, completion: nil)
                                         })
                                     }
             })
             return
         }
-        
         self.uploadImage(selectedImage!, completion: { imageInfo in
             self.selectedImage = nil
             self.petInfo["image"] = imageInfo
-            print("Testing Completion Handler: \(self.petInfo)")
             self.createPet(self.petInfo)
         })
     }
@@ -196,6 +160,4 @@ class VFCreatePetViewController: VFViewController, UITextFieldDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    
 }

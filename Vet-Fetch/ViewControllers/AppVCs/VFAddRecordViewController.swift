@@ -11,28 +11,16 @@ import Alamofire
 
 class VFAddRecordViewController: VFViewController, UITextFieldDelegate {
     
-    var pet = VFPet()
+    var pet: VFPet!
     var textFields = [UITextField]()
     var petInfo = Dictionary<String, AnyObject>()
 
-    //MARK: - Lifecycle Methods
-    required init?(coder aDecoder: NSCoder){
-        super.init(coder: aDecoder)
-    }
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?){
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        
-        self.edgesForExtendedLayout = .None
-    }
-    
+    //MARK: Lifecycle Methods
     override func loadView(){
-        
         self.edgesForExtendedLayout = .None
         
         let frame = UIScreen.mainScreen().bounds
         let view = UIView(frame: frame)
-    
         view.backgroundColor = UIColor(red: 166/255, green: 207/255, blue: 190/255, alpha: 1)
         
         let cancelBtn = UIButton(type: .Custom)
@@ -47,9 +35,7 @@ class VFAddRecordViewController: VFViewController, UITextFieldDelegate {
         var y = CGFloat(Constants.origin_y)
         
         let fieldNames = ["Medications", "Vaccines", "Allergies"]
-        
         for i in 0..<fieldNames.count {
-            
             let fieldName = fieldNames[i]
             let field = VFTextField(frame: CGRect(x: padding, y: y, width: width, height: height))
             field.delegate = self
@@ -63,7 +49,6 @@ class VFAddRecordViewController: VFViewController, UITextFieldDelegate {
             self.textFields.append(field)
             y += height + padding
         }
-        
         self.view = view
     }
     
@@ -73,7 +58,6 @@ class VFAddRecordViewController: VFViewController, UITextFieldDelegate {
     
     override func exit(){
         super.exit()
-        
         for textField in self.textFields {
             if textField.isFirstResponder() {
                 textField.resignFirstResponder()
@@ -83,10 +67,9 @@ class VFAddRecordViewController: VFViewController, UITextFieldDelegate {
     }
     
     func updatePetRecords(params: Dictionary<String, AnyObject>){
-        APIManager.putRequest("/api/pet/"+self.pet.id!,
+        APIManager.putRequest("/api/pet/"+self.pet!.id!,
                               params: params,
                               completion: { error, response in
-                                
                                 if error != nil {
                                     let errorObj = error?.userInfo
                                     let errorMsg = errorObj!["message"] as! String
@@ -94,7 +77,6 @@ class VFAddRecordViewController: VFViewController, UITextFieldDelegate {
                                     dispatch_async(dispatch_get_main_queue(), {
                                         let alert = UIAlertController(title: "Message", message: errorMsg, preferredStyle: .Alert)
                                         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-                                        
                                         self.presentViewController(alert, animated: true, completion: nil)
                                         
                                     })
@@ -102,14 +84,10 @@ class VFAddRecordViewController: VFViewController, UITextFieldDelegate {
                                 }
                                 
                                 if let result = response!["result"] as? Dictionary<String, AnyObject>{
-                                    
                                     self.fetchPets()
-                                    
                                     let pet = VFPet()
                                     pet.populate(result)
-                                    
                                     dispatch_async(dispatch_get_main_queue(), {
-                                        
                                         self.postPetUpdateNotification(result)
                                         self.exit()
                                     })
@@ -123,22 +101,17 @@ class VFAddRecordViewController: VFViewController, UITextFieldDelegate {
             object: nil,
             userInfo: ["pet":updatedPet]
         )
-        
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.postNotification(notification)
     }
     
-    //MARK: - Textfield Delegate
+    //MARK: Textfield Delegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         let index = self.textFields.indexOf(textField)!
-    
         if index == self.textFields.count-1 {
-            
             for textField in self.textFields{
-                
                 self.petInfo[textField.placeholder!.lowercaseString] = textField.text?.componentsSeparatedByString(", ")
             }
-            
             self.updatePetRecords(self.petInfo)
         }
         return true
