@@ -28,15 +28,9 @@ class VFViewController: UIViewController, UIImagePickerControllerDelegate, UINav
                                        object: nil)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     func userLoggedIn(notification: NSNotification){
-        
         if let user = notification.userInfo!["user"] as? Dictionary<String, AnyObject>{
             VFViewController.currentUser.populate(user)
-            self.fetchPets()
         }
     }
     
@@ -46,31 +40,27 @@ class VFViewController: UIViewController, UIImagePickerControllerDelegate, UINav
             object: nil,
             userInfo: ["user": currentUser]
         )
-        
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.postNotification(notificiation)
     }
     
-    func fetchPets(){ 
-        if VFViewController.currentUser.id == nil {
+    func fetchPets(){
+        let userIdKey = KeychainWrapper.defaultKeychainWrapper().stringForKey("userId")
+        if userIdKey == nil {
             return
         }
-        
         var petInfo = Dictionary<String, AnyObject>()
-        petInfo["ownerId"] = VFViewController.currentUser.id
+        petInfo["ownerId"] = userIdKey
         
         APIManager.getRequest("/api/pet", params: petInfo, completion: { response in
-    
             if let results = response["results"] as? Array<Dictionary<String, AnyObject>>{
                 if VFViewController.pets.count != results.count{
                     VFViewController.pets.removeAll()
-                
                     for result in results {
                         let pet = VFPet()
                         pet.populate(result)
                         VFViewController.pets.append(pet)
                     }
-                    print("If inside of the Pet GET request")
                 }
             }
         })
@@ -80,7 +70,7 @@ class VFViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    //MARK: - Camera Methods
+    //MARK: Camera Methods
     func showCameraOptions() -> UIAlertController {
         let actionSheet = UIAlertController(title: "Select Photo Source", message: nil, preferredStyle: .ActionSheet)
         actionSheet.addAction(UIAlertAction(title: "Camera", style: .Default, handler: { action in
@@ -118,30 +108,22 @@ class VFViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         let uploader = CLUploader(clouder, delegate: self)
         
         uploader.upload(forUpload, options: nil, withCompletion: { (dataDictionary: [NSObject: AnyObject]!, errorResult:String!, code:Int, context: AnyObject!) -> Void in
-            
-            print("Upload Reponse: \(dataDictionary)")
-            
+        
             dispatch_async(dispatch_get_main_queue(), {
                 var imageUrl = ""
                 if let secure_url = dataDictionary["secure_url"] as? String{
                     imageUrl = secure_url
                 }
-                
                 let thumbnailUrl = imageUrl.stringByReplacingOccurrencesOfString("/upload", withString: "/upload/t_thumb_300/")
-                
                 let imageInfo = [
                     "original": imageUrl,
                     "thumb": thumbnailUrl
                 ]
                 
-                print("ImageInfo Dict: \(imageInfo)")
-                
                 completion(imageInfo: imageInfo)
             })
         },
                         andProgress: { (bytesWritten:Int, totalBytesWritten:Int, totalBytesExpectedToWrite:Int, context:AnyObject!) -> Void in
-                            
-                            print("Upload progress: \((totalBytesWritten * 100)/totalBytesExpectedToWrite) %");
             }
         )
     }
