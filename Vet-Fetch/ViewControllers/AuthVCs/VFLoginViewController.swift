@@ -27,7 +27,6 @@ class VFLoginViewController: VFViewController, UITextFieldDelegate {
         cancelBtn.frame = CGRect(x: frame.size.width-1.05*dimen, y: 15, width: dimen, height: dimen)
         cancelBtn.setImage(UIImage(named: "cancel_icon.png"), forState: .Normal)
         cancelBtn.addTarget(self, action: #selector(VFViewController.exit), forControlEvents: .TouchUpInside)
-        
         view.addSubview(cancelBtn)
         
         let padding = CGFloat(Constants.padding)
@@ -36,7 +35,6 @@ class VFLoginViewController: VFViewController, UITextFieldDelegate {
         var y = CGFloat(Constants.origin_y)
         
         let fieldNames = ["Email", "Password"]
-        
         for i in 0..<fieldNames.count {
             
             let fieldName = fieldNames[i]
@@ -53,7 +51,6 @@ class VFLoginViewController: VFViewController, UITextFieldDelegate {
             self.textFields.append(field)
             y += height + padding
         }
-        
         self.view = view
     }
     
@@ -63,7 +60,6 @@ class VFLoginViewController: VFViewController, UITextFieldDelegate {
     
     override func exit(){
         super.exit()
-        
         for textField in self.textFields {
             if textField.isFirstResponder() {
                 textField.resignFirstResponder()
@@ -73,12 +69,7 @@ class VFLoginViewController: VFViewController, UITextFieldDelegate {
     }
     
     func userLogin(profileInfo: Dictionary<String, AnyObject>){
-        
-        print("UserLogin: \(profileInfo)")
         APIManager.postRequest("/account/login", params: profileInfo, completion: { error, response in
-            
-            print("Response: \(response)")
-            
             if error != nil {
                 let errorObj = error?.userInfo
                 let errorMsg = errorObj!["message"] as! String
@@ -93,8 +84,6 @@ class VFLoginViewController: VFViewController, UITextFieldDelegate {
             }
             
             if let result = response!["currentUser"] as? Dictionary<String, AnyObject>{
-                
-                print("Result: \(result)")
                 VFViewController.currentUser.populate(result)
                 
                 KeychainWrapper.defaultKeychainWrapper().setString("\(profileInfo["email"]!)", forKey: "profileEmail")
@@ -102,7 +91,6 @@ class VFLoginViewController: VFViewController, UITextFieldDelegate {
                 KeychainWrapper.defaultKeychainWrapper().setString(VFViewController.currentUser.id!, forKey: "userId")
                 
                 dispatch_async(dispatch_get_main_queue(), {
-                    
                     self.postLoggedInNotification(result)
                     self.exit()
                 })
@@ -113,7 +101,6 @@ class VFLoginViewController: VFViewController, UITextFieldDelegate {
     //MARK: - TextField Delegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         let index = self.textFields.indexOf(textField)!
-        
         if index == self.textFields.count-1 {
             var missingValue = ""
             var profileInfo = Dictionary<String, AnyObject>()
@@ -125,9 +112,7 @@ class VFLoginViewController: VFViewController, UITextFieldDelegate {
                 }
                 
                 profileInfo[textField.placeholder!.lowercaseString] = textField.text!
-                print("ProfileInfo: \(profileInfo)")
             }
-            
             if missingValue.characters.count > 0 {
                 let msg = "You forgot your "+missingValue
                 let alert = UIAlertController(title: "Missing Value", message: msg, preferredStyle: .Alert)
@@ -140,10 +125,8 @@ class VFLoginViewController: VFViewController, UITextFieldDelegate {
             self.userLogin(profileInfo)
             return true
         }
-        
         let nextField = self.textFields[index+1]
         nextField.becomeFirstResponder()
-        
         return true
     }
     
