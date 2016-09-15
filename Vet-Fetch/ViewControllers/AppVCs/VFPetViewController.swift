@@ -10,7 +10,7 @@ import UIKit
 
 class VFPetViewController: VFViewController {
     
-    var pet = VFPet()
+    var pet: VFPet?
     var petImage: UIImageView!
     var petNameLabel: UILabel!
     
@@ -47,8 +47,6 @@ class VFPetViewController: VFViewController {
         self.petImage.layer.addSublayer(gradientLayer)
         view.addSubview(self.petImage)
         
-        view.addSubview(self.petImage)
-        
         let dimen = height*0.50
         
         self.container = UIView(frame: CGRect(x: 0, y: dimen, width: width, height: height-dimen))
@@ -58,7 +56,7 @@ class VFPetViewController: VFViewController {
         petNameLabel.textColor = .whiteColor()
         petNameLabel.textAlignment = .Right
         petNameLabel.font = UIFont(name: "PingFangTC-Medium" , size: 30)
-        petNameLabel.text = pet.name
+        petNameLabel.text = pet!.name
         self.container.addSubview(petNameLabel)
         
         var x = petNameLabel.frame.size.width+20
@@ -69,21 +67,19 @@ class VFPetViewController: VFViewController {
         circle.layer.cornerRadius = 8
         circle.backgroundColor = UIColor.clearColor()
         self.container.addSubview(circle)
-        
         x += circle.frame.size.width + 20
         
         let verticalLine = UIView(frame: CGRect(x: x, y: 0, width: 0.5, height: petNameLabel.frame.size.height))
         verticalLine.backgroundColor = UIColor.whiteColor()
         verticalLine.alpha = 0.7
         self.container.addSubview(verticalLine)
-        
         x += verticalLine.frame.size.width + 20
         
         let petBreedLabel = UILabel(frame: CGRect(x: x, y: 0, width: width*0.25, height: height*0.125))
         petBreedLabel.textColor = .orangeColor()
         petBreedLabel.textAlignment = .Left
         petBreedLabel.font = UIFont(name: "PingFangTC-Medium" , size: 15)
-        petBreedLabel.text = pet.breed
+        petBreedLabel.text = pet!.breed
         self.container.addSubview(petBreedLabel)
         
         let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
@@ -103,7 +99,7 @@ class VFPetViewController: VFViewController {
         x = width*0.10
         var y = petNameLabel.frame.size.height+height*0.05
         
-        var text = [pet.breed, pet.weight]
+        var text = [pet!.breed, pet!.weight]
         var icons = ["paw_icon.png", "weight_icon.png"]
         
         for i in 0..<text.count {
@@ -122,7 +118,7 @@ class VFPetViewController: VFViewController {
             x += width*0.50
         }
         
-        text = [pet.birthday, pet.sex]
+        text = [pet!.birthday, pet!.sex]
         icons = ["DOB_icon.png", "sex_icon.png"]
         
         x = width*0.10
@@ -143,25 +139,21 @@ class VFPetViewController: VFViewController {
             self.container.addSubview(label)
             x += width*0.50
         }
-
         view.addSubview(self.container)
-        
         self.view = view
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if pet.imageUrl.characters.count == 0 {
+        if pet!.imageUrl.characters.count == 0 {
             return
         }
-        
-        if pet.imageData != nil {
-            self.petImage.image = pet.imageData
+        if pet!.imageData != nil {
+            self.petImage.image = pet!.imageData
             return
         }
-        
-        pet.fetchOriginalImage({ image in
+        pet!.fetchOriginalImage({ image in
             self.petImage.image = image
         })
     }
